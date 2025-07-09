@@ -1,0 +1,52 @@
+/*
+    Yo creo en muchas cosas que no he visto, y ustedes también, lo sé
+    No se puede negar la existencia de algo palpado, por más etéreo que sea
+    No hace falta exhibir una prueba de decencia, de aquello que es tan verdadero
+    El único gesto es, creer, o no
+    Algunas veces, hasta creer llorando
+    Se trata de un tema incompleto porque le falta respuesta
+    Respuesta, que alguno de ustedes, quizás, le pueda dar...
+*/
+
+/**************************************** GLOBALES ****************************************/
+
+:root {
+    /* Paleta de colores del proyecto: */
+    --verdeOscuro: #12503C;
+    --verdeIntermedio: #498C5A;
+    --verdeClaro: #CBF2AE;
+    --beige: #F2E9CE;
+    --fondo1: #438B5A;
+    --fondo2: #48905F;
+    /* Colores transversales: */
+    --blancoPuero: white;
+    --negroPuro: black;
+    /* Tipografías: */
+    --tipografiaPrincipal: "Rubik", sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+} /* Reset de valores a cero para márgenes y padding. */
+
+html {
+    /* Estandarización de tamaños. Pt. 1: */
+    box-sizing: border-box;
+    font-size: 62.5%;
+    /* Resto de parámetros: */
+    background-image: repeating-linear-gradient(
+        to bottom,
+        var(--fondo1) 0 60px,
+        var(--fondo2) 60px 120px
+    );    
+}
+
+*,*:before, :after {
+    box-sizing: inherit;
+} /* Estandarización de tamaños. Pt. 2. */
+
+body {
+    font-size: 16px; /* Estandarización de tamaños. Pt. 3. */
+    font-family: var(--tipografiaPrincipal);    
+}
