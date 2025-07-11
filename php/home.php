@@ -32,16 +32,16 @@
 
             <button class="boton">Abrir convocatoria ⚽</button>
 
-            <form class="formulario-convocatoria" action="php/convocatoria.php" method="POST">
-                <div class="campos">
+            <form id="formulario-convocatoria" class="formulario-convocatoria" action="convocatoria.php" method="POST">
+                <div class="campos-convocatoria">
                     <label class="label" for="">Fecha</label>
-                    <input class="input" type="date" placeholder="Fecha" autocomplete="off" required>
+                    <input class="input" type="date" placeholder="Fecha" name="fecha" value="2025-07-31" autocomplete="off" required>
 
                     <label class="label" for="">hora</label>
-                    <input class="input" type="time" placeholder="Hora" autocomplete="off" required>
+                    <input class="input" name="time" type="time" value="22:00" autocomplete="off" required>
 
                     <label class="label" for="">Estadio</label>
-                    <select class="input" name="estadio" id="" required>
+                    <select class="input" name="estadio" id="estadio" required>
                         <option value="" disabled selected>-Seleccione un Estadio-</option>
                         <?php
                             // Conexión a la DB, al comienzo.
@@ -55,8 +55,24 @@
                         <?php endwhile; ?>
                     </select>
 
+                    <label class="label" for="">Tipo de Partido</label>
+                    <select class="input" name="tipo-partido" id="">
+                    <option value="" disabled selected>-Tipo de Partido-</option>
+                    <?php
+                        $sqlTipopartido = "Select * from TIPO_PARTIDO;";
+                        $resultadoTipopartido = mysqli_query($conn, $sqlTipopartido);
+                    ?>
+                    <?php while($fila = mysqli_fetch_assoc($resultadoTipopartido)): ?>
+                        <option value="<?php echo $fila['ID_TIPO_PARTIDO'] ?>">
+                            <?php echo $fila['DETALLE']; ?>
+                        </option>
+                    <?php endwhile ?>
+                    </select>
+
                     <label for="">¿Confirmo asistencia?</label>
-                    <input type="checkbox" name="" id="">
+                    <input type="checkbox" name="asistencia-usuario" id="" autocomplete="off" value="SI">
+
+                    <button class="boton">Confirmar</button>
 
 
                 </div>

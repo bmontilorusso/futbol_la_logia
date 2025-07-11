@@ -168,6 +168,16 @@ INSERT INTO ESTADIOS (NOMBRE, ID_REGION) VALUES ('Las Brisas', 2);
 INSERT INTO ESTADIOS (NOMBRE, ID_REGION) VALUES ('Pasco Central', 1);
 
 
+/********* Ajustes sobre la marcha: *********/
+
+-- Ampliamos la tabla JUGADORES: --
+ALTER TABLE JUGADORES ADD COLUMN ID_POSICION_PRINCIPAL INT(2);
+ALTER TABLE JUGADORES ADD COLUMN ID_POSICIÓN_ALT INT(2);
+
+-- Para saber qué USUARIO abrió la convocatoria: --
+ALTER TABLE PARTIDOS ADD COLUMN ID_USUARIO_ALTA INT(2);
+
+
 /**************************************** Fin del Script ****************************************/
 
 /* 
