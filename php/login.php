@@ -1,6 +1,6 @@
 <?php
 
-// LOGIN:
+/************** Login: ***************/
 
 // Importaciones:
 include('conexion_db.php');
