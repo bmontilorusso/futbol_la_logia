@@ -29,7 +29,7 @@
     --alertaPrecaucionTexto: #856404;
     --alertaPrecaucionBorde: #FFEEBA;
     /* Colores transversales: */
-    --blancoPuero: white;
+    --blancoPuro: white;
     --negroPuro: black;
     /* Tipografías: */
     --tipografiaPrincipal: "Rubik", sans-serif;
@@ -75,17 +75,34 @@ body {
     margin: 0 auto;
     width: 80rem;    
     margin-top: 2rem;
+    border-radius: .5rem;
+    border-style: solid;
+    border-width: .5rem;    
+    outline: .5rem solid var(--negroPuro);
+    border-color: var(--verdeClaro);
+    
 }
 
-.header {
+.header, .footer {
     background-color: var(--verdeOscuro);
     width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.header h1 {
+    color: var(--beige);
+    margin: 4rem 0;
 }
 
 .main {
     background-color: var(--beige);
-    width: 100%;
-    
+    width: 100%;  
+}
+
+.main h2 {
+    color: var(--verdeOscuro);
+    margin: 2rem;
 }
 
 h1, h2 {
@@ -93,17 +110,34 @@ h1, h2 {
 }
 
 .formulario-login {
-    
+    gap: 1rem;
+    width: 100%;
+    padding: 2rem 0;
 }
 
 .combo-datos-usuario {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    width: 60%;
+}
+
+.combo-datos-usuario label {
+    color: var(--verdeOscuro);
+    padding-bottom: .5rem;
+}
+
+.combo-datos-usuario input {
+    width: 50%;
 }
 
 .combo-datos-usuario label::after {
     content: " *";
     color: var(--alertaNegativaTexto);
     font-weight: bold;
+}
+
+.footer p {
+    padding: 4rem 0;
+    color: var(--beige);
 }
