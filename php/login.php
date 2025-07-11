@@ -19,7 +19,7 @@ if (mysqli_num_rows($resultado) == 1) {
     session_start();
 
     // Creación de Variables de USUARIO:
-    $_SESSION['usaurio'] = $usuario;
+    $_SESSION['usuario'] = $usuario;
     $fila = mysqli_fetch_assoc($resultado);
     $_SESSION['id_usuario'] = $fila['ID_USUARIO'];
     $_SESSION['nombre'] = $fila['NOMBRE'];
