@@ -14,11 +14,43 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
 </head>
-
-    <h1>Futbol La Logia</h1>
-    <h2>Futbol La Logia</h2>
-    <h3>Futbol La Logia</h3>
 <body>
+
+    <div class="ventana-aplicacion">
+
+    <header class="header">
+        <h1>Futbol La Logia</h1>
+    </header>
+
+        <main class="main">
+
+            <h2>Comencemos</h2>
+            
+            <form class="formulario-login" action="php/login.php" method="POST">
+                
+                <div class="combo-datos-usuario">
+                    <label for="usuario">Usuario</label>
+                    <input placeholder="Ingesá tu Usuario" type="text" name="usuario" autocomplete="off" required>
+                </div>
+                <div class="combo-datos-usuario">
+                    <label for="pass">Contraseña</label>
+                    <input placeholder="Ingesá tu Contraseña" type="password" name="pass" autocomplete="off" required>
+                </div>
+                <button class="boton" id="boton-iniciar-sesion">Iniciar Sesión</button>
+            </form>
+
+            
+
+        </main>
+
+        <footer>
+            <p>Desarrollado por Holly Molly Studios. </p>
+        </footer>
+
+    </div>
+    
+    <!-- Script: -->
+    <script src="js/script.js"></script>
     
 </body>
 </html>
