@@ -18,6 +18,16 @@
     --beige: #F2E9CE;
     --fondo1: #438B5A;
     --fondo2: #48905F;
+    /* Alertas: */    
+    --alertaPositivaFondo: #D4EDDA; /* Positivas / VERDES */
+    --alertaPositivaTexto: #155724;
+    --alertaPositivaBorde: #C3E6CB;
+    --alertaNegativaFondo: #F8D7DA; /* Negativas / ROJAS */
+    --alertaNegativaTexto: #721C24;
+    --alertaNegativaBorde: #F5C6CB;
+    --alertaPrecaucionFondo: #FFF3CD; /* Advertencias / AMARILLAS */
+    --alertaPrecaucionTexto: #856404;
+    --alertaPrecaucionBorde: #FFEEBA;
     /* Colores transversales: */
     --blancoPuero: white;
     --negroPuro: black;
@@ -49,4 +59,51 @@ html {
 body {
     font-size: 16px; /* Estandarización de tamaños. Pt. 3. */
     font-family: var(--tipografiaPrincipal);    
+}
+
+/**************************************** INDEX HTML ****************************************/
+
+.ventana-aplicacion,
+.main,
+.formulario-login {    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ventana-aplicacion {
+    margin: 0 auto;
+    width: 80rem;    
+    margin-top: 2rem;
+}
+
+.header {
+    background-color: var(--verdeOscuro);
+    width: 100%;
+}
+
+.main {
+    background-color: var(--beige);
+    width: 100%;
+    
+}
+
+h1, h2 {
+    text-transform: uppercase;
+}
+
+.formulario-login {
+    
+}
+
+.combo-datos-usuario {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.combo-datos-usuario label::after {
+    content: " *";
+    color: var(--alertaNegativaTexto);
+    font-weight: bold;
 }
