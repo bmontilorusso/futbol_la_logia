@@ -6,8 +6,10 @@
     <title>Fútbol La Logia</title>
     <!-- Conexiones Locales: -->
     <link rel="icon" type="img/png" href="img/ico/favicon-32x32.png">
-    <link rel="stylesheet" href="css/style.css" as="style">
+    <link rel="preload" href="css/style.css" as="style">
     <link rel="stylesheet" href="css/normalize.css" as="style">
+    <link rel="stylesheet" href="css/style.css" as="style">
+    
     <!-- Conexiones Externas: -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,37 +20,40 @@
 
     <div class="ventana-aplicacion">
 
-    <header class="header">
-        <h1>La Logia Fútbol</h1>
-    </header>
+        <header class="header">
+            <h1>La Logia Fútbol</h1>
+        </header>
 
         <main class="main">
 
             <h2>Comencemos</h2>
             
-            <form class="formulario-login" action="php/login.php" method="POST">
-                
-                <div class="combo-datos-usuario">
-                    <label for="usuario">Usuario</label>
-                    <input placeholder="Ingesá tu Usuario" type="text" name="usuario" autocomplete="off" required>
-                </div>
-                <div class="combo-datos-usuario">
-                    <label for="pass">Contraseña</label>
-                    <input placeholder="Ingesá tu Contraseña" type="password" name="pass" autocomplete="off" required>
-                </div>
-                <button class="boton" id="boton-iniciar-sesion">Iniciar Sesión</button>
-            </form>
+            <form class="formulario-login" action="php/login.php" method="POST">                
 
-            
+                <div class="campos">
+                    <div class="combos-campos">
+                        <label class="label" for="usuario">Usuario</label>
+                        <input class="input" placeholder="Ingesá tu Usuario" type="text" name="usuario" autocomplete="off" required>                
+                    </div>
+                    <div class="combos-campos">
+                        <label class="label" for="pass">Contraseña</label>
+                        <input class="input" placeholder="Ingesá tu Contraseña" type="password" name="pass" autocomplete="off" required>
+                    </div>
+                </div>
+
+                <div class="botonera">
+                    <button class="boton" id="boton-iniciar-sesion">Iniciar Sesión</button>
+                </div>
+
+            </form>           
 
         </main>
-
-        <footer class="footer">
-            <p>Desarrollado por Holly Molly Studios. </p>
-        </footer>
-
-    </div>
+    </div> <!-- Fin de la Ventana-aplicación -->
     
+    <footer class="footer">
+        <p>© 2025 Holly Molly Studios • Desarrollado con 💾, ❤️ y mucho ☕</p>
+    </footer>
+
     <!-- Script: -->
     <script src="js/script.js"></script>
     

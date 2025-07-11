@@ -48,7 +48,7 @@ html {
     background-image: repeating-linear-gradient(
         to bottom,
         var(--fondo1) 0 60px,
-        var(--fondo2) 60px 120px
+        var(--fondo2) 61px 120px
     );    
 }
 
@@ -58,7 +58,8 @@ html {
 
 body {
     font-size: 16px; /* Estandarización de tamaños. Pt. 3. */
-    font-family: var(--tipografiaPrincipal);    
+    font-family: var(--tipografiaPrincipal);
+    min-height: 100vh; /* Con esto solucionamos la inconsistencia en el "rayado" de fondo. */
 }
 
 /**************************************** INDEX HTML ****************************************/
@@ -68,12 +69,12 @@ body {
 .formulario-login {    
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center;    
 }
 
 .ventana-aplicacion {
     margin: 0 auto;
-    width: 80rem;    
+    width: 80rem; 
     margin-top: 2rem;
     border-radius: .5rem;
     border-style: solid;
@@ -83,7 +84,11 @@ body {
     
 }
 
-.header, .footer {
+.formulario-login {
+    padding: 0;
+}
+
+.header {
     background-color: var(--verdeOscuro);
     width: 100%;
     display: flex;
@@ -112,32 +117,77 @@ h1, h2 {
 .formulario-login {
     gap: 1rem;
     width: 100%;
-    padding: 2rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.combo-datos-usuario {
+.botonera {
+    background-color: var(--verdeOscuro);
+    width: 100%;
+    min-height: 12.5rem;
+    margin-top: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.boton {
+    background-color: var(--verdeOscuro);
+    border-radius: .5rem;
+    border: .4rem solid var(--verdeClaro);
+    outline: .2rem solid var(--negroPuro);
+    padding: 1.5rem 2rem;
+    width: 30%;
+    color: var(--beige);
+    text-transform: uppercase;
+    cursor: pointer;
+    
+}
+
+.campos {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    width: 60%;
+    justify-content: center;
+    align-items: flex-start;
+    width: 40%;
+    gap: 1rem;
 }
 
-.combo-datos-usuario label {
+.combos-campos {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.label {
     color: var(--verdeOscuro);
     padding-bottom: .5rem;
 }
 
-.combo-datos-usuario input {
-    width: 50%;
+.input {
+    width: 100%;
+    height: 4rem;
+    color: var(--verdeOscuro);   
+    border: .5rem solid var(--verdeIntermedio);
+    outline: .3rem solid var(--negroPuro);
+    border-radius: .5rem;
+    padding: .5rem;
 }
 
-.combo-datos-usuario label::after {
+.label::after {
     content: " *";
     color: var(--alertaNegativaTexto);
     font-weight: bold;
 }
 
+.footer {
+    display: flex;
+    justify-content: center;
+}
+
 .footer p {
-    padding: 4rem 0;
+    margin-top: 1.5rem;
     color: var(--beige);
 }
