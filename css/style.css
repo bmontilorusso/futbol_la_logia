@@ -138,10 +138,12 @@ h1, h2 {
     border: .4rem solid var(--verdeClaro);
     outline: .2rem solid var(--negroPuro);
     padding: 1.5rem 2rem;
-    width: 30%;
+    width: 35%;
     color: var(--beige);
     text-transform: uppercase;
+    font-weight: bold;
     cursor: pointer;
+    margin: 3rem;
     
 }
 
@@ -191,3 +193,16 @@ h1, h2 {
     margin-top: 1.5rem;
     color: var(--beige);
 }
+
+/**************************************** HOME PHP ****************************************/
+
+.formulario-convocatoria {
+    gap: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
