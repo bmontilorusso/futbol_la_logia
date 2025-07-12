@@ -45,7 +45,7 @@
                         <option value="" disabled selected>-Seleccione un Estadio-</option>
                         <?php
                             // Conexión a la DB, al comienzo.
-                            $sqlEstadios = "Select * from ESTADIOS;";
+                            $sqlEstadios = "Select * from ESTADIOS ORDER BY NOMBRE ASC;";
                             $resultadoEstadios = mysqli_query($conn, $sqlEstadios);
                         ?>
                         <?php while($fila = mysqli_fetch_assoc($resultadoEstadios)): ?>

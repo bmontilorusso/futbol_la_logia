@@ -4,6 +4,7 @@
 
 // Importaciones:
 
+session_start();
 include('conexion_db.php');
 
 // Declaración y almacenamiento de Variables:
@@ -13,10 +14,12 @@ $estadio = $_POST['estadio'];
 $tipoPartido = $_POST['tipo-partido'];
 // Conversiones de Checkbox:
 $asistenciaUsuario = isset($_POST['asistencia-usuario']) ? $_POST['asistencia-usuario'] : 'NO'; // Si trae valor, lo guardamos (configuré para que venga directamente con un "SI". Si el User no lo marca, entonces guarda "NO").
+// Arrastramos de la SESION:
+$IDusuarioAltaConvocatoria = $_SESSION['id_usuario'];
 
 /* ALTA DE PARTIDO: */
 // Creación de Query:
-$sql = "INSERT INTO PARTIDOS (ID_ESTADIO, FECHA, HORA, ID_TIPO_PARTIDO, ID_ESTADO_PARTIDO) VALUES ($estadio, '$fecha', '$hora', $estadio, $tipoPartido);";
+$sql = "INSERT INTO PARTIDOS (ID_ESTADIO, FECHA, HORA, ID_TIPO_PARTIDO, ID_ESTADO_PARTIDO, ID_ESTADO_VOTACION_MVP, ID_USUARIO_ALTA) VALUES ($estadio, '$fecha', '$hora', $tipoPartido, 2, 1, $IDusuarioAltaConvocatoria);";
 $resultado = mysqli_query($conn, $sql);
 
 /* INSERSIÓN de JUGADOR en CONVOCATORIA: */
