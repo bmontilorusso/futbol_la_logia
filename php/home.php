@@ -76,14 +76,27 @@
 
 
                 </div>
-            </form>           
+            </form>
+            
+            <section class="seccion-tarjetas-jugadores">
+                <div class="tarjetas">                    
+                    <h2 class="valoracion">87</h2>
+                    <h3 class="posicion">DEL</h3>
+                    <img class="avatar-jugador-tarjeta" src="../img/avatar/monti.png" alt="imagen_jugador">
+                    <h2 class="nombre-jugador">Bruno Monti</h2>
+                    <h3 class="dato_1">MVP 88</h3>
+                    <h3 class="dato_2">VOT 89</h3>
+                    <h3 class="dato_3">ASIS 70</h3>
+                    <h3 class="dato_4">VAR 75</h3>
+                </div>
+            </section>
 
         </main>
     </div> <!-- Fin de la Ventana-aplicación -->
     
     <footer class="footer">
         <p>© 2025 Holly Molly Studios • Desarrollado con 💾, ❤️ y mucho ☕</p>
-    </footer>
+    </footer> <!-- Fin del Footer -->
 
     <!-- Script: -->
     <script src="js/script.js"></script>    
