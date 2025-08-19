@@ -292,3 +292,13 @@ h1, h2 {
     left: 165px;
     font-size: 20px;
 }
+
+/**************************************** Mostrar - Ocultar ****************************************/
+
+.visible {
+    display: flex;
+}
+
+.oculto {
+    display: none;
+}

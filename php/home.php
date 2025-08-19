@@ -22,6 +22,7 @@
 
 <body>
 
+    <!-- VENTANA APLICACIÓN -->
     <div class="ventana-aplicacion">
 
         <header class="header">
@@ -31,7 +32,8 @@
         <main class="main">
 
             <button class="boton">Abrir convocatoria ⚽</button>
-
+            
+            <!-- SECCIÓN ABRIR CONVOCATORIAS -->
             <form id="formulario-convocatoria" class="formulario-convocatoria" action="convocatoria.php" method="POST">
                 <div class="campos-convocatoria">
                     <label class="label" for="">Fecha</label>
@@ -74,11 +76,13 @@
 
                     <button class="boton">Confirmar</button>
 
-
                 </div>
-            </form>
+            </form> <!-- FIN Sección Abrir Convocatorias -->
             
-            <section class="seccion-tarjetas-jugadores">
+            
+            
+            <!-- SECCIÓN TARJETAS -->
+            <section class="seccion-tarjetas-jugadores oculto">
                 <div class="tarjetas">                    
                     <h2 class="valoracion">87</h2>
                     <h3 class="posicion">DEL</h3>
@@ -89,7 +93,7 @@
                     <h3 class="dato_3">ASIS 70</h3>
                     <h3 class="dato_4">VAR 75</h3>
                 </div>
-            </section>
+            </section> <!-- FIN Sección Tarjetas -->            
 
         </main>
     </div> <!-- Fin de la Ventana-aplicación -->
