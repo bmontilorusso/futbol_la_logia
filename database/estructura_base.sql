@@ -9,7 +9,6 @@ Inicialización de la Base de datos del proyecto.
 CREATE DATABASE futbol_la_logia;
 USE futbol_la_logia;
 
-
 -- Creación de TABLAS: --
 
 CREATE TABLE PERFILES(

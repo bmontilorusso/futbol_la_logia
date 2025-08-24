@@ -86,11 +86,41 @@
                     <label class="label" for="">Apellido</label>
                     <input class="input" type="text" placeholder="Apellido del jugador" name="apellidoJugador" autocomplete="off" required>
                     <label class="label" for="">Región de origen</label>
-                    <input class="input" type="text" placeholder="Origen del Jugador" name="regionOrigenJugador" autocomplete="off" required>
+                    <select class="input" name="regionOrigenJugador" required>
+                        <option value="" disabled selected>-Seleccione una opción-</option>
+                        <?php
+                            $sqlRegion = "Select * from REGION;";
+                            $resultadoRegion = mysqli_query($conn, $sqlRegion);
+                            while($filaRegion = mysqli_fetch_assoc($resultadoRegion)): ?>
+                                <option value="<?php echo $filaRegion['ID_REGION']; ?>">
+                                    <?php echo $filaRegion['DETALLE']; ?>
+                                </option>
+                        <?php endwhile; ?>
+                    </select>
                     <label class="label" for="">Posición Principal</label>
-                    <input class="input" type="text" placeholder="Posición natural" name="posicionPrincipalJugador" autocomplete="off" required>
+                    <select class="input" name="posicionPrincipalJugador" required>
+                        <option value="" disabled selected>-Seleccione una opción-</option>
+                        <?php
+                            $sqlPosicionPrincipal = "Select * from POSICIONES_JUGADOR";
+                            $resultadoPosicionPrincipal = mysqli_query($conn, $sqlPosicionPrincipal);
+                            while($filaPosicionPrincipal = mysqli_fetch_assoc($resultadoPosicionPrincipal)): ?>
+                                <option value="<?php echo $filaPosicionPrincipal['ID_POSICION']; ?>">
+                                    <?php echo $filaPosicionPrincipal['DETALLE']; ?>
+                                </option>
+                            <?php endwhile; ?>
+                    </select>
                     <label class="label" for="">Posición alternativa</label>
-                    <input class="input" type="text" placeholder="Posición alternativa" name="posicionAlternativaJugador" autocomplete="off" required>
+                    <select class="input" name="posicionAlternativaJugador">
+                        <option value="" disabled selected>-Seleccione una opción-</option>
+                        <?php
+                            $sqlPosicionAlternativa = "Select * from POSICIONES_JUGADOR;";
+                            $resultadoPosicionAlternativa = mysqli_query($conn, $sqlPosicionAlternativa);
+                            while($filaPosicionAlternativa = mysqli_fetch_assoc($resultadoPosicionAlternativa)): ?>
+                                <option value="<?php echo $filaPosicionAlternativa['ID_POSICION']; ?>">
+                                    <?php echo $filaPosicionAlternativa['DETALLE']; ?>
+                                </option>
+                            <?php endwhile; ?>
+                    </select>
                     <button class="boton">Registrar jugador</button>
                 </div>
             </form>
@@ -98,23 +128,23 @@
             <!-- SECCIÓN TARJETAS -->
             <section class="seccion-tarjetas-jugadores">
                 <?php
-                    $sqlTarjetasJugador = "Select * from JUGADORES;";
+                    $sqlTarjetasJugador = "Select * from VISTA_TARJETAS_JUGADORES;";
                     $resultadoJugadores = mysqli_query($conn, $sqlTarjetasJugador);                    
                 ?>
                 <?php while ($fila = mysqli_fetch_assoc($resultadoJugadores)): ?>
                     <div class="tarjetas">                    
-                        <h2 class="valoracion">87</h2>
-                        <h3 class="posicion">DEL</h3>
-                        <?php $avatar = "../img/avatar/" . $fila['ID_JUGADOR'] . ".png";
-                            if (!file_exists($avatar)) {
-                                $avatar = "../img/avatar/default.png";
-                            }
-                        ?>
+                        <h2 class="valoracion"> <?php echo $fila['VALORACION_GENERAL'] ?> </h2>
+                        <h3 class="posicion"> <?php echo $fila['POSICION'] ?> </h3>
+                            <?php $avatar = "../img/avatar/" . $fila['ID_JUGADOR'] . ".png";
+                                if (!file_exists($avatar)) {
+                                    $avatar = "../img/avatar/default.png";
+                                }
+                            ?>
                         <img class="avatar-jugador-tarjeta" src="<?php echo $avatar ?>" alt="imagen_jugador">
                         <h2 class="nombre-jugador"> <?php echo $fila['NOMBRE'] . " " . $fila['APELLIDO'] ?> </h2>
-                        <h3 class="dato_1">MVP 88</h3>
-                        <h3 class="dato_2">VOT 89</h3>
-                        <h3 class="dato_3">ASIS 70</h3>
+                        <h3 class="dato_1"> <?php echo "MVP" . " " . $fila['MVP'] ?> </h3>
+                        <h3 class="dato_2"> <?php echo "VOT" . " " . $fila['MVP'] ?> </h3>
+                        <h3 class="dato_3"> <?php echo "ASIS" . " " . $fila['ASIS'] ?> </h3>
                         <h3 class="dato_4">VAR 75</h3>
                     </div>
                 <?php endwhile; ?>
