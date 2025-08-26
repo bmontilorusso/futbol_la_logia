@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La Logia Fútbol - Home</title>
     <!-- Conexiones Locales: -->
-    <link rel="icon" type="img/png" href="img/ico/favicon-32x32.png">
+    <link rel="icon" type="img/png" href="../img/ico/favicon-32x32.png">
     <link rel="preload" href="../css/style.css" as="style">
     <link rel="stylesheet" href="../css/normalize.css" as="style">
     <link rel="stylesheet" href="../css/style.css" as="style">    
@@ -31,55 +31,74 @@
 
         <main class="main">
 
-            <button class="boton">Abrir convocatoria ⚽</button>
-            
-            <!-- SECCIÓN ABRIR CONVOCATORIAS -->
-            <form id="formulario-convocatoria" class="formulario-convocatoria oculto" action="convocatoria.php" method="POST">
-                <div class="campos-convocatoria">
-                    <label class="label" for="">Fecha</label>
-                    <input class="input" type="date" placeholder="Fecha" name="fecha" value="2025-07-31" autocomplete="off" required>
-
-                    <label class="label" for="">hora</label>
-                    <input class="input" name="time" type="time" value="22:00" autocomplete="off" required>
-
-                    <label class="label" for="">Estadio</label>
-                    <select class="input" name="estadio" id="estadio" required>
-                        <option value="" disabled selected>-Seleccione un Estadio-</option>
-                        <?php
-                            // Conexión a la DB, al comienzo.
-                            $sqlEstadios = "Select * from ESTADIOS ORDER BY NOMBRE ASC;";
-                            $resultadoEstadios = mysqli_query($conn, $sqlEstadios);
-                        ?>
-                        <?php while($fila = mysqli_fetch_assoc($resultadoEstadios)): ?>
-                            <option value="<?php echo $fila['ID_ESTADIO'] ?>">
-                                <?php echo $fila['NOMBRE']; ?>
-                            </option>
-                        <?php endwhile; ?>
-                    </select>
-
-                    <label class="label" for="">Tipo de Partido</label>
-                    <select class="input" name="tipo-partido" id="">
-                    <option value="" disabled selected>-Tipo de Partido-</option>
-                    <?php
-                        $sqlTipopartido = "Select * from TIPO_PARTIDO;";
-                        $resultadoTipopartido = mysqli_query($conn, $sqlTipopartido);
-                    ?>
-                    <?php while($fila = mysqli_fetch_assoc($resultadoTipopartido)): ?>
-                        <option value="<?php echo $fila['ID_TIPO_PARTIDO'] ?>">
-                            <?php echo $fila['DETALLE']; ?>
-                        </option>
-                    <?php endwhile ?>
-                    </select>
-
-                    <label for="">¿Confirmo asistencia?</label>
-                    <input type="checkbox" name="asistencia-usuario" id="" autocomplete="off" value="SI">
-
-                    <button class="boton">Confirmar</button>
-
+            <div class="ventana-convocatoria">
+                <div class="pie-cabeza-ventana-convocatoria">
+                    <h2 class="titulo-convocatoria">Próximo Partido</h2>
                 </div>
-            </form> <!-- FIN Sección Abrir Convocatorias -->
-            
-            <form class="formulario-alta-jugadores" action="alta-jugador.php" method="POST">
+
+                <div class="info-proximo-partido oculto">
+                    <p>Fecha y HORA</p>
+                    <p>Estadio</p>
+                </div>
+
+                <!-- SECCIÓN ABRIR CONVOCATORIAS -->
+                <form class="formulario-convocatoria" id="formulario-convocatoria">
+                    <div class="campos-convocatoria">
+                        <label class="label" for="">Fecha</label>
+                        <input class="input" type="date" placeholder="Fecha" name="fecha" value="" autocomplete="off" required>
+
+                        <label class="label" for="">hora</label>
+                        <input class="input" name="time" type="time" value="22:00" autocomplete="off" required>
+
+                        <label class="label" for="">Estadio</label>
+                        <select class="input" name="estadio" id="estadio" required>
+                            <option value="" disabled selected>-Seleccione un Estadio-</option>
+                            <?php
+                                // Conexión a la DB, al comienzo.
+                                $sqlEstadios = "Select * from ESTADIOS ORDER BY NOMBRE ASC;";
+                                $resultadoEstadios = mysqli_query($conn, $sqlEstadios);
+                            ?>
+                            <?php while($fila = mysqli_fetch_assoc($resultadoEstadios)): ?>
+                                <option value="<?php echo $fila['ID_ESTADIO'] ?>">
+                                    <?php echo $fila['NOMBRE']; ?>
+                                </option>
+                            <?php endwhile; ?>
+                        </select>
+
+                        <label class="label" for="">Tipo de Partido</label>
+                        <select class="input" name="tipo-partido" id="">
+                        <option value="" disabled selected>-Tipo de Partido-</option>
+                        <?php
+                            $sqlTipopartido = "Select * from TIPO_PARTIDO;";
+                            $resultadoTipopartido = mysqli_query($conn, $sqlTipopartido);
+                        ?>
+                        <?php while($fila = mysqli_fetch_assoc($resultadoTipopartido)): ?>
+                            <option value="<?php echo $fila['ID_TIPO_PARTIDO'] ?>">
+                                <?php echo $fila['DETALLE']; ?>
+                            </option>
+                        <?php endwhile ?>
+                        </select>
+
+                        <label for="">¿Confirmo asistencia?</label>
+                        <input type="checkbox" name="asistencia-usuario" id="" autocomplete="off" value="SI">
+
+                        <button type="reset" class="boton vaciar">Vaciar</button>
+                        <button type="submit" class="boton">Confirmar</button>
+
+                        <div class="popUp-convocatoria oculto ventana-convocatoria" id="popUp-convocatoria">
+                            <p id="mensaje-popup-convocatoria"></p>
+                            <button id="boton-cerrar-convocatoria" class="boton">Cerrar</button>
+                        </div>
+
+                    </div>
+                </form> <!-- FIN Sección Abrir Convocatorias -->
+
+                <div class="pie-cabeza-ventana-convocatoria">
+                    <button class="boton">Abrir convocatoria ⚽</button>
+                </div>
+            </div>
+
+            <form class="formulario-alta-jugadores oculto" action="alta-jugador.php" method="POST">
                 <div class="campos-alta-jugador">
                     <label class="label" for="">Nombre</label>
                     <input class="input" type="text" placeholder="Nombre del jugador" name="nombreJugador" autocomplete="off" required>
@@ -126,7 +145,7 @@
             </form>
 
             <!-- SECCIÓN TARJETAS -->
-            <section class="seccion-tarjetas-jugadores">
+            <section class="seccion-tarjetas-jugadores oculto">
                 <?php
                     $sqlTarjetasJugador = "Select * from VISTA_TARJETAS_JUGADORES;";
                     $resultadoJugadores = mysqli_query($conn, $sqlTarjetasJugador);                    
@@ -177,7 +196,7 @@
     </footer> <!-- Fin del Footer -->
 
     <!-- Script: -->
-    <script src="js/script.js"></script>    
+    <script src="../js/script.js"></script>    
     
 </body>
 </html>

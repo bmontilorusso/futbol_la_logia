@@ -76,19 +76,23 @@ body {
     margin: 0 auto;
     width: 80rem; 
     margin-top: 2rem;
+}
+
+.ventana-aplicacion,
+.ventana-convocatoria {
     border-radius: .5rem;
     border-style: solid;
     border-width: .5rem;    
     outline: .5rem solid var(--negroPuro);
-    border-color: var(--verdeClaro);
-    
+    border-color: var(--verdeClaro);    
 }
 
 .formulario-login {
     padding: 0;
 }
 
-.header {
+.header,
+.pie-cabeza-ventana-convocatoria {
     background-color: var(--verdeOscuro);
     width: 100%;
     display: flex;
@@ -138,13 +142,17 @@ h1, h2 {
     border: .4rem solid var(--verdeClaro);
     outline: .2rem solid var(--negroPuro);
     padding: 1.5rem 2rem;
-    width: 35%;
+    width: auto;
     color: var(--beige);
     text-transform: uppercase;
     font-weight: bold;
     cursor: pointer;
-    margin: 3rem;
-    
+    margin: 3rem;    
+}
+
+.vaciar {
+    background-color: var(--alertaNegativaFondo);
+    color: var(--verdeOscuro);
 }
 
 .campos {
@@ -196,6 +204,15 @@ h1, h2 {
 
 /**************************************** HOME PHP ****************************************/
 
+
+.ventana-convocatoria {
+    margin: 2rem;
+}
+
+.titulo-convocatoria {
+    color: var(--beige) !important; 
+}
+
 .formulario-convocatoria {
     gap: 1rem;
     width: 100%;
@@ -211,7 +228,8 @@ h1, h2 {
     text-align: right;
     gap: 1rem;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
+    margin: 2rem;
 }
 
 .botonera-home {
@@ -237,6 +255,15 @@ h1, h2 {
 
 .boton img {
     max-width: 6rem;
+}
+
+.popUp-convocatoria {
+    position:fixed;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%,-50%);
+    padding: 2rem;
+    background-color: var(--beige);   
 }
 
 

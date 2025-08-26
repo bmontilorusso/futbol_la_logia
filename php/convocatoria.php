@@ -7,6 +7,10 @@
 session_start();
 include('conexion_db.php');
 
+// Para debugear:
+// var_dump($_POST); //Registro de lo que llega vía POST (lo uso en el JS para imprimirlo en consola):
+
+
 // Declaración y almacenamiento de Variables:
 $fecha = $_POST['fecha'];
 $hora = $_POST['time'];
@@ -31,7 +35,7 @@ $resultado = mysqli_query($conn, $sql);
 if ($resultado) {
     echo "Alta de Partido Existosa!";
 } else {
-    echo "Error al intentar hacer alta, debido a: " . mysqli_error();
+    echo "Error al intentar hacer alta, debido a: " . mysqli_error($conn);
 }
 
 
