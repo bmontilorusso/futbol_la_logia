@@ -90,7 +90,7 @@
                 </div>
             </div> <!-- FIN Sección Abrir Convocatorias -->
             
-            <form class="formulario-alta-jugadores oculto" action="alta-jugador.php" method="POST">
+            <form class="formulario-alta-jugadores visible" action="alta-jugador.php" method="POST">
                 <div class="campos-alta-jugador">
                     <label class="label" for="nombreJugador">Nombre</label>
                     <input class="input" type="text" placeholder="Nombre del jugador" name="nombreJugador" id="nombreJugador" autocomplete="off" required>
@@ -107,20 +107,15 @@
                     <select class="input" name="posicionPrincipalJugador" id="posicionPrincipalJugador" required>
                         <option disabled selected>-Seleccione una opción-</option>
                         <?php foreach($posiciones as $posicion): ?>
-                            <option value=" <?= $posicion['ID_POSICIONES_JUGADOR']; ?>"> <?= $posicion['DETALLE']; ?> </option>
+                            <option value=" <?= $posicion['ID_POSICION']; ?>"> <?= $posicion['DETALLE']; ?> </option>
                         <?php endforeach; ?>
                     </select>
                     <label class="label" for="posicionAlternativaJugador">Posición alternativa</label>
                     <select class="input" name="posicionAlternativaJugador" id="posicionAlternativaJugador">
                         <option disabled selected>-Seleccione una opción-</option>
-                        <?php
-                            $sqlPosicionAlternativa = "Select * from POSICIONES_JUGADOR;";
-                            $resultadoPosicionAlternativa = mysqli_query($conn, $sqlPosicionAlternativa);
-                            while($filaPosicionAlternativa = mysqli_fetch_assoc($resultadoPosicionAlternativa)): ?>
-                                <option value="<?php echo $filaPosicionAlternativa['ID_POSICION']; ?>">
-                                    <?php echo $filaPosicionAlternativa['DETALLE']; ?>
-                                </option>
-                            <?php endwhile; ?>
+                        <?php foreach($posiciones as $posicion): ?>
+                            <option value=" <?= $posicion['ID_POSICION']; ?>"> <?= $posicion['DETALLE']; ?> </option>
+                        <?php endforeach; ?>
                     </select>
                     <button type="submit" class="boton">Registrar jugador</button>
                 </div>
