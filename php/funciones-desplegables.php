@@ -32,5 +32,29 @@ function obtenerTipoPartido() {
     return $tipoPartidoListado;
 }
 
+// Región:
+function obtenerRegion() {
+    global $conn;
+    $sql = "Select * from REGION;";
+    $resultado = mysqli_query($conn, $sql);
+    $regionListado = [];
+    while( $filaRegion = mysqli_fetch_assoc($resultado)) {
+        $regionListado[] = $filaRegion;
+    }
+    return $regionListado;
+}
+
+// Posición del jugador:
+function obtenerPosicion() {
+    global $conn;
+    $sql = "Select * from POSICIONES_JUGADOR;";
+    $resultado = mysqli_query($conn, $sql);
+    $posicionesListado = [];
+    While( $filaPosiciones = mysqli_fetch_assoc($resultado)) {
+        $posicionesListado[] = $filaPosiciones;
+    }
+    return $posicionesListado;
+}
+
 
 ?>

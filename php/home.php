@@ -5,6 +5,8 @@
     
     $estadios = obtenerEstadios();
     $tipoPartido = obtenerTipoPartido();
+    $regiones = obtenerRegion();
+    $posiciones = obtenerPosicion();
 ?>
 
 <!DOCTYPE html>
@@ -56,7 +58,7 @@
 
                         <label class="label" for="estadio">Estadio</label>
                         <select class="input" name="estadio" id="estadio" required>
-                            <option value="" disabled selected>-Seleccione un Estadio-</option>
+                            <option disabled selected>-Seleccione un Estadio-</option>
                             <?php foreach($estadios as $estadio):?>
                                 <option value="<?= $estadio['ID_ESTADIO']; ?>"> <?= $estadio['NOMBRE']; ?> </option>
                             <?php endforeach; ?>
@@ -64,7 +66,7 @@
 
                         <label class="label" for="tipoPartido">Tipo de Partido</label>
                         <select class="input" name="tipo-partido" id="tipoPartido">
-                            <option value="" disabled selected>-Tipo de Partido-</option>
+                            <option disabled selected>-Tipo de Partido-</option>
                             <?php foreach($tipoPartido as $tipo): ?>
                                 <option value="<?= $tipo['ID_TIPO_PARTIDO']; ?>"> <?= $tipo['DETALLE']; ?> </option>
                             <?php endforeach; ?>
@@ -96,31 +98,21 @@
                     <input class="input" type="text" placeholder="Apellido del jugador" name="apellidoJugador" id="apellidoJugador" autocomplete="off" required>
                     <label class="label" for="regionOrigenJugador">Región de origen</label>
                     <select class="input" name="regionOrigenJugador" id="regionOrigenJugador" required>
-                        <option value="" disabled selected>-Seleccione una opción-</option>
-                        <?php
-                            $sqlRegion = "Select * from REGION;";
-                            $resultadoRegion = mysqli_query($conn, $sqlRegion);
-                            while($filaRegion = mysqli_fetch_assoc($resultadoRegion)): ?>
-                                <option value="<?php echo $filaRegion['ID_REGION']; ?>">
-                                    <?php echo $filaRegion['DETALLE']; ?>
-                                </option>
-                        <?php endwhile; ?>
+                        <option disabled selected>-Seleccione una opción-</option>
+                        <?php foreach($regiones as $region): ?>
+                            <option value=" <?= $region['ID_REGION']; ?> "> <?= $region['DETALLE']; ?> </option>
+                        <?php endforeach; ?>
                     </select>
                     <label class="label" for="posicionPrincipalJugador">Posición Principal</label>
-                    <select class="input" name="posicionPrincipalJugador" id="posicionPrincipalJugador required>
-                        <option value="" disabled selected>-Seleccione una opción-</option>
-                        <?php
-                            $sqlPosicionPrincipal = "Select * from POSICIONES_JUGADOR";
-                            $resultadoPosicionPrincipal = mysqli_query($conn, $sqlPosicionPrincipal);
-                            while($filaPosicionPrincipal = mysqli_fetch_assoc($resultadoPosicionPrincipal)): ?>
-                                <option value="<?php echo $filaPosicionPrincipal['ID_POSICION']; ?>">
-                                    <?php echo $filaPosicionPrincipal['DETALLE']; ?>
-                                </option>
-                            <?php endwhile; ?>
+                    <select class="input" name="posicionPrincipalJugador" id="posicionPrincipalJugador" required>
+                        <option disabled selected>-Seleccione una opción-</option>
+                        <?php foreach($posiciones as $posicion): ?>
+                            <option value=" <?= $posicion['ID_POSICIONES_JUGADOR']; ?>"> <?= $posicion['DETALLE']; ?> </option>
+                        <?php endforeach; ?>
                     </select>
                     <label class="label" for="posicionAlternativaJugador">Posición alternativa</label>
                     <select class="input" name="posicionAlternativaJugador" id="posicionAlternativaJugador">
-                        <option value="" disabled selected>-Seleccione una opción-</option>
+                        <option disabled selected>-Seleccione una opción-</option>
                         <?php
                             $sqlPosicionAlternativa = "Select * from POSICIONES_JUGADOR;";
                             $resultadoPosicionAlternativa = mysqli_query($conn, $sqlPosicionAlternativa);
