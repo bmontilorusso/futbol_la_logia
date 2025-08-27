@@ -1,6 +1,10 @@
 <?php
     include('validacion_sesion.php');
-    include('conexion_db.php');    
+    include('conexion_db.php');
+    include('funciones-desplegables.php');
+    
+    $estadios = obtenerEstadios();
+    $tipoPartido = obtenerTipoPartido();
 ?>
 
 <!DOCTYPE html>
@@ -44,43 +48,30 @@
                 <!-- SECCIÓN ABRIR CONVOCATORIAS -->
                 <form class="formulario-convocatoria" id="formulario-convocatoria">
                     <div class="campos-convocatoria">
-                        <label class="label" for="">Fecha</label>
-                        <input class="input" type="date" placeholder="Fecha" name="fecha" value="" autocomplete="off" required>
+                        <label class="label" for="fecha">Fecha</label>
+                        <input class="input" type="date" placeholder="Fecha" name="fecha" id="fecha" autocomplete="off" required>
 
-                        <label class="label" for="">hora</label>
-                        <input class="input" name="time" type="time" value="22:00" autocomplete="off" required>
+                        <label class="label" for="hora">hora</label>
+                        <input class="input" name="hora" type="time" value="22:00" ide="hora" autocomplete="off" required>
 
-                        <label class="label" for="">Estadio</label>
+                        <label class="label" for="estadio">Estadio</label>
                         <select class="input" name="estadio" id="estadio" required>
                             <option value="" disabled selected>-Seleccione un Estadio-</option>
-                            <?php
-                                // Conexión a la DB, al comienzo.
-                                $sqlEstadios = "Select * from ESTADIOS ORDER BY NOMBRE ASC;";
-                                $resultadoEstadios = mysqli_query($conn, $sqlEstadios);
-                            ?>
-                            <?php while($fila = mysqli_fetch_assoc($resultadoEstadios)): ?>
-                                <option value="<?php echo $fila['ID_ESTADIO'] ?>">
-                                    <?php echo $fila['NOMBRE']; ?>
-                                </option>
-                            <?php endwhile; ?>
+                            <?php foreach($estadios as $estadio):?>
+                                <option value="<?= $estadio['ID_ESTADIO']; ?>"> <?= $estadio['NOMBRE']; ?> </option>
+                            <?php endforeach; ?>
                         </select>
 
-                        <label class="label" for="">Tipo de Partido</label>
-                        <select class="input" name="tipo-partido" id="">
-                        <option value="" disabled selected>-Tipo de Partido-</option>
-                        <?php
-                            $sqlTipopartido = "Select * from TIPO_PARTIDO;";
-                            $resultadoTipopartido = mysqli_query($conn, $sqlTipopartido);
-                        ?>
-                        <?php while($fila = mysqli_fetch_assoc($resultadoTipopartido)): ?>
-                            <option value="<?php echo $fila['ID_TIPO_PARTIDO'] ?>">
-                                <?php echo $fila['DETALLE']; ?>
-                            </option>
-                        <?php endwhile ?>
+                        <label class="label" for="tipoPartido">Tipo de Partido</label>
+                        <select class="input" name="tipo-partido" id="tipoPartido">
+                            <option value="" disabled selected>-Tipo de Partido-</option>
+                            <?php foreach($tipoPartido as $tipo): ?>
+                                <option value="<?= $tipo['ID_TIPO_PARTIDO']; ?>"> <?= $tipo['DETALLE']; ?> </option>
+                            <?php endforeach; ?>
                         </select>
 
-                        <label for="">¿Confirmo asistencia?</label>
-                        <input type="checkbox" name="asistencia-usuario" id="" autocomplete="off" value="SI">
+                        <label for="asistencia">¿Confirmo asistencia?</label>
+                        <input type="checkbox" name="asistencia-usuario" id="asistencia" autocomplete="off" value="SI">
 
                         <button type="reset" class="boton vaciar">Vaciar</button>
                         <button type="submit" class="boton">Confirmar</button>
@@ -91,21 +82,20 @@
                         </div>
 
                     </div>
-                </form> <!-- FIN Sección Abrir Convocatorias -->
-
+                </form>
                 <div class="pie-cabeza-ventana-convocatoria">
                     <button class="boton">Abrir convocatoria ⚽</button>
                 </div>
-            </div>
-
+            </div> <!-- FIN Sección Abrir Convocatorias -->
+            
             <form class="formulario-alta-jugadores oculto" action="alta-jugador.php" method="POST">
                 <div class="campos-alta-jugador">
-                    <label class="label" for="">Nombre</label>
-                    <input class="input" type="text" placeholder="Nombre del jugador" name="nombreJugador" autocomplete="off" required>
-                    <label class="label" for="">Apellido</label>
-                    <input class="input" type="text" placeholder="Apellido del jugador" name="apellidoJugador" autocomplete="off" required>
-                    <label class="label" for="">Región de origen</label>
-                    <select class="input" name="regionOrigenJugador" required>
+                    <label class="label" for="nombreJugador">Nombre</label>
+                    <input class="input" type="text" placeholder="Nombre del jugador" name="nombreJugador" id="nombreJugador" autocomplete="off" required>
+                    <label class="label" for="apellidoJugador">Apellido</label>
+                    <input class="input" type="text" placeholder="Apellido del jugador" name="apellidoJugador" id="apellidoJugador" autocomplete="off" required>
+                    <label class="label" for="regionOrigenJugador">Región de origen</label>
+                    <select class="input" name="regionOrigenJugador" id="regionOrigenJugador" required>
                         <option value="" disabled selected>-Seleccione una opción-</option>
                         <?php
                             $sqlRegion = "Select * from REGION;";
@@ -116,8 +106,8 @@
                                 </option>
                         <?php endwhile; ?>
                     </select>
-                    <label class="label" for="">Posición Principal</label>
-                    <select class="input" name="posicionPrincipalJugador" required>
+                    <label class="label" for="posicionPrincipalJugador">Posición Principal</label>
+                    <select class="input" name="posicionPrincipalJugador" id="posicionPrincipalJugador required>
                         <option value="" disabled selected>-Seleccione una opción-</option>
                         <?php
                             $sqlPosicionPrincipal = "Select * from POSICIONES_JUGADOR";
@@ -128,8 +118,8 @@
                                 </option>
                             <?php endwhile; ?>
                     </select>
-                    <label class="label" for="">Posición alternativa</label>
-                    <select class="input" name="posicionAlternativaJugador">
+                    <label class="label" for="posicionAlternativaJugador">Posición alternativa</label>
+                    <select class="input" name="posicionAlternativaJugador" id="posicionAlternativaJugador">
                         <option value="" disabled selected>-Seleccione una opción-</option>
                         <?php
                             $sqlPosicionAlternativa = "Select * from POSICIONES_JUGADOR;";
@@ -140,7 +130,7 @@
                                 </option>
                             <?php endwhile; ?>
                     </select>
-                    <button class="boton">Registrar jugador</button>
+                    <button type="submit" class="boton">Registrar jugador</button>
                 </div>
             </form>
 
@@ -162,7 +152,7 @@
                         <img class="avatar-jugador-tarjeta" src="<?php echo $avatar ?>" alt="imagen_jugador">
                         <h2 class="nombre-jugador"> <?php echo $fila['NOMBRE'] . " " . $fila['APELLIDO'] ?> </h2>
                         <h3 class="dato_1"> <?php echo "MVP" . " " . $fila['MVP'] ?> </h3>
-                        <h3 class="dato_2"> <?php echo "VOT" . " " . $fila['MVP'] ?> </h3>
+                        <h3 class="dato_2"> <?php echo "VOT" . " " . $fila['VOT'] ?> </h3>
                         <h3 class="dato_3"> <?php echo "ASIS" . " " . $fila['ASIS'] ?> </h3>
                         <h3 class="dato_4">VAR 75</h3>
                     </div>

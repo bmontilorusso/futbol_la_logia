@@ -13,7 +13,7 @@ include('conexion_db.php');
 
 // Declaración y almacenamiento de Variables:
 $fecha = $_POST['fecha'];
-$hora = $_POST['time'];
+$hora = $_POST['hora'];
 $estadio = $_POST['estadio'];
 $tipoPartido = $_POST['tipo-partido'];
 // Conversiones de Checkbox:
