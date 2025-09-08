@@ -358,6 +358,10 @@ h1, h2 {
     display: flex;
 }
 
+.visible-grid {
+    display: grid;
+}
+
 .oculto {
     display: none;
 }

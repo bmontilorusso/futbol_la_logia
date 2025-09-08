@@ -1,12 +1,12 @@
 <?php
     include('validacion_sesion.php');
     include('conexion_db.php');
-    include('funciones-desplegables.php');
-    
-    $estadios = obtenerEstadios();
-    $tipoPartido = obtenerTipoPartido();
-    $regiones = obtenerRegion();
-    $posiciones = obtenerPosicion();
+    include('funciones-desplegables.php');    
+        $estadios = obtenerEstadios();
+        $tipoPartido = obtenerTipoPartido();
+        $regiones = obtenerRegion();
+        $posiciones = obtenerPosicion();
+
 ?>
 
 <!DOCTYPE html>
@@ -50,6 +50,7 @@
                 <!-- SECCIÓN ABRIR CONVOCATORIAS -->
                 <form class="formulario-convocatoria" id="formulario-convocatoria">
                     <div class="campos-convocatoria">
+                        
                         <label class="label" for="fecha">Fecha</label>
                         <input class="input" type="date" placeholder="Fecha" name="fecha" id="fecha" autocomplete="off" required>
 
@@ -92,10 +93,13 @@
             
             <form class="formulario-alta-jugadores visible" action="alta-jugador.php" method="POST">
                 <div class="campos-alta-jugador">
+
                     <label class="label" for="nombreJugador">Nombre</label>
                     <input class="input" type="text" placeholder="Nombre del jugador" name="nombreJugador" id="nombreJugador" autocomplete="off" required>
+
                     <label class="label" for="apellidoJugador">Apellido</label>
                     <input class="input" type="text" placeholder="Apellido del jugador" name="apellidoJugador" id="apellidoJugador" autocomplete="off" required>
+
                     <label class="label" for="regionOrigenJugador">Región de origen</label>
                     <select class="input" name="regionOrigenJugador" id="regionOrigenJugador" required>
                         <option disabled selected>-Seleccione una opción-</option>
@@ -103,6 +107,7 @@
                             <option value=" <?= $region['ID_REGION']; ?> "> <?= $region['DETALLE']; ?> </option>
                         <?php endforeach; ?>
                     </select>
+
                     <label class="label" for="posicionPrincipalJugador">Posición Principal</label>
                     <select class="input" name="posicionPrincipalJugador" id="posicionPrincipalJugador" required>
                         <option disabled selected>-Seleccione una opción-</option>
@@ -110,6 +115,7 @@
                             <option value=" <?= $posicion['ID_POSICION']; ?>"> <?= $posicion['DETALLE']; ?> </option>
                         <?php endforeach; ?>
                     </select>
+
                     <label class="label" for="posicionAlternativaJugador">Posición alternativa</label>
                     <select class="input" name="posicionAlternativaJugador" id="posicionAlternativaJugador">
                         <option disabled selected>-Seleccione una opción-</option>
@@ -117,12 +123,14 @@
                             <option value=" <?= $posicion['ID_POSICION']; ?>"> <?= $posicion['DETALLE']; ?> </option>
                         <?php endforeach; ?>
                     </select>
+
                     <button type="submit" class="boton">Registrar jugador</button>
+                    
                 </div>
             </form>
 
             <!-- SECCIÓN TARJETAS -->
-            <section class="seccion-tarjetas-jugadores oculto">
+            <section class="seccion-tarjetas-jugadores visible-grid">
                 <?php
                     $sqlTarjetasJugador = "Select * from VISTA_TARJETAS_JUGADORES;";
                     $resultadoJugadores = mysqli_query($conn, $sqlTarjetasJugador);                    
@@ -150,7 +158,7 @@
         </main>
     </div> <!-- Fin de la Ventana-aplicación -->
     
-    <!-- BOTONERA GOME-->
+    <!-- BOTONERA HOME-->
     <div class="botonera-home">
         <div class="boton botones-home">
             <img src="../img/ico/jugadores.png" alt="Jugadores">
