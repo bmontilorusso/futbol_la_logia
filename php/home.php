@@ -129,41 +129,17 @@
                 </div>
             </form>
 
-            <!-- SECCIÓN TARJETAS -->
-            <section class="seccion-tarjetas-jugadores visible-grid">
-                <?php
-                    $sqlTarjetasJugador = "Select * from VISTA_TARJETAS_JUGADORES;";
-                    $resultadoJugadores = mysqli_query($conn, $sqlTarjetasJugador);                    
-                ?>
-                <?php while ($fila = mysqli_fetch_assoc($resultadoJugadores)): ?>
-                    <div class="tarjetas">                    
-                        <h2 class="valoracion"> <?php echo $fila['VALORACION_GENERAL'] ?> </h2>
-                        <h3 class="posicion"> <?php echo $fila['POSICION'] ?> </h3>
-                            <?php $avatar = "../img/avatar/" . $fila['ID_JUGADOR'] . ".png";
-                                if (!file_exists($avatar)) {
-                                    $avatar = "../img/avatar/default.png";
-                                }
-                            ?>
-                        <img class="avatar-jugador-tarjeta" src="<?php echo $avatar ?>" alt="imagen_jugador">
-                        <h2 class="nombre-jugador"> <?php echo $fila['NOMBRE'] . " " . $fila['APELLIDO'] ?> </h2>
-                        <h3 class="dato_1"> <?php echo "MVP" . " " . $fila['MVP'] ?> </h3>
-                        <h3 class="dato_2"> <?php echo "VOT" . " " . $fila['VOT'] ?> </h3>
-                        <h3 class="dato_3"> <?php echo "ASIS" . " " . $fila['ASIS'] ?> </h3>
-                        <h3 class="dato_4">VAR 75</h3>
-                    </div>
-                <?php endwhile; ?>
-
-            </section> <!-- FIN Sección Tarjetas -->
+            
 
         </main>
     </div> <!-- Fin de la Ventana-aplicación -->
     
     <!-- BOTONERA HOME-->
     <div class="botonera-home">
-        <div class="boton botones-home">
+        <a href="../php/forms/form-jugadores.php" class="boton botones-home">
             <img src="../img/ico/jugadores.png" alt="Jugadores">
             <h2>Jugadores</h2>
-        </div>
+        </a>
         <div class="boton botones-home">
             <img src="../img/ico/MVP.png" alt="MVP">
             <h2>MVP</h2>
@@ -173,8 +149,6 @@
             <h2>Estadísticas</h2>
         </div>
     </div> <!-- FIN Botonera Home -->
-
-     
     
     <footer class="footer">
         <p>© 2025 Holly Molly Studios • Desarrollado con 💾, ❤️ y mucho ☕</p>
