@@ -42,11 +42,6 @@
                     <h2 class="titulo-convocatoria">Próximo Partido</h2>
                 </div>
 
-                <div class="info-proximo-partido oculto">
-                    <p>Fecha y HORA</p>
-                    <p>Estadio</p>
-                </div>
-
                 <!-- SECCIÓN ABRIR CONVOCATORIAS -->
                 <form class="formulario-convocatoria" id="formulario-convocatoria">
                     <div class="campos-convocatoria">
@@ -91,6 +86,7 @@
                 </div>
             </div> <!-- FIN Sección Abrir Convocatorias -->
             
+            <!-- FORMULARIO DE ALTA DE JUGADORES -->
             <form class="formulario-alta-jugadores visible" action="alta-jugador.php" method="POST">
                 <div class="campos-alta-jugador">
 
@@ -127,10 +123,44 @@
                     <button type="submit" class="boton">Registrar jugador</button>
                     
                 </div>
-            </form>
+            </form> <!-- FIN Sección Alta de Jugadores -->
 
+            <!-- SECCIÓN CONVOCATORIA ACTIVA -->
+            <div class="ventana-convocatoria">
+                <?php
+                    $sqlPartidoActivo = "Select * from VISTA_PARTIDOS;";
+                    $resultadoPartidoActivo = mysqli_query($conn, $sqlPartidoActivo);
+                ?>
+
+                <div class="pie-cabeza-ventana-convocatoria">
+                    <h2 class="titulo-convocatoria">Próximo Partido</h2>
+                </div>
+                
+                <form class="formulario-convocatoria" id="formulario-convocatoria" action="asistencia.php" method="POST">
+
+                    <div class="campos-convocatoria">
+
+                        <div class="info-proximo-partido visible">
+                            <?php $fila = mysqli_fetch_assoc($resultadoPartidoActivo); ?>
+                            <p>Fecha y HORA: <?php echo $fila['FECHA'] . $fila['HORA']; ?></p>
+                            <p>Estadio: <?php echo $fila['ESTADIO']; ?> </p>
+                        </div>
+
+                        <div class="popUp-convocatoria oculto ventana-convocatoria" id="popUp-convocatoria">
+                            <p id="mensaje-popup-convocatoria"></p>
+                            <button id="boton-cerrar-convocatoria" class="boton">Cerrar</button>
+                        </div>
+
+                    </div>
+
+                    <div class="pie-cabeza-ventana-convocatoria">
+                        <button type="submit" class="boton">Confirmo Asistencia</button>
+                        <button type="reset" class="boton vaciar">No voy</button>
+                    </div>
+
+                </form>
+            </div> <!-- FIN Sección Convocatoria Activa -->
             
-
         </main>
     </div> <!-- Fin de la Ventana-aplicación -->
     
