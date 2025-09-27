@@ -23,6 +23,7 @@ if (mysqli_num_rows($resultado) == 1) {
     $fila = mysqli_fetch_assoc($resultado);
     $_SESSION['id_usuario'] = $fila['ID_USUARIO'];
     $_SESSION['nombre'] = $fila['NOMBRE'];
+    $_SESSION['id_jugador'] = $fila['ID_JUGADOR'];
 
     // Redireccionamiento:
     header("Location: home.php");

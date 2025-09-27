@@ -40,6 +40,16 @@
     padding: 0;
 } /* Reset de valores a cero para márgenes y padding. */
 
+body::before {
+  content:"HOLA MONTI";
+  position:fixed;
+  top:0;
+  left:0;
+  background:red;
+  color:white;
+}
+
+
 html {
     /* Estandarización de tamaños. Pt. 1: */
     box-sizing: border-box;
@@ -209,6 +219,12 @@ h1, h2 {
     margin: 2rem;
 }
 
+.ventana-convocatoria-activa,
+.formulario-convocatoria-activa {
+    display: flex;
+    flex-direction: column;
+}
+
 .titulo-convocatoria {
     color: var(--beige) !important; 
 }
@@ -263,7 +279,11 @@ h1, h2 {
     left: 50%;
     transform:translate(-50%,-50%);
     padding: 2rem;
-    background-color: var(--beige);   
+    background-color: var(--beige); 
+}
+
+.grilla-jugadores-convocados {
+    display: flex;
 }
 
 

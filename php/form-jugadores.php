@@ -1,6 +1,6 @@
 <?php
-    include('../validacion_sesion.php');
-    include('../conexion_db.php');
+    include('validacion_sesion.php');
+    include('conexion_db.php');
 ?>
 
 <!DOCTYPE html>
@@ -11,9 +11,9 @@
     <title>La Logia Fútbol - Home</title>
     <!-- Conexiones Locales: -->
     <link rel="icon" type="img/png" href="../img/ico/favicon-32x32.png">
-    <link rel="preload" href="../../css/style.css" as="style">
-    <link rel="stylesheet" href="../../css/normalize.css" as="style">
-    <link rel="stylesheet" href="../../css/style.css" as="style">    
+    <link rel="preload" href="../css/style.css" as="style">
+    <link rel="stylesheet" href="../css/normalize.css" as="style">
+    <link rel="stylesheet" href="../css/style.css" as="style">    
     <!-- Conexiones Externas: -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -126,22 +126,23 @@
             </form> <!-- FIN Sección Alta de Jugadores -->
 
             <!-- SECCIÓN CONVOCATORIA ACTIVA -->
-            <div class="ventana-convocatoria">
+            <div class="ventana-convocatoria-activa">
                 <?php
-                    $sqlPartidoActivo = "Select * from VISTA_PARTIDOS;";
+                    $sqlPartidoActivo = "Select * from VISTA_PARTIDOS where ID_ESTADO_PARTIDO = 2;";
                     $resultadoPartidoActivo = mysqli_query($conn, $sqlPartidoActivo);
+                    $fila = mysqli_fetch_assoc($resultadoPartidoActivo);
                 ?>
 
                 <div class="pie-cabeza-ventana-convocatoria">
                     <h2 class="titulo-convocatoria">Próximo Partido</h2>
                 </div>
                 
-                <form class="formulario-convocatoria" id="formulario-convocatoria" action="asistencia.php" method="POST">
+                <form class="formulario-convocatoria-activa" id="formulario-convocatoria" action="asistencia.php" method="POST">
 
                     <div class="campos-convocatoria">
 
                         <div class="info-proximo-partido visible">
-                            <?php $fila = mysqli_fetch_assoc($resultadoPartidoActivo); ?>
+                            
                             <p>Fecha y HORA: <?php echo $fila['FECHA'] . $fila['HORA']; ?></p>
                             <p>Estadio: <?php echo $fila['ESTADIO']; ?> </p>
                         </div>
@@ -153,10 +154,23 @@
 
                     </div>
 
+                    <div class="grilla-jugadores-convocados">
+                        <p>Jugador 1</p>
+                        <p>Jugador 2</p>
+                        <p>Jugador 3</p>
+                        <p>Jugador 4</p>
+                        <p>Jugador 5</p>
+                        <p>Jugador 6</p>
+                        <p>Jugador 7</p>
+                        <p>Jugador 8</p>
+                        <p>Jugador 9</p>
+                        <p>Jugador 10</p>
+                    </div>
+
                     <div class="pie-cabeza-ventana-convocatoria">
                         <button type="submit" class="boton">Confirmo Asistencia</button>
                         <button type="reset" class="boton vaciar">No voy</button>
-                    </div>
+                    </div>                    
 
                 </form>
             </div> <!-- FIN Sección Convocatoria Activa -->
@@ -166,7 +180,7 @@
     
     <!-- BOTONERA HOME-->
     <div class="botonera-home">
-        <a href="../php/forms/form-jugadores.php" class="boton botones-home">
+        <a href="form-jugadores.php" class="boton botones-home">
             <img src="../img/ico/jugadores.png" alt="Jugadores">
             <h2>Jugadores</h2>
         </a>
