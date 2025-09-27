@@ -175,6 +175,7 @@
 
                     <div class="pie-cabeza-ventana-convocatoria">
                         <button type="submit" name="juega" value="SI" class="boton">Confirmo Asistencia</button>
+                        <button type="submit" name="juega" value="SI" class="boton">Llevo un amigo</button>
                         <button type="submit" name="juega" value="NO" class="boton">No voy</button>
                     </div>                    
 
