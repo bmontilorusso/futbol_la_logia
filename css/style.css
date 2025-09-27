@@ -40,16 +40,6 @@
     padding: 0;
 } /* Reset de valores a cero para márgenes y padding. */
 
-body::before {
-  content:"HOLA MONTI";
-  position:fixed;
-  top:0;
-  left:0;
-  background:red;
-  color:white;
-}
-
-
 html {
     /* Estandarización de tamaños. Pt. 1: */
     box-sizing: border-box;
@@ -283,7 +273,8 @@ h1, h2 {
 }
 
 .grilla-jugadores-convocados {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 }
 
 
