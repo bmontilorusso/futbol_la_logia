@@ -17,11 +17,12 @@ $filaResultadoIdPartido = mysqli_fetch_assoc($resultadoIdPartido);
 // Declaración y almacenamiento de Variables:
 $idJugador = $_SESSION['id_jugador'];
 $idPartido = $filaResultadoIdPartido['ID_PARTIDO'];
+$juega = $_POST['juega'];
 
 // Confirmación de Asistencia:
 
 // Creación de Querys:
-$sql = "INSERT INTO PARTIDOS_JUGADORES (ID_PARTIDO, ID_JUGADOR) VALUES ($idPartido, $idJugador);";
+$sql = "INSERT INTO PARTIDOS_JUGADORES (ID_PARTIDO, ID_JUGADOR, JUEGA) VALUES ($idPartido, $idJugador, '$juega');";
 $resultado = mysqli_query($conn, $sql);
 
 // Validación del éxito:

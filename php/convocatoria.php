@@ -21,9 +21,15 @@ $asistenciaUsuario = isset($_POST['asistencia-usuario']) ? $_POST['asistencia-us
 // Arrastramos de la SESION:
 $IDusuarioAltaConvocatoria = $_SESSION['id_usuario'];
 
+// Para conocer el límite de jugadores:
+$sqlMaxJugadores = "Select * from ESTADIOS Where ID_ESTADIO = $estadio;";
+$resultadoMaxJugadores = mysqli_query($conn, $sqlMaxJugadores);
+$filaMaxJugadores= mysqli_fetch_assoc($resultadoMaxJugadores);
+$maxJugadores = ($filaMaxJugadores['CANCHA_DE'])*2;
+
 /* ALTA DE PARTIDO: */
 // Creación de Query:
-$sql = "INSERT INTO PARTIDOS (ID_ESTADIO, FECHA, HORA, ID_TIPO_PARTIDO, ID_ESTADO_PARTIDO, ID_ESTADO_VOTACION_MVP, ID_USUARIO_ALTA) VALUES ($estadio, '$fecha', '$hora', $tipoPartido, 2, 1, $IDusuarioAltaConvocatoria);";
+$sql = "INSERT INTO PARTIDOS (ID_ESTADIO, MAX_JUGADORES, FECHA, HORA, ID_TIPO_PARTIDO, ID_ESTADO_PARTIDO, ID_ESTADO_VOTACION_MVP, ID_USUARIO_ALTA) VALUES ($estadio, $maxJugadores, '$fecha', '$hora', $tipoPartido, 2, 1, $IDusuarioAltaConvocatoria);";
 $resultado = mysqli_query($conn, $sql);
 
 /* INSERSIÓN de JUGADOR en CONVOCATORIA: */
