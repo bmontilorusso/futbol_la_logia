@@ -147,11 +147,6 @@
                             <p>Estadio: <?php echo $fila['ESTADIO']; ?> </p>
                         </div>
 
-                        <div class="popUp-convocatoria oculto ventana-convocatoria" id="popupAsistencia">
-                            <p id="mensaje-popup-asistencia"></p>
-                            <button id="boton-cerrar-asistencia" class="boton">Cerrar</button>
-                        </div>
-
                     </div>
 
                     <?php
@@ -177,7 +172,12 @@
                         <button type="submit" name="juega" value="SI" class="boton">Confirmo Asistencia</button>
                         <button type="submit" name="juega" value="SI" class="boton">Llevo un amigo</button>
                         <button type="submit" name="juega" value="NO" class="boton">No voy</button>
-                    </div>                    
+                    </div>
+
+                    <div class="popUp-convocatoria oculto ventana-convocatoria" id="popupAsistencia">
+                        <p id="mensaje-popup-asistencia"></p>
+                        <button id="boton-cerrar-asistencia" class="boton">Cerrar</button>
+                    </div>
 
                 </form>
             </div> <!-- FIN Sección Convocatoria Activa -->
