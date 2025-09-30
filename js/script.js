@@ -5,8 +5,8 @@ const popupAltaConvocatoria = document.getElementById("popUp-convocatoria");
 const mensajepopupAltaConvocatoria = document.getElementById("mensaje-popup-convocatoria");
 const cerrarPopUpAltaConvocatoria = document.getElementById("boton-cerrar-convocatoria");
 
-formularioAltaPartidos.addEventListener("submit", function(e) {
-    e.preventDefault(); // Para evitar el pantallazo blanco.
+formularioAltaPartidos.addEventListener("submit", function(evento) {
+    evento.preventDefault(); // Para evitar el pantallazo blanco (porque el evento por defecto del submit es "cambiar a la pantalla blanca")
 
     const datosDelFormulario = new FormData(formularioAltaPartidos);
 
@@ -22,6 +22,7 @@ formularioAltaPartidos.addEventListener("submit", function(e) {
         popupAltaConvocatoria.classList.remove('oculto');
         popupAltaConvocatoria.classList.add('visible');
         formularioAltaPartidos.reset();
+        formularioAltaPartidos.querySelector("input").blur(); // Para que no se posición en el prmier input y NO arroje el required de golpe al cerrar PopUp.
     })
     .catch(error => {
         mensajepopupAltaConvocatoria.textContent = "Error al enviar datos";
@@ -34,4 +35,48 @@ formularioAltaPartidos.addEventListener("submit", function(e) {
 cerrarPopUpAltaConvocatoria.addEventListener("click", function(){
     popupAltaConvocatoria.classList.remove('visible');
     popupAltaConvocatoria.classList.add('oculto');
+});
+
+// FORMULARIO DE CONFIRMACIÓN DE ASISTENCIA:
+
+const formularioAsistencia = document.getElementById('formulario-asistencia');
+const popupAsistencia = document.getElementById('popupAsistencia');
+const mensajePopupAsistencia = document.getElementById('mensaje-popup-asistencia');
+const cerrarPopupAsistencia = document.getElementById('boton-cerrar-asistencia');
+
+formularioAsistencia.addEventListener("submit", function(evento){
+    evento.preventDefault(); // Para prevenir "pantallazo" Blanco.
+
+    const datosDelFormularioAsistencia = new FormData(formularioAsistencia);
+
+    // Agregamos el valor (name y value) del botón submit:
+    if (evento.submitter && evento.submitter.name) {
+        datosDelFormularioAsistencia.append(evento.submitter.name, evento.submitter.value);
+    }
+
+    // Envío de los datos capturados, por POST:
+    fetch("asistencia.php", {
+        method: "POST",
+        body: datosDelFormularioAsistencia
+    })
+    .then(respuestaServer => respuestaServer.text()) // Para guardar larespuesta del Server...
+    .then(respuestaParaNavegador => {
+        console.log("Respuesta del server capturado con var_dump: ", respuestaParaNavegador); 
+        mensajePopupAsistencia.textContent = respuestaParaNavegador;
+        popupAsistencia.classList.remove('oculto');
+        popupAsistencia.classList.add('visible');
+        formularioAsistencia.reset();
+        formularioAsistencia.querySelector("input").blur();
+    })
+    .catch(error => {
+        mensajePopupAsistencia.textContent = "Error al enviar datos";
+        popupAsistencia.classList.remove('oculto');
+        popupAsistencia.classList.add('visible');
+    });
+});
+
+// Botón para cerrar PopUp (Asistencia):
+cerrarPopupAsistencia.addEventListener("click", function(){
+    popupAsistencia.classList.remove('visible');
+    popupAsistencia.classList.add('oculto');
 });

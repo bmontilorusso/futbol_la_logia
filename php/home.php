@@ -137,7 +137,7 @@
                     <h2 class="titulo-convocatoria">Próximo Partido</h2>
                 </div>
                 
-                <form class="formulario-convocatoria-activa" id="formulario-convocatoria" action="asistencia.php" method="POST">
+                <form class="formulario-convocatoria-activa" id="formulario-asistencia">
 
                     <div class="campos-convocatoria">
 
@@ -147,9 +147,9 @@
                             <p>Estadio: <?php echo $fila['ESTADIO']; ?> </p>
                         </div>
 
-                        <div class="popUp-convocatoria oculto ventana-convocatoria" id="popUp-convocatoria">
-                            <p id="mensaje-popup-convocatoria"></p>
-                            <button id="boton-cerrar-convocatoria" class="boton">Cerrar</button>
+                        <div class="popUp-convocatoria oculto ventana-convocatoria" id="popupAsistencia">
+                            <p id="mensaje-popup-asistencia"></p>
+                            <button id="boton-cerrar-asistencia" class="boton">Cerrar</button>
                         </div>
 
                     </div>
