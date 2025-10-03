@@ -22,11 +22,21 @@
 <body>
 
     <!-- SECCIÓN TARJETAS -->
-        <section class="seccion-tarjetas-jugadores visible">
+        <section class="seccion-tarjetas-jugadores visible-grid">
             <?php
                 $sqlTarjetasJugador = "Select * from VISTA_TARJETAS_JUGADORES;";
                 $resultadoJugadores = mysqli_query($conn, $sqlTarjetasJugador);                    
             ?>
+            <div class="tarjetas">                    
+                    <h2 class="valoracion">93</h2>
+                    <h3 class="posicion">DEF</h3>
+                    <img class="gato-avatar" src="../img/avatar/gato.png" alt="imagen_jugador">
+                    <h2 class="gato-nombre">GATO E.</h2>
+                    <h3 class="dato_1">MVP 95</h3>
+                    <h3 class="dato_2">VOT 88</h3>
+                    <h3 class="dato_3">ASIS 85</h3>
+                    <h3 class="dato_4">VAR 89</h3>
+            </div>            
             <?php while ($fila = mysqli_fetch_assoc($resultadoJugadores)): ?>
                 <div class="tarjetas">                    
                     <h2 class="valoracion"> <?php echo $fila['VALORACION_GENERAL'] ?> </h2>

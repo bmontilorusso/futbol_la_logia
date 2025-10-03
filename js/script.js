@@ -6,6 +6,7 @@ const mensajepopupAltaConvocatoria = document.getElementById("mensaje-popup-conv
 const cerrarPopUpAltaConvocatoria = document.getElementById("boton-cerrar-convocatoria");
 
 formularioAltaPartidos.addEventListener("submit", function(evento) {
+    
     evento.preventDefault(); // Para evitar el pantallazo blanco (porque el evento por defecto del submit es "cambiar a la pantalla blanca")
 
     const datosDelFormulario = new FormData(formularioAltaPartidos);
@@ -37,6 +38,8 @@ cerrarPopUpAltaConvocatoria.addEventListener("click", function(){
     popupAltaConvocatoria.classList.add('oculto');
 });
 
+//***********************************************************************************************************************/
+
 // FORMULARIO DE CONFIRMACIÓN DE ASISTENCIA:
 
 const formularioAsistencia = document.getElementById('formulario-asistencia');
@@ -45,6 +48,10 @@ const mensajePopupAsistencia = document.getElementById('mensaje-popup-asistencia
 const cerrarPopupAsistencia = document.getElementById('boton-cerrar-asistencia');
 
 formularioAsistencia.addEventListener("submit", function(evento){
+    
+    // console.log(">>> SUBMIT ASISTENCIA DISPARADO");
+    // console.log("Contenido del POST:", new FormData(formularioAsistencia)); // Para debugear.
+
     evento.preventDefault(); // Para prevenir "pantallazo" Blanco.
 
     const datosDelFormularioAsistencia = new FormData(formularioAsistencia);
@@ -61,12 +68,11 @@ formularioAsistencia.addEventListener("submit", function(evento){
     })
     .then(respuestaServer => respuestaServer.text()) // Para guardar larespuesta del Server...
     .then(respuestaParaNavegador => {
-        console.log("Respuesta del server capturado con var_dump: ", respuestaParaNavegador); 
+        // console.log("Respuesta del server capturado con var_dump: ", respuestaParaNavegador); // Para debugear. 
         mensajePopupAsistencia.textContent = respuestaParaNavegador;
         popupAsistencia.classList.remove('oculto');
         popupAsistencia.classList.add('visible');
         formularioAsistencia.reset();
-        formularioAsistencia.querySelector("input").blur();
     })
     .catch(error => {
         mensajePopupAsistencia.textContent = "Error al enviar datos";
@@ -80,3 +86,6 @@ cerrarPopupAsistencia.addEventListener("click", function(){
     popupAsistencia.classList.remove('visible');
     popupAsistencia.classList.add('oculto');
 });
+
+//***********************************************************************************************************************/
+

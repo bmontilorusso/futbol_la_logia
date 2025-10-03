@@ -74,13 +74,14 @@
                         <button type="reset" class="boton vaciar">Vaciar</button>
                         <button type="submit" class="boton">Confirmar</button>
 
-                        <div class="popUp-convocatoria oculto ventana-convocatoria" id="popUp-convocatoria">
-                            <p id="mensaje-popup-convocatoria"></p>
-                            <button id="boton-cerrar-convocatoria" class="boton">Cerrar</button>
-                        </div>
-
                     </div>
                 </form>
+
+                <div class="popUp-convocatoria oculto ventana-convocatoria" id="popUp-convocatoria">
+                    <p id="mensaje-popup-convocatoria"></p>
+                    <button type="button" id="boton-cerrar-convocatoria" class="boton">Cerrar</button>
+                </div>
+
                 <div class="pie-cabeza-ventana-convocatoria">
                     <button class="boton">Abrir convocatoria ⚽</button>
                 </div>
@@ -124,6 +125,30 @@
                     
                 </div>
             </form> <!-- FIN Sección Alta de Jugadores -->
+
+            <!-- FORMULARIO DE ALTA DE USUARIOS -->
+            <form action="">
+                <div class="campos-alta-usuario">
+                    <label class="label" for="nombreJugador">Nombre</label>
+                    <input class="input" type="text" placeholder="Ingrese un nombre" name="nombreUsuario"autocomplete="off" required>
+                    <label class="label" for="apellido">Apellido</label>
+                    <input class="input" type="text" placeholder="Nombre el apellido" name="apellidoUsuario" autocomplete="off" required>
+                    <label class="label" for="usuario">Username (Nombre de usuario)</label>
+                    <input class="input" type="text" placeholder="Elija un nombre de usuario" name="usuario" autocomplete="off" required>
+                    <label class="label" for="pass">Contraseña</label>
+                    <input class="input" type="text" placeholder="Elija una contraseña" name="pass1" autocomplete="off" required>
+                    <label class="label" for="pass">Confirme Contraseña</label>
+                    <input class="input" type="text" placeholder="Confirme la contraseña" name="pass2" autocomplete="off" required>
+                    <label class="label" for="pass">Vincular usuario a Jugador</label>
+                    <select class="input" name="" id="">
+                        <option disabled selected>-Seleccione un jugador-</option>
+                        <option value="">No jugó nunca</option>
+                        <option value="">Listado de jugadores SIN USUARIO</option>
+                    </select>
+                    <button type="submit" class="boton">Regisrar Usuario</button>
+
+                </div>
+            </form>
 
             <!-- SECCIÓN CONVOCATORIA ACTIVA -->
             <div class="ventana-convocatoria-activa">
@@ -172,14 +197,15 @@
                         <button type="submit" name="juega" value="SI" class="boton">Confirmo Asistencia</button>
                         <button type="submit" name="juega" value="SI" class="boton">Llevo un amigo</button>
                         <button type="submit" name="juega" value="NO" class="boton">No voy</button>
-                    </div>
-
-                    <div class="popUp-convocatoria oculto ventana-convocatoria" id="popupAsistencia">
-                        <p id="mensaje-popup-asistencia"></p>
-                        <button id="boton-cerrar-asistencia" class="boton">Cerrar</button>
-                    </div>
+                    </div>                    
 
                 </form>
+
+                <div class="popUp-convocatoria oculto ventana-convocatoria" id="popupAsistencia">
+                    <p id="mensaje-popup-asistencia"></p>
+                    <button type="button" id="boton-cerrar-asistencia" class="boton">Cerrar</button>
+                </div>
+
             </div> <!-- FIN Sección Convocatoria Activa -->
             
         </main>
