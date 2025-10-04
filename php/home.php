@@ -86,9 +86,7 @@
                     <button type="button" id="boton-cerrar-convocatoria" class="boton">Cerrar</button>
                 </div>
 
-                <div class="pie-cabeza-ventana-convocatoria">
-                    <button class="boton">Abrir convocatoria ⚽</button>
-                </div>
+                
             </div> <!-- FIN Sección Abrir Convocatorias -->
             
             <!-- FORMULARIO DE ALTA DE JUGADORES -->
@@ -166,44 +164,52 @@
                     <h2 class="titulo-convocatoria">Próximo Partido</h2>
                 </div>
                 
-                <form class="formulario-convocatoria-activa" id="formulario-asistencia">
+                <?php if ($fila): ?>
+                    <form class="formulario-convocatoria-activa" id="formulario-asistencia">
 
-                    <div class="campos-convocatoria">
+                        <div class="campos-convocatoria">
 
-                        <div class="info-proximo-partido visible">
-                            
-                            <p>Fecha y HORA: <?php echo $fila['FECHA'] . $fila['HORA']; ?></p>
-                            <p>Estadio: <?php echo $fila['ESTADIO']; ?> </p>
+                            <div class="info-proximo-partido visible">
+                                
+                                <p>Fecha y HORA: <?php echo $fila['FECHA'] . $fila['HORA']; ?></p>
+                                <p>Estadio: <?php echo $fila['ESTADIO']; ?> </p>
+                            </div>
+
                         </div>
 
-                    </div>
+                        <?php
+                            $idPartidoActivo = $fila['ID_PARTIDO'];
+                            $sqlJugadoresConvocados = "Select * from VISTA_PARTIDOS_JUGADORES Where ID_PARTIDO = $idPartidoActivo AND JUEGA = 'SI';";
+                            $resultadoJugadoresConvocados = mysqli_query($conn, $sqlJugadoresConvocados);
+                            $sqlJugadoresOut = "Select * from VISTA_PARTIDOS_JUGADORES Where ID_PARTIDO = $idPartidoActivo AND JUEGA = 'NO';";
+                            $resultadoJugadoresOut = mysqli_query($conn, $sqlJugadoresOut);
+                            $cantidadJugadoresConvocados = mysqli_num_rows($resultadoJugadoresConvocados);                        
+                        ?>
+                        <h2>Confirmados (<?php echo $cantidadJugadoresConvocados . "/" . $fila['LIMITE DE JUGADORES']; ?>)</h2>
+                        <div class="grilla-jugadores-convocados">
+                            <?php while ($filaResultadoJugadoresConvocados = mysqli_fetch_assoc($resultadoJugadoresConvocados)):?>
+                            <p><?php echo $filaResultadoJugadoresConvocados['NOMBRE'] . " " . $filaResultadoJugadoresConvocados['APELLIDO']; ?></p>
+                        <?php endwhile; ?>
+                        </div>
+                        <h2>OUT</h2>
+                        <div class="grilla-jugadores-convocados">
+                            <?php while ($filaResultadoJugadoresOut = mysqli_fetch_assoc($resultadoJugadoresOut)):?>
+                            <p><?php echo $filaResultadoJugadoresOut['NOMBRE'] . " " . $filaResultadoJugadoresOut['APELLIDO']; ?></p>
+                        <?php endwhile; ?>
 
-                    <?php
-                        $sqlJugadoresConvocados = "Select * from VISTA_PARTIDOS_JUGADORES Where JUEGA = 'SI';";
-                        $resultadoJugadoresConvocados = mysqli_query($conn, $sqlJugadoresConvocados);
-                        $sqlJugadoresOut = "Select * from VISTA_PARTIDOS_JUGADORES Where JUEGA = 'NO';";
-                        $resultadoJugadoresOut = mysqli_query($conn, $sqlJugadoresOut);
-                        $cantidadJugadoresConvocados = mysqli_num_rows($resultadoJugadoresConvocados);
-                    ?>
-                    <h2>Confirmados (<?php echo $cantidadJugadoresConvocados . "/" . $fila['LIMITE DE JUGADORES']; ?>)</h2>
-                    <div class="grilla-jugadores-convocados">
-                        <?php while ($filaResultadoJugadoresConvocados = mysqli_fetch_assoc($resultadoJugadoresConvocados)):?>
-                        <p><?php echo $filaResultadoJugadoresConvocados['NOMBRE'] . " " . $filaResultadoJugadoresConvocados['APELLIDO']; ?></p>
-                    <?php endwhile; ?>                        
-                    </div>
-                    <h2>OUT</h2>
-                    <div class="grilla-jugadores-convocados">
-                        <?php while ($filaResultadoJugadoresOut = mysqli_fetch_assoc($resultadoJugadoresOut)):?>
-                        <p><?php echo $filaResultadoJugadoresOut['NOMBRE'] . " " . $filaResultadoJugadoresOut['APELLIDO']; ?></p>
-                    <?php endwhile; ?>
+                        <div class="pie-cabeza-ventana-convocatoria">
+                            <button type="submit" name="juega" value="SI" class="boton">Confirmo Asistencia</button>
+                            <button type="submit" name="juega" value="SI" class="boton">Llevo un amigo</button>
+                            <button type="submit" name="juega" value="NO" class="boton">No voy</button>
+                        </div>                    
 
+                    </form>
+                <?php else: ?>
+                    <p>No hay convocatoria activa aún.</p>
                     <div class="pie-cabeza-ventana-convocatoria">
-                        <button type="submit" name="juega" value="SI" class="boton">Confirmo Asistencia</button>
-                        <button type="submit" name="juega" value="SI" class="boton">Llevo un amigo</button>
-                        <button type="submit" name="juega" value="NO" class="boton">No voy</button>
-                    </div>                    
-
-                </form>
+                        <button class="boton">Abrir convocatoria ⚽</button>
+                    </div>
+                <?php endif; ?>
 
                 <div class="popUp-convocatoria oculto ventana-convocatoria" id="popupAsistencia">
                     <p id="mensaje-popup-asistencia"></p>
