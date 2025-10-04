@@ -276,7 +276,65 @@ h1, h2 {
 .grilla-jugadores-convocados {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    border-radius: .5rem;
+    border-style: solid;
+    border-width: .5rem;
+    background-color: var(--verdeOscuro);
+    gap: .3rem;
 }
+
+.invitar-amigo {
+    display: flex;
+    flex-direction: column;
+}
+
+.invitar-amigo input {
+    margin-bottom: 2rem;
+}
+
+.boton-invitar-amigo,
+.cancelar-invitar-amigo {
+    margin: 1.5rem;
+}
+
+.cancelar-invitar-amigo {
+    background-color: var(--alertaNegativaFondo);
+    color: var(--verdeOscuro);
+}
+
+.nombre-pos-grilla-convocados {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--beige);
+    gap: 1rem;
+    padding: 1rem;    
+    justify-content: center;
+    align-items: center;
+
+}
+
+.posicion-grilla {    
+    color: var(--beige);
+    text-transform: uppercase;
+    border-radius: .5rem;
+    border-style: solid;
+    border-width: .2rem;
+    padding: .2rem;    
+}
+
+.color-por {
+    background-color: var(--verdeOscuro);
+}
+.color-def {
+    background-color: var(--alertaNegativaTexto);
+}
+.color-med {
+    background-color: var(--alertaPrecaucionTexto);
+}
+.color-del {
+    background-color: var(--negroPuro);
+}
+
 
 
 /**************************************** Tarjetas ****************************************/

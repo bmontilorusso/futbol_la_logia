@@ -92,3 +92,18 @@ cerrarPopupAsistencia.addEventListener("click", function(){
 
 //***********************************************************************************************************************/
 
+// Invitar a un amigo:
+
+const botonAbrirPopupAmigo = document.getElementById('llevo-un-amigo');
+const popupAmigo = document.getElementById('popup-amigo');
+const botonCancelarPopupAmigo = document.getElementById('boton-Cancelar-Popup-Amigo');
+
+botonAbrirPopupAmigo.addEventListener("click", function() {
+    popupAmigo.classList.remove('oculto');
+    popupAmigo.classList.add('visible-flex');
+})
+
+botonCancelarPopupAmigo.addEventListener("click", function() {
+    popupAmigo.classList.remove('visible-flex');
+    popupAmigo.classList.add('oculto');
+})

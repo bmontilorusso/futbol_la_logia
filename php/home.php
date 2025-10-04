@@ -188,7 +188,30 @@
                         <h2>Confirmados (<?php echo $cantidadJugadoresConvocados . "/" . $fila['LIMITE DE JUGADORES']; ?>)</h2>
                         <div class="grilla-jugadores-convocados">
                             <?php while ($filaResultadoJugadoresConvocados = mysqli_fetch_assoc($resultadoJugadoresConvocados)):?>
-                            <p><?php echo $filaResultadoJugadoresConvocados['NOMBRE'] . " " . $filaResultadoJugadoresConvocados['APELLIDO']; ?></p>
+                            <div class="nombre-pos-grilla-convocados">
+                                <p><?php echo $filaResultadoJugadoresConvocados['NOMBRE'] . " " . $filaResultadoJugadoresConvocados['APELLIDO']; ?></p>
+                                <?php
+                                    $clasePOS = '';
+                                    switch($filaResultadoJugadoresConvocados['POS_PRINCIPAL']) {
+                                        case 'POR':
+                                            $clasePOS = "color-por";
+                                            break;
+                                        case 'DEF':
+                                            $clasePOS = "color-def";
+                                            break;
+                                        case 'MED':
+                                            $clasePOS = "color-med";
+                                            break;
+                                        case 'DEL':
+                                            $clasePOS = "color-del";
+                                            break;
+                                        default:
+                                            $clasePOS = "color-por";
+                                            break;                                            
+                                    }
+                                ?>
+                                <p class="posicion-grilla <?php echo $clasePOS ?>"><?php echo $filaResultadoJugadoresConvocados['POS_PRINCIPAL']; ?></p>
+                            </div>
                         <?php endwhile; ?>
                         </div>
                         <h2>OUT</h2>
@@ -199,9 +222,10 @@
 
                         <div class="pie-cabeza-ventana-convocatoria">
                             <button type="submit" name="juega" value="SI" class="boton">Confirmo Asistencia</button>
-                            <button type="submit" name="juega" value="SI" class="boton">Llevo un amigo</button>
+                            <button type="button" id="llevo-un-amigo" class="boton">Llevo un amigo</button>
                             <button type="submit" name="juega" value="NO" class="boton">No voy</button>
-                        </div>                    
+                            <button type="submit" name="juega" value="NO" class="boton">Me bajo</button>
+                        </div>
 
                     </form>
                 <?php else: ?>
@@ -210,6 +234,32 @@
                         <button class="boton">Abrir convocatoria ⚽</button>
                     </div>
                 <?php endif; ?>
+
+                <!-- Llevo un amigo: -->
+                <div class="popUp-convocatoria ventana-convocatoria oculto" id="popup-amigo">
+                    <form action="" class="invitar-amigo">
+                        <h2>Ingresar a un amigo</h2>
+                        <label class="label" for="">Nombre o apodo del amigo (provisorio):</label>
+                        <input class="input" name="nombreAmigo" type="text" placeholder="Nombre o apodo de tu amigo">
+                        <label class="label" for="">Posición Principal</label>
+                        <select class="input" name="posicionPrincipalJugador" id="posicionPrincipalJugador" required>
+                                <option disabled selected>-Seleccione una opción-</option>
+                            <?php foreach($posiciones as $posicion): ?>
+                                <option value=" <?= $posicion['ID_POSICION']; ?>"> <?= $posicion['DETALLE']; ?> </option>
+                            <?php endforeach; ?>
+                        </select>
+                        <label class="label" for="">Posición Alternativa</label>
+                        <select class="input" name="posicionAlternativaJugador" id="posicionAlternativaJugador">
+                                <option disabled selected>-Seleccione una opción-</option>
+                            <?php foreach($posiciones as $posicion): ?>
+                                <option value=" <?= $posicion['ID_POSICION']; ?>"> <?= $posicion['DETALLE']; ?> </option>
+                            <?php endforeach; ?>
+                        </select>
+
+                        <button class="boton boton-invitar-amigo" type="submit">Registrar amigo</button>
+                        <button class="boton cancelar-invitar-amigo" id="boton-Cancelar-Popup-Amigo" type="button">Cancelar</button>
+                    </form>
+                </div>
 
                 <div class="popUp-convocatoria oculto ventana-convocatoria" id="popupAsistencia">
                     <p id="mensaje-popup-asistencia"></p>
