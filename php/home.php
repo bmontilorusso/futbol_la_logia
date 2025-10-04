@@ -68,8 +68,12 @@
                             <?php endforeach; ?>
                         </select>
 
-                        <label for="asistencia">¿Confirmo asistencia?</label>
-                        <input type="checkbox" name="asistencia-usuario" id="asistencia" autocomplete="off" value="SI">
+                        <label class="label" for="asistencia">¿Confirmo asistencia?</label>
+                        <select class="input" name="asistencia-usuario" id="asistencia" required autocomplete="">
+                            <option disabled selected>-Seleccione una opción-</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
 
                         <button type="reset" class="boton vaciar">Vaciar</button>
                         <button type="submit" class="boton">Confirmar</button>

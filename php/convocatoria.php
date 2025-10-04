@@ -17,7 +17,7 @@ $hora = $_POST['hora'];
 $estadio = $_POST['estadio'];
 $tipoPartido = $_POST['tipo-partido'];
 // Conversiones de Checkbox:
-$asistenciaUsuario = isset($_POST['asistencia-usuario']) ? $_POST['asistencia-usuario'] : 'NO'; // Si trae valor, lo guardamos (configuré para que venga directamente con un "SI". Si el User no lo marca, entonces guarda "NO").
+$asistenciaUsuario = $_POST['asistencia-usuario'];
 // Arrastramos de la SESION:
 $IDusuarioAltaConvocatoria = $_SESSION['id_usuario'];
 
@@ -33,6 +33,7 @@ $sql = "INSERT INTO PARTIDOS (ID_ESTADIO, MAX_JUGADORES, FECHA, HORA, ID_TIPO_PA
 $resultado = mysqli_query($conn, $sql);
 
 /* INSERSIÓN de JUGADOR en CONVOCATORIA: */
+
 
 
 
