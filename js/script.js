@@ -36,6 +36,7 @@ formularioAltaPartidos.addEventListener("submit", function(evento) {
 cerrarPopUpAltaConvocatoria.addEventListener("click", function(){
     popupAltaConvocatoria.classList.remove('visible');
     popupAltaConvocatoria.classList.add('oculto');
+    window.location.href = window.location.href;
 });
 
 //***********************************************************************************************************************/
@@ -85,6 +86,8 @@ formularioAsistencia.addEventListener("submit", function(evento){
 cerrarPopupAsistencia.addEventListener("click", function(){
     popupAsistencia.classList.remove('visible');
     popupAsistencia.classList.add('oculto');
+    window.location.href = window.location.href;
+    console.log("Prueba");
 });
 
 //***********************************************************************************************************************/
