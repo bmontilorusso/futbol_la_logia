@@ -27,23 +27,42 @@ $resultadoMaxJugadores = mysqli_query($conn, $sqlMaxJugadores);
 $filaMaxJugadores= mysqli_fetch_assoc($resultadoMaxJugadores);
 $maxJugadores = ($filaMaxJugadores['CANCHA_DE'])*2;
 
-/* ALTA DE PARTIDO: */
-// Creación de Query:
-$sql = "INSERT INTO PARTIDOS (ID_ESTADIO, MAX_JUGADORES, FECHA, HORA, ID_TIPO_PARTIDO, ID_ESTADO_PARTIDO, ID_ESTADO_VOTACION_MVP, ID_USUARIO_ALTA) VALUES ($estadio, $maxJugadores, '$fecha', '$hora', $tipoPartido, 2, 1, $IDusuarioAltaConvocatoria);";
-$resultado = mysqli_query($conn, $sql);
+// Validación de Partido abierto previamente:
+$sqlPartidoPrevio = "Select * from VISTA_PARTIDOS Where ID_ESTADO_PARTIDO = 2;";
+$resultadoPartidoPrevio = mysqli_query($conn, $sqlPartidoPrevio);
+$filaResultadoPartidoPRevio = mysqli_fetch_assoc($resultadoPartidoPrevio);
 
-/* INSERSIÓN de JUGADOR en CONVOCATORIA: */
+if ($filaResultadoPartidoPRevio) {
 
-
-
-
-// Validación de Alta de Partido Exitosa:
-
-if ($resultado) {
-    echo "Alta de Partido Existosa!";
+    echo "Ya hay una convocatoria abierta!";
+    
 } else {
-    echo "Error al intentar hacer alta, debido a: " . mysqli_error($conn);
-}
 
+    /* ALTA DE PARTIDO: */
+    // Creación de Query:
+    $sql = "INSERT INTO PARTIDOS (ID_ESTADIO, MAX_JUGADORES, FECHA, HORA, ID_TIPO_PARTIDO, ID_ESTADO_PARTIDO, ID_ESTADO_VOTACION_MVP, ID_USUARIO_ALTA) VALUES ($estadio, $maxJugadores, '$fecha', '$hora', $tipoPartido, 2, 1, $IDusuarioAltaConvocatoria);";
+    $resultado = mysqli_query($conn, $sql);
+
+    /* INSERSIÓN de JUGADOR en CONVOCATORIA: */
+    $partidoCreado = "Select * from VISTA_PARTIDOS where ID_ESTADO_PARTIDO = 2 LIMIT 1";
+    $resultadoPartidoCreado = mysqli_query($conn, $partidoCreado);
+    $filaPartidoCreado = mysqli_fetch_assoc($resultadoPartidoCreado);
+    $idPartido = $filaPartidoCreado['ID_PARTIDO'];
+
+    $sqlAsistencia = "INSERT INTO PARTIDOS_JUGADORES (ID_PARTIDO, ID_JUGADOR, JUEGA) VALUES ($idPartido, $IDusuarioAltaConvocatoria, '$asistenciaUsuario');";
+    $resultadoAsistencia = mysqli_query($conn, $sqlAsistencia);
+
+    // Validación de Alta de Partido Exitosa:
+
+    if ($resultado) {
+        echo "Alta de Partido Existosa!";
+        if ($resultadoAsistencia) {
+            echo "Éxito al cargar la Asistencia del Jugador!";
+        }
+    } else {
+        echo "Error al intentar hacer alta, debido a: " . mysqli_error($conn);
+    }
+
+}
 
 ?>
