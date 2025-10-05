@@ -37,6 +37,26 @@
                     <h3 class="dato_3">ASIS 85</h3>
                     <h3 class="dato_4">VAR 89</h3>
             </div>            
+            <div class="tarjetas">                    
+                    <h2 class="valoracion">89</h2>
+                    <h3 class="posicion">DEL</h3>
+                    <img class="gato-avatar" src="../img/avatar/kaiser.png" alt="imagen_jugador">
+                    <h2 class="gato-nombre">KAISER</h2>
+                    <h3 class="dato_1">MVP 89</h3>
+                    <h3 class="dato_2">VOT 90</h3>
+                    <h3 class="dato_3">ASIS 87</h3>
+                    <h3 class="dato_4">VAR 88</h3>
+            </div>            
+            <div class="tarjetas">                    
+                    <h2 class="valoracion">87</h2>
+                    <h3 class="posicion">DEL</h3>
+                    <img class="gato-avatar" src="../img/avatar/monti.png" alt="imagen_jugador">
+                    <h2 class="gato-nombre">B. MONTI</h2>
+                    <h3 class="dato_1">MVP 91</h3>
+                    <h3 class="dato_2">VOT 89</h3>
+                    <h3 class="dato_3">ASIS 82</h3>
+                    <h3 class="dato_4">VAR 88</h3>
+            </div>            
             <?php while ($fila = mysqli_fetch_assoc($resultadoJugadores)): ?>
                 <div class="tarjetas">                    
                     <h2 class="valoracion"> <?php echo $fila['VALORACION_GENERAL'] ?> </h2>
