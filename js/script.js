@@ -36,7 +36,6 @@ formularioAltaPartidos.addEventListener("submit", function(evento) {
 cerrarPopUpAltaConvocatoria.addEventListener("click", function(){
     popupAltaConvocatoria.classList.remove('visible');
     popupAltaConvocatoria.classList.add('oculto');
-    window.location.href = window.location.href;
 });
 
 //***********************************************************************************************************************/
@@ -86,8 +85,6 @@ formularioAsistencia.addEventListener("submit", function(evento){
 cerrarPopupAsistencia.addEventListener("click", function(){
     popupAsistencia.classList.remove('visible');
     popupAsistencia.classList.add('oculto');
-    window.location.href = window.location.href;
-    console.log("Prueba");
 });
 
 //***********************************************************************************************************************/
@@ -97,13 +94,48 @@ cerrarPopupAsistencia.addEventListener("click", function(){
 const botonAbrirPopupAmigo = document.getElementById('llevo-un-amigo');
 const popupAmigo = document.getElementById('popup-amigo');
 const botonCancelarPopupAmigo = document.getElementById('boton-Cancelar-Popup-Amigo');
+const formLlevoAmigo = document.getElementById('form-llevo-amigo');
 
 botonAbrirPopupAmigo.addEventListener("click", function() {
     popupAmigo.classList.remove('oculto');
     popupAmigo.classList.add('visible-flex');
-})
+});
 
 botonCancelarPopupAmigo.addEventListener("click", function() {
     popupAmigo.classList.remove('visible-flex');
     popupAmigo.classList.add('oculto');
-})
+});
+
+formLlevoAmigo.addEventListener("submit", function(evento) {
+    
+    evento.preventDefault();
+
+    const datosDelFormularioLlevoUnAmigo = new FormData(formLlevoAmigo);
+
+    if (evento.submitter && evento.submitter.name) {
+        datosDelFormularioLlevoUnAmigo.append(evento.submitter.name, evento.submitter.vale);
+    }
+
+    fetch("asistencia-amigo.php", {
+        method: "POST",
+        body: datosDelFormularioLlevoUnAmigo
+    })
+    .then(respuestaServer => respuestaServer.text())
+    .then(respuestaParaNavegador => {
+        popupAmigo.classList.add('oculto');
+        popupAmigo.classList.remove('visible');
+        mensajePopupAsistencia.textContent = "Amigo Registrado con éxito";
+        popupAltaConvocatoria.classList.remove('oculto');
+        popupAltaConvocatoria.classList.add('visible');
+
+    })
+    .catch(error => {
+        mensajePopupAsistencia.textContent = "Error al enviar datos";
+        console.log(error);
+        popupAsistencia.classList.remove('oculto');
+        popupAsistencia.classList.add('visible');
+    });
+});
+
+
+

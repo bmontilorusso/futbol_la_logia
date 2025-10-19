@@ -237,27 +237,21 @@
 
                 <!-- Llevo un amigo: -->
                 <div class="popUp-convocatoria ventana-convocatoria oculto" id="popup-amigo">
-                    <form action="" class="invitar-amigo">
+                    <form class="invitar-amigo" method="POST" action="asistencia-amigo.php" id="form-llevo-amigo">
                         <h2>Ingresar a un amigo</h2>
                         <label class="label" for="">Nombre o apodo del amigo (provisorio):</label>
                         <input class="input" name="nombreAmigo" type="text" placeholder="Nombre o apodo de tu amigo">
                         <label class="label" for="">Posición Principal</label>
-                        <select class="input" name="posicionPrincipalJugador" id="posicionPrincipalJugador" required>
-                                <option disabled selected>-Seleccione una opción-</option>
-                            <?php foreach($posiciones as $posicion): ?>
-                                <option value=" <?= $posicion['ID_POSICION']; ?>"> <?= $posicion['DETALLE']; ?> </option>
-                            <?php endforeach; ?>
-                        </select>
-                        <label class="label" for="">Posición Alternativa</label>
-                        <select class="input" name="posicionAlternativaJugador" id="posicionAlternativaJugador">
+                        <select class="input" name="posicionPrincipalAmigo" id="posicionPrincipalAmigo" required>
                                 <option disabled selected>-Seleccione una opción-</option>
                             <?php foreach($posiciones as $posicion): ?>
                                 <option value=" <?= $posicion['ID_POSICION']; ?>"> <?= $posicion['DETALLE']; ?> </option>
                             <?php endforeach; ?>
                         </select>
 
-                        <button class="boton boton-invitar-amigo" type="submit">Registrar amigo</button>
+                        <button class="boton boton-invitar-amigo" name="juega" value="SI" type="submit">Registrar amigo</button>
                         <button class="boton cancelar-invitar-amigo" id="boton-Cancelar-Popup-Amigo" type="button">Cancelar</button>
+
                     </form>
                 </div>
 
