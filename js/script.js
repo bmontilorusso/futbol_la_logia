@@ -99,11 +99,13 @@ const formLlevoAmigo = document.getElementById('form-llevo-amigo');
 botonAbrirPopupAmigo.addEventListener("click", function() {
     popupAmigo.classList.remove('oculto');
     popupAmigo.classList.add('visible-flex');
+    console.log('Se abrió el popUppara Agregar amigo!'); // Borrar luego.
 });
 
 botonCancelarPopupAmigo.addEventListener("click", function() {
     popupAmigo.classList.remove('visible-flex');
     popupAmigo.classList.add('oculto');
+    console.log('Se cerró el popUppara Agregar amigo!'); // Borrar luego.
 });
 
 formLlevoAmigo.addEventListener("submit", function(evento) {
@@ -112,8 +114,10 @@ formLlevoAmigo.addEventListener("submit", function(evento) {
 
     const datosDelFormularioLlevoUnAmigo = new FormData(formLlevoAmigo);
 
+    console.log("se guardaron los datos del form con éxito.");  // Borrar luego.
+
     if (evento.submitter && evento.submitter.name) {
-        datosDelFormularioLlevoUnAmigo.append(evento.submitter.name, evento.submitter.vale);
+        datosDelFormularioLlevoUnAmigo.append(evento.submitter.name, evento.submitter.value);
     }
 
     fetch("asistencia-amigo.php", {
@@ -123,17 +127,17 @@ formLlevoAmigo.addEventListener("submit", function(evento) {
     .then(respuestaServer => respuestaServer.text())
     .then(respuestaParaNavegador => {
         popupAmigo.classList.add('oculto');
-        popupAmigo.classList.remove('visible');
+        popupAmigo.classList.remove('visible-flex');
         mensajePopupAsistencia.textContent = "Amigo Registrado con éxito";
         popupAltaConvocatoria.classList.remove('oculto');
-        popupAltaConvocatoria.classList.add('visible');
+        popupAltaConvocatoria.classList.add('visible-flex');
 
     })
     .catch(error => {
         mensajePopupAsistencia.textContent = "Error al enviar datos";
         console.log(error);
         popupAsistencia.classList.remove('oculto');
-        popupAsistencia.classList.add('visible');
+        popupAsistencia.classList.add('visible-flex');
     });
 });
 

@@ -237,7 +237,7 @@
 
                 <!-- Llevo un amigo: -->
                 <div class="popUp-convocatoria ventana-convocatoria oculto" id="popup-amigo">
-                    <form class="invitar-amigo" method="POST" action="asistencia-amigo.php" id="form-llevo-amigo">
+                    <form class="invitar-amigo" id="form-llevo-amigo">
                         <h2>Ingresar a un amigo</h2>
                         <label class="label" for="">Nombre o apodo del amigo (provisorio):</label>
                         <input class="input" name="nombreAmigo" type="text" placeholder="Nombre o apodo de tu amigo">
