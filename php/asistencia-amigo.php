@@ -12,8 +12,6 @@ $posicionPrincipalAmigo = $_POST['posicionPrincipalAmigo'];
 $idUsuario = $_SESSION['ID_USUARIO'];
 $juega = $_POST['juega'];
 
-var_dump($_POST);
-
 // Inserción en Tabla JUGADORES y retorno de datos:
 $sql = "INSERT INTO JUGADORES (NOMBRE, APELLIDO, ID_POSICION_PRINCIPAL, TIENE USUARIO, ID_USUARIO_ALTA) VALUES ('$nombreAmigo', '(Amigo de $nombreUsuario)', $posicionPrincipalAmigo, 'NO', $idUsuario);";
 $resultado = mysqli_query($conn, $sql);
