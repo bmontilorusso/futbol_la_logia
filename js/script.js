@@ -127,10 +127,10 @@ formLlevoAmigo.addEventListener("submit", function(evento) {
     .then(respuestaServer => respuestaServer.text())
     .then(respuestaParaNavegador => {
         popupAmigo.classList.add('oculto');
-        popupAmigo.classList.remove('visible-flex');
-        mensajePopupAsistencia.textContent = "Amigo Registrado con éxito";
-        popupAltaConvocatoria.classList.remove('oculto');
-        popupAltaConvocatoria.classList.add('visible-flex');
+        popupAmigo.classList.remove('visible-flex');        
+        popupAsistencia.classList.remove('oculto');
+        popupAsistencia.classList.add('visible-flex');
+        mensajePopupAsistencia.textContent = respuestaParaNavegador;
 
     })
     .catch(error => {

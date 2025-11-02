@@ -9,11 +9,11 @@ include('conexion_db.php');
 $nombreAmigo = $_POST['nombreAmigo'];
 $nombreUsuario = $_SESSION['nombre'];
 $posicionPrincipalAmigo = $_POST['posicionPrincipalAmigo'];
-$idUsuario = $_SESSION['ID_USUARIO'];
+$idUsuario = $_SESSION['id_usuario'];
 $juega = $_POST['juega'];
 
 // Inserción en Tabla JUGADORES y retorno de datos:
-$sql = "INSERT INTO JUGADORES (NOMBRE, APELLIDO, ID_POSICION_PRINCIPAL, TIENE USUARIO, ID_USUARIO_ALTA) VALUES ('$nombreAmigo', '(Amigo de $nombreUsuario)', $posicionPrincipalAmigo, 'NO', $idUsuario);";
+$sql = "INSERT INTO JUGADORES (NOMBRE, APELLIDO, ID_POSICION_PRINCIPAL, TIENE_USUARIO, ID_USUARIO_ALTA) VALUES ('$nombreAmigo', '(Amigo de " . $nombreUsuario . ")', $posicionPrincipalAmigo, 'NO', $idUsuario);";
 $resultado = mysqli_query($conn, $sql);
 
 $sqlAmigoJugadorNuevo = "Select ID_JUGADOR from JUGADORES Where ID_USUARIO_ALTA = $idUsuario ORDER BY ID_JUGADOR DESC LIMIT 1;";
@@ -22,7 +22,7 @@ $filaResltadoAmigoJugadorNuevo = mysqli_fetch_assoc($resultadoAmigoJugadorNuevo)
 $idJugadorAmigo = $filaResltadoAmigoJugadorNuevo['ID_JUGADOR'];
 
 // Traer los datos del partido:
-$sqlPartido = "Select * from VISTA_PARTIDO Where ID_ESTADO_PARTIDO = 2;";
+$sqlPartido = "Select * from VISTA_PARTIDOS Where ID_ESTADO_PARTIDO = 2;";
 $resultadoPartido = mysqli_query($conn, $sqlPartido);
 $filaResultadoPartido = mysqli_fetch_assoc($resultadoPartido);
 $idPartido = $filaResultadoPartido['ID_PARTIDO'];
