@@ -223,8 +223,8 @@
                         <div class="pie-cabeza-ventana-convocatoria">
                             <button type="submit" name="juega" value="SI" class="boton">Confirmo Asistencia</button>
                             <button type="submit" name="juega" value="NO" class="boton">No voy</button>
-                            <button id="llevo-un-amigo" class="boton">Llevo un amigo</button>                            
-                            <button id="me-bajo" class="boton">Me bajo</button>
+                            <button id="llevo-un-amigo" class="boton" type="button">Llevo un amigo</button>                            
+                            <button id="me-bajo" class="boton" type="button">Me bajo</button>
                         </div>
 
                     </form>
@@ -259,7 +259,7 @@
                 <div class="popUp-convocatoria ventana-convocatoria oculto" id="popup-baja">
                     <form class="invitar-amigo" id="form-baja">
                         <h2>Conrirmá: ¿Te querés dar de baja?</h2>
-                        <button class="boton boton-invitar-amigo" id="boton-confirmar-baja" type="submit">Si, confirmo BAJA</button>
+                        <button class="boton boton-invitar-amigo" id="boton-confirmar-baja" type="button">Si, confirmo BAJA</button>
                         <button class="boton cancelar-invitar-amigo" id="boton-cancelar-baja" type="button">Cancelar</button>
                     </form>
                 </div>

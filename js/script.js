@@ -131,7 +131,7 @@ formLlevoAmigo.addEventListener("submit", function(evento) {
     })
     .catch(error => {
         mensajePopupAsistencia.textContent = "Error al enviar datos";
-        console.log(error);
+        // console.log(error); Para debuggear.
         popupAsistencia.classList.remove('oculto');
         popupAsistencia.classList.add('visible-flex');
     });
@@ -155,5 +155,26 @@ botonMeBajo.addEventListener('click', function(){
 botonCancelarBaja.addEventListener('click', function(){
     popupBaja.classList.remove('visible');
     popupBaja.classList.add('oculto');
+});
+
+botonConfirmarBaja.addEventListener('click', function() {
+
+    fetch('me-bajo.php') // Sin enviar datos del form (Sin Method ni body)
+        .then(respuestaServer => respuestaServer.text())
+        .then(respuestaParaNavegador => {
+            popupBaja.classList.remove('visible');
+            popupBaja.classList.add('oculto');
+            popupAsistencia.classList.remove('oculto');
+            popupAsistencia.classList.add('visible');
+            mensajePopupAsistencia.textContent = respuestaParaNavegador;
+            console.log(respuestaParaNavegador);
+
+        })
+        .catch(error => {
+            mensajePopupAsistencia.textContent = "Error al enviar datos! Pruebe nuevamente en unos segundos.";
+            // console.log(error); // Para debuggear.
+            popupAsistencia.classList.remove('oculto');
+            popupAsistencia.classList.add('visible-flex');
+    });
 });
 
