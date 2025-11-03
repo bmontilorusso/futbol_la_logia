@@ -99,13 +99,11 @@ const formLlevoAmigo = document.getElementById('form-llevo-amigo');
 botonAbrirPopupAmigo.addEventListener("click", function() {
     popupAmigo.classList.remove('oculto');
     popupAmigo.classList.add('visible-flex');
-    console.log('Se abrió el popUppara Agregar amigo!'); // Borrar luego.
 });
 
 botonCancelarPopupAmigo.addEventListener("click", function() {
     popupAmigo.classList.remove('visible-flex');
     popupAmigo.classList.add('oculto');
-    console.log('Se cerró el popUppara Agregar amigo!'); // Borrar luego.
 });
 
 formLlevoAmigo.addEventListener("submit", function(evento) {
@@ -113,8 +111,6 @@ formLlevoAmigo.addEventListener("submit", function(evento) {
     evento.preventDefault();
 
     const datosDelFormularioLlevoUnAmigo = new FormData(formLlevoAmigo);
-
-    console.log("se guardaron los datos del form con éxito.");  // Borrar luego.
 
     if (evento.submitter && evento.submitter.name) {
         datosDelFormularioLlevoUnAmigo.append(evento.submitter.name, evento.submitter.value);
@@ -141,5 +137,23 @@ formLlevoAmigo.addEventListener("submit", function(evento) {
     });
 });
 
+//***********************************************************************************************************************/
 
+// Bajarme del partido:
+
+const botonMeBajo = document.getElementById('me-bajo');
+const formBaja = document.getElementById('form-baja');
+const popupBaja = document.getElementById('popup-baja');
+const botonConfirmarBaja = document.getElementById('boton-confirmar-baja');
+const botonCancelarBaja = document.getElementById('boton-cancelar-baja');
+
+botonMeBajo.addEventListener('click', function(){
+    popupBaja.classList.remove('oculto');
+    popupBaja.classList.add('visible');
+});
+
+botonCancelarBaja.addEventListener('click', function(){
+    popupBaja.classList.remove('visible');
+    popupBaja.classList.add('oculto');
+});
 

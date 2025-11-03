@@ -41,8 +41,4 @@ if ($resultadoPartido) {
 }
 
 
-
-
-
-
 ?>
