@@ -6,6 +6,7 @@
         $tipoPartido = obtenerTipoPartido();
         $regiones = obtenerRegion();
         $posiciones = obtenerPosicion();
+        $motivosBajaJugador = obtenerMotivoBajaJugadores();
 
 ?>
 
@@ -260,6 +261,12 @@
                     <form class="invitar-amigo" id="form-baja">
                         <h2>Conrirmá: ¿Te querés dar de baja?</h2>
                         <button class="boton boton-invitar-amigo" id="boton-confirmar-baja" type="button">Si, confirmo BAJA</button>
+                        <select class="input" name="" id="" required>
+                                <option disabled selected>-Seleccione una opción-</option>
+                            <?php foreach($motivosBajaJugador as $motivoBajaJugador): ?>
+                                <option value=" <?= $motivoBajaJugador['ID_MOTIVO_BAJA_JUGADOR']; ?>"> <?= $motivoBajaJugador['DETALLE']; ?> </option>
+                                <?php endforeach; ?>
+                        </select>
                         <button class="boton cancelar-invitar-amigo" id="boton-cancelar-baja" type="button">Cancelar</button>
                     </form>
                 </div>
