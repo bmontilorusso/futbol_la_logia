@@ -30,6 +30,7 @@ $juega = $_POST['juega'];
 $sqlPartidosJugadores = "Select * from VISTA_PARTIDOS_JUGADORES Where ID_JUGADOR = $idJugador AND ID_PARTIDO = $idPartido;";
 $resultadoPartidosJugadores = mysqli_query($conn, $sqlPartidosJugadores);
 $filaPartidosJugadores = mysqli_fetch_assoc($resultadoPartidosJugadores);
+$inscripcionPrevia = $filaPartidosJugadores['JUEGA'];
 
 // Validación de Jugadores anotados hasta el momento:
 $sqlJugadoresAnotados = "Select * from PARTIDOS_JUGADORES Where ID_PARTIDO = $idPartido AND JUEGA = 'SI';";
@@ -41,25 +42,42 @@ if ($cantidadResultadoJugadoresAnotados >= $maxJugadores) {
     echo "Ya no quedan lugares";
 
 } else {
-
-    if ($filaPartidosJugadores) {
-
-    // El jugadore NO SE TIENE QUE PODER INGRESAR!
-    echo "El jugador ya está registrado.";
-
-    } else {
     
-    // CONFIRMACIÓN DE ASISTENCIA:
-    // Creación de Querys:
-    $sql = "INSERT INTO PARTIDOS_JUGADORES (ID_PARTIDO, ID_JUGADOR, JUEGA) VALUES ($idPartido, $idJugador, '$juega');";
-    $resultado = mysqli_query($conn, $sql);
-    // Validación del éxito:
-    if ($resultado) {
-        echo "Éxito al confirmar asistencia";
+    if ($inscripcionPrevia == 'NO') {
+
+        // Para cuando el jugador estuvo inscripto pero se bajó:
+        $sql = "UPDATE PARTIDOS_JUGADORES SET JUEGA = 'SI' WHERE ID_JUGADOR = $idJugador AND ID_PARTIDO = $idPartido;";
+        $resultado = mysqli_query($conn, $sql);
+
+        if ($resultado) {
+            echo "Éxito al re-confirmar asistencia";
+        } else {
+            echo "Error al intentar re-confirmar asistencia. Error:" . mysqli_error($conn);
+        }
+
     } else {
-        echo "Error al intentar confirmar asistencia. Error:" . mysqli_error($conn);
-    }
-}
+
+        if ($inscripcionPrevia == 'SI') {
+
+            // El jugadore NO SE TIENE QUE PODER INGRESAR!
+            echo "El jugador ya está registrado.";
+
+        } else {
+        
+            // CONFIRMACIÓN DE ASISTENCIA:
+            // Creación de Querys:
+            $sql = "INSERT INTO PARTIDOS_JUGADORES (ID_PARTIDO, ID_JUGADOR, JUEGA) VALUES ($idPartido, $idJugador, '$juega');";
+            $resultado = mysqli_query($conn, $sql);
+            // Validación del éxito:
+            if ($resultado) {
+                echo "Éxito al confirmar asistencia";
+            } else {
+                echo "Error al intentar confirmar asistencia. Error:" . mysqli_error($conn);
+            }
+            
+        }
+
+    }    
 
 }
 
