@@ -11,7 +11,7 @@ function obtenerEstadios() {
     global $conn; // Si no la declaramos como global, la función no la "trae"
     $sql = "Select * from ESTADIOS order by NOMBRE ASC;";
     $resultado = mysqli_query($conn, $sql);
-    $estadiosListado = [];
+    $estadiosListado = []; // Creo un array vacío.
     // Bucle While para ir llenando el Array EstadiosListado:
     while($filaEstadios = mysqli_fetch_assoc($resultado)) {
         $estadiosListado[] = $filaEstadios; // Agrego el último estadio a cada iteración.
@@ -54,6 +54,18 @@ function obtenerPosicion() {
         $posicionesListado[] = $filaPosiciones;
     }
     return $posicionesListado;
+}
+
+// Motivo de baja de Jugadores:
+function obtenerMotivoBajaJugadores() {
+    global $conn;
+    $sql = "Select * from MOTIVO_BAJA_JUGADOR;";
+    $restulado = mysqli_query($conn, $sql);
+    $motivoBajaListado = [];
+    while($filaMotivosBaja = mysqli_fetch_assoc($restulado)) {
+        $motivoBajaListado[] = $filaMotivosBaja; 
+    }
+    return $motivoBajaListado;
 }
 
 
