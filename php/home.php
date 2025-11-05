@@ -189,37 +189,61 @@
                         <h2>Confirmados (<?php echo $cantidadJugadoresConvocados . "/" . $fila['LIMITE DE JUGADORES']; ?>)</h2>
                         <div class="grilla-jugadores-convocados">
                             <?php while ($filaResultadoJugadoresConvocados = mysqli_fetch_assoc($resultadoJugadoresConvocados)):?>
-                            <div class="nombre-pos-grilla-convocados">
-                                <p><?php echo $filaResultadoJugadoresConvocados['NOMBRE'] . " " . $filaResultadoJugadoresConvocados['APELLIDO']; ?></p>
-                                <?php
-                                    $clasePOS = '';
-                                    switch($filaResultadoJugadoresConvocados['POS_PRINCIPAL']) {
-                                        case 'POR':
-                                            $clasePOS = "color-por";
-                                            break;
-                                        case 'DEF':
-                                            $clasePOS = "color-def";
-                                            break;
-                                        case 'MED':
-                                            $clasePOS = "color-med";
-                                            break;
-                                        case 'DEL':
-                                            $clasePOS = "color-del";
-                                            break;
-                                        default:
-                                            $clasePOS = "color-por";
-                                            break;                                            
-                                    }
-                                ?>
-                                <p class="posicion-grilla <?php echo $clasePOS ?>"><?php echo $filaResultadoJugadoresConvocados['POS_PRINCIPAL']; ?></p>
-                            </div>
-                        <?php endwhile; ?>
+                                <div class="nombre-pos-grilla-convocados">
+                                    <p><?php echo $filaResultadoJugadoresConvocados['NOMBRE'] . " " . $filaResultadoJugadoresConvocados['APELLIDO']; ?></p>
+                                    <?php
+                                        $clasePOS = '';
+                                        switch($filaResultadoJugadoresConvocados['POS_PRINCIPAL']) {
+                                            case 'POR':
+                                                $clasePOS = "color-por";
+                                                break;
+                                            case 'DEF':
+                                                $clasePOS = "color-def";
+                                                break;
+                                            case 'MED':
+                                                $clasePOS = "color-med";
+                                                break;
+                                            case 'DEL':
+                                                $clasePOS = "color-del";
+                                                break;
+                                            default:
+                                                $clasePOS = "color-por";
+                                                break;                                            
+                                        }
+                                    ?>
+                                    <p class="posicion-grilla <?php echo $clasePOS ?>"><?php echo $filaResultadoJugadoresConvocados['POS_PRINCIPAL']; ?></p>
+                                </div>
+                            <?php endwhile; ?>
                         </div>
                         <h2>OUT</h2>
-                        <div class="grilla-jugadores-convocados">
+                        <div class="grilla-jugadores-out">
                             <?php while ($filaResultadoJugadoresOut = mysqli_fetch_assoc($resultadoJugadoresOut)):?>
-                            <p><?php echo $filaResultadoJugadoresOut['NOMBRE'] . " " . $filaResultadoJugadoresOut['APELLIDO']; ?></p>
-                        <?php endwhile; ?>
+                                <div class="nombre-pos-grilla-out">
+                                    <p><?php echo $filaResultadoJugadoresOut['NOMBRE'] . " " . $filaResultadoJugadoresOut['APELLIDO']; ?></p>
+                                    <?php
+                                        $clasePOS = '';
+                                        switch($filaResultadoJugadoresOut['POS_PRINCIPAL']) {
+                                            case 'POR':
+                                                $clasePOS = "color-por";
+                                                break;
+                                            case 'DEF':
+                                                $clasePOS = "color-def";
+                                                break;
+                                            case 'MED':
+                                                $clasePOS = "color-med";
+                                                break;
+                                            case 'DEL':
+                                                $clasePOS = "color-del";
+                                                break;
+                                            default:
+                                                $clasePOS = "color-por";
+                                                break;                                            
+                                        }
+                                    ?>
+                                    <p class="posicion-grilla <?php echo $clasePOS ?>"><?php echo $filaResultadoJugadoresOut['POS_PRINCIPAL']; ?></p>
+                                </div>
+                            <?php endwhile; ?>
+                        </div>
 
                         <div class="pie-cabeza-ventana-convocatoria">
                             <button type="submit" name="juega" value="SI" class="boton">Confirmo Asistencia</button>

@@ -273,7 +273,8 @@ h1, h2 {
     background-color: var(--beige); 
 }
 
-.grilla-jugadores-convocados {
+.grilla-jugadores-convocados,
+.grilla-jugadores-out {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     border-radius: .5rem;
@@ -302,7 +303,8 @@ h1, h2 {
     color: var(--verdeOscuro);
 }
 
-.nombre-pos-grilla-convocados {
+.nombre-pos-grilla-convocados,
+.nombre-pos-grilla-out {
     display: flex;
     flex-direction: row;
     background-color: var(--beige);
