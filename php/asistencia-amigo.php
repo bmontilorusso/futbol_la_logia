@@ -22,22 +22,34 @@ $filaResltadoAmigoJugadorNuevo = mysqli_fetch_assoc($resultadoAmigoJugadorNuevo)
 $idJugadorAmigo = $filaResltadoAmigoJugadorNuevo['ID_JUGADOR'];
 
 // Traer los datos del partido:
-$sqlPartido = "Select * from VISTA_PARTIDOS Where ID_ESTADO_PARTIDO = 2;";
+$sqlPartido = "Select * from PARTIDOS Where ID_ESTADO_PARTIDO = 2;";
 $resultadoPartido = mysqli_query($conn, $sqlPartido);
 $filaResultadoPartido = mysqli_fetch_assoc($resultadoPartido);
 $idPartido = $filaResultadoPartido['ID_PARTIDO'];
+$maxJugadores = $filaResultadoPartido['MAX_JUGADORES'];
 
-// Inserción en la Tabla PARTIDOS_JUGADORES:
-$sqlPartido = "INSERT INTO PARTIDOS_JUGADORES (ID_PARTIDO, ID_JUGADOR, JUEGA) VALUES ($idPartido, $idJugadorAmigo, '$juega');";
-$resultadoPartido = mysqli_query($conn, $sqlPartido);
+// Consultar cuántos jugadores hay anotados:
+$sqlJugadoresAnotados = "Select * FROM PARTIDOS_JUGADORES Where ID_PARTIDO = $idPartido AND JUEGA = 'SI';";
+$resultadoJugadoresAnotados = mysqli_query($conn, $sqlJugadoresAnotados);
+$cantidadResultadoJugadoresAnotados = mysqli_num_rows($resultadoJugadoresAnotados);
 
-
-
-// Validación del éxito:
-if ($resultadoPartido) {
-    echo "Éxito al confirmar a tu amigo!";
+if ($cantidadResultadoJugadoresAnotados >= $maxJugadores) {
+    echo "Ya no hay lugares";
+    echo "límite: " . $maxJugadores;
+    echo "Jugadores anotados hasta ahora: " . $cantidadResultadoJugadoresAnotados;
 } else {
-    echo "Error al intentar confirmar asistencia. Error:" . mysqli_error($conn);
+
+    // Inserción en la Tabla PARTIDOS_JUGADORES:
+    $sqlPartido = "INSERT INTO PARTIDOS_JUGADORES (ID_PARTIDO, ID_JUGADOR, JUEGA) VALUES ($idPartido, $idJugadorAmigo, '$juega');";
+    $resultadoPartido = mysqli_query($conn, $sqlPartido);
+
+    // Validación del éxito:
+    if ($resultadoPartido) {
+        echo "Éxito al confirmar a tu amigo!";
+    } else {
+        echo "Error al intentar confirmar asistencia. Error:" . mysqli_error($conn);
+}
+
 }
 
 
