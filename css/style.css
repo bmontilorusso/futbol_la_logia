@@ -33,6 +33,10 @@
     --negroPuro: black;
     /* Tipografías: */
     --tipografiaPrincipal: "Rubik", sans-serif;
+    /* Botones deshabilitados: */
+    --grisClaro: #E5E5E5;    /* Fondo suave, casi beige */
+    --grisMedio: #C4C4C4;    /* Texto o borde del botón inactivo */
+    --grisOscuro: #9B9B9B;   /* Para más de contraste */
 }
 
 * {
@@ -147,6 +151,19 @@ h1, h2 {
     text-transform: uppercase;
     font-weight: bold;
     cursor: pointer;
+    margin: 3rem;    
+}
+.boton-disabled  {
+    background-color: var(--grisOscuro);
+    border-radius: .5rem;
+    border: .4rem solid var(--verdeClaro);
+    outline: .2rem solid var(--negroPuro);
+    padding: 1.5rem 2rem;
+    width: auto;
+    color: var(--beige);
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: default;
     margin: 3rem;    
 }
 

@@ -46,6 +46,8 @@ const formularioAsistencia = document.getElementById('formulario-asistencia');
 const popupAsistencia = document.getElementById('popupAsistencia');
 const mensajePopupAsistencia = document.getElementById('mensaje-popup-asistencia');
 const cerrarPopupAsistencia = document.getElementById('boton-cerrar-asistencia');
+const botonConfirmoAsistencia = document.getElementById("confirmo-asistencia");
+const botonNoVoy = document.getElementById("no-voy");
 
 formularioAsistencia.addEventListener("submit", function(evento){
     
@@ -73,6 +75,13 @@ formularioAsistencia.addEventListener("submit", function(evento){
         popupAsistencia.classList.remove('oculto');
         popupAsistencia.classList.add('visible');
         formularioAsistencia.reset();
+        botonConfirmoAsistencia.classList.add('boton-disabled');
+        botonConfirmoAsistencia.classList.remove('boton');
+        botonConfirmoAsistencia.disabled = true;
+        botonNoVoy.classList.add('boton-disabled');
+        botonNoVoy.classList.remove('boton');
+        botonNoVoy.disabled = true;
+
     })
     .catch(error => {
         mensajePopupAsistencia.textContent = "Error al enviar datos";
