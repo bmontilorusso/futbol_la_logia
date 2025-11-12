@@ -294,6 +294,14 @@
                         <button class="boton cancelar-invitar-amigo" id="boton-cancelar-baja" type="button">Cancelar</button>
                     </form>
                 </div>
+
+                <!-- Armar equipos: -->
+                <div class="popUp-convocatoria ventana-convocatoria">
+                    <h2>Armar equipos:</h2>
+                    <button class="boton">Full Random</button>
+                    <button class="boton">Random + POS</button>
+                    <button class="boton">Random + POS + VAL</button>
+                </div>
                 
                 <!-- PopUp final (notificación) -->
                 <div class="popUp-convocatoria oculto ventana-convocatoria" id="popupAsistencia">
