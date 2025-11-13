@@ -13,6 +13,13 @@ $idPartidoActivo = $filaPartidoActivo['ID_PARTIDO'];
 // Traer lista de convocados:
 $sqlConvocados = "Select * from PARTIDOS_JUGADORES Where ID_PARTIDO = $idPartidoActivo;";
 $resultadoConvocados = mysqli_query($conn, $sqlConvocados);
+$listadoConvocados = [];
+
+while ($filaConvocados = mysqli_fetch_assoc($resultadoConvocados)) {
+    $listadoConvocados[] = $filaConvocados;
+};
+
+
 
 
 

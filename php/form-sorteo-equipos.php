@@ -30,7 +30,7 @@
             <!-- Armar equipos: -->
             <header class="header">
                 <h1>Armar equipos:</h1>
-            </header>            
+            </header>
             <div class="botonera-home">
                 <button class="boton">Full Random</button>
                 <button class="boton">Random + POS</button>
