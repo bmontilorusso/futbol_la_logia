@@ -187,6 +187,7 @@
                             $cantidadJugadoresConvocados = mysqli_num_rows($resultadoJugadoresConvocados);                        
                         ?>
                         <h2>Confirmados (<?php echo $cantidadJugadoresConvocados . "/" . $fila['LIMITE DE JUGADORES']; ?>)</h2>
+                        
                         <div class="grilla-jugadores-convocados">
                             <?php while ($filaResultadoJugadoresConvocados = mysqli_fetch_assoc($resultadoJugadoresConvocados)):?>
                                 <div class="nombre-pos-grilla-convocados">
@@ -244,6 +245,8 @@
                                 </div>
                             <?php endwhile; ?>
                         </div>
+                        
+                        <button type="button" onclick="window.location.href='sorteo-equipos.php'" class="boton">Armar equipos</button>
 
                         <div class="pie-cabeza-ventana-convocatoria">
                             <button id="confirmo-asistencia" type="submit" name="juega" value="SI" class="boton">Confirmo Asistencia</button>
@@ -293,14 +296,6 @@
                         </select>
                         <button class="boton cancelar-invitar-amigo" id="boton-cancelar-baja" type="button">Cancelar</button>
                     </form>
-                </div>
-
-                <!-- Armar equipos: -->
-                <div class="popUp-convocatoria ventana-convocatoria">
-                    <h2>Armar equipos:</h2>
-                    <button class="boton">Full Random</button>
-                    <button class="boton">Random + POS</button>
-                    <button class="boton">Random + POS + VAL</button>
                 </div>
                 
                 <!-- PopUp final (notificación) -->
