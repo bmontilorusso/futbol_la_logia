@@ -247,6 +247,7 @@
                         </div>
                         
                         <button type="button" onclick="window.location.href='sorteo-equipos.php'" class="boton">Armar equipos</button>
+                        <button type="button" class="boton">Cerrar Partido</button>
 
                         <div class="pie-cabeza-ventana-convocatoria">
                             <button id="confirmo-asistencia" type="submit" name="juega" value="SI" class="boton">Confirmo Asistencia</button>
