@@ -12,6 +12,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,11 +21,13 @@
     <link rel="icon" type="img/png" href="../img/ico/favicon-32x32.png">
     <link rel="preload" href="../css/style.css" as="style">
     <link rel="stylesheet" href="../css/normalize.css" as="style">
-    <link rel="stylesheet" href="../css/style.css" as="style">    
+    <link rel="stylesheet" href="../css/style.css" as="style">
     <!-- Conexiones Externas: -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -38,7 +41,7 @@
 
         <main class="main">
 
-            <div class="ventana-convocatoria">
+            <div class="ventana-convocatoria oculto">
                 <div class="pie-cabeza-ventana-convocatoria">
                     <h2 class="titulo-convocatoria">Próximo Partido</h2>
                 </div>
@@ -46,18 +49,20 @@
                 <!-- SECCIÓN ABRIR CONVOCATORIAS -->
                 <form class="formulario-convocatoria" id="formulario-convocatoria">
                     <div class="campos-convocatoria">
-                        
+
                         <label class="label" for="fecha">Fecha</label>
-                        <input class="input" type="date" placeholder="Fecha" name="fecha" id="fecha" autocomplete="off" required>
+                        <input class="input" type="date" placeholder="Fecha" name="fecha" id="fecha" autocomplete="off"
+                            required>
 
                         <label class="label" for="hora">hora</label>
-                        <input class="input" name="hora" type="time" value="22:00" ide="hora" autocomplete="off" required>
+                        <input class="input" name="hora" type="time" value="22:00" ide="hora" autocomplete="off"
+                            required>
 
                         <label class="label" for="estadio">Estadio</label>
                         <select class="input" name="estadio" id="estadio" required>
                             <option disabled selected>-Seleccione un Estadio-</option>
                             <?php foreach($estadios as $estadio):?>
-                                <option value="<?= $estadio['ID_ESTADIO']; ?>"> <?= $estadio['NOMBRE']; ?> </option>
+                            <option value="<?= $estadio['ID_ESTADIO']; ?>"> <?= $estadio['NOMBRE']; ?> </option>
                             <?php endforeach; ?>
                         </select>
 
@@ -65,7 +70,7 @@
                         <select class="input" name="tipo-partido" id="tipoPartido">
                             <option disabled selected>-Tipo de Partido-</option>
                             <?php foreach($tipoPartido as $tipo): ?>
-                                <option value="<?= $tipo['ID_TIPO_PARTIDO']; ?>"> <?= $tipo['DETALLE']; ?> </option>
+                            <option value="<?= $tipo['ID_TIPO_PARTIDO']; ?>"> <?= $tipo['DETALLE']; ?> </option>
                             <?php endforeach; ?>
                         </select>
 
@@ -87,24 +92,26 @@
                     <button type="button" id="boton-cerrar-convocatoria" class="boton">Cerrar</button>
                 </div>
 
-                
+
             </div> <!-- FIN Sección Abrir Convocatorias -->
-            
+
             <!-- FORMULARIO DE ALTA DE JUGADORES -->
             <form class="formulario-alta-jugadores visible" action="alta-jugador.php" method="POST">
                 <div class="campos-alta-jugador">
 
                     <label class="label" for="nombreJugador">Nombre</label>
-                    <input class="input" type="text" placeholder="Nombre del jugador" name="nombreJugador" id="nombreJugador" autocomplete="off" required>
+                    <input class="input" type="text" placeholder="Nombre del jugador" name="nombreJugador"
+                        id="nombreJugador" autocomplete="off" required>
 
                     <label class="label" for="apellidoJugador">Apellido</label>
-                    <input class="input" type="text" placeholder="Apellido del jugador" name="apellidoJugador" id="apellidoJugador" autocomplete="off" required>
+                    <input class="input" type="text" placeholder="Apellido del jugador" name="apellidoJugador"
+                        id="apellidoJugador" autocomplete="off" required>
 
                     <label class="label" for="regionOrigenJugador">Región de origen</label>
                     <select class="input" name="regionOrigenJugador" id="regionOrigenJugador" required>
                         <option disabled selected>-Seleccione una opción-</option>
                         <?php foreach($regiones as $region): ?>
-                            <option value=" <?= $region['ID_REGION']; ?> "> <?= $region['DETALLE']; ?> </option>
+                        <option value=" <?= $region['ID_REGION']; ?> "> <?= $region['DETALLE']; ?> </option>
                         <?php endforeach; ?>
                     </select>
 
@@ -112,7 +119,7 @@
                     <select class="input" name="posicionPrincipalJugador" id="posicionPrincipalJugador" required>
                         <option disabled selected>-Seleccione una opción-</option>
                         <?php foreach($posiciones as $posicion): ?>
-                            <option value=" <?= $posicion['ID_POSICION']; ?>"> <?= $posicion['DETALLE']; ?> </option>
+                        <option value=" <?= $posicion['ID_POSICION']; ?>"> <?= $posicion['DETALLE']; ?> </option>
                         <?php endforeach; ?>
                     </select>
 
@@ -120,12 +127,12 @@
                     <select class="input" name="posicionAlternativaJugador" id="posicionAlternativaJugador">
                         <option disabled selected>-Seleccione una opción-</option>
                         <?php foreach($posiciones as $posicion): ?>
-                            <option value=" <?= $posicion['ID_POSICION']; ?>"> <?= $posicion['DETALLE']; ?> </option>
+                        <option value=" <?= $posicion['ID_POSICION']; ?>"> <?= $posicion['DETALLE']; ?> </option>
                         <?php endforeach; ?>
                     </select>
 
                     <button type="submit" class="boton">Registrar jugador</button>
-                    
+
                 </div>
             </form> <!-- FIN Sección Alta de Jugadores -->
 
@@ -133,15 +140,20 @@
             <form action="">
                 <div class="campos-alta-usuario">
                     <label class="label" for="nombreJugador">Nombre</label>
-                    <input class="input" type="text" placeholder="Ingrese un nombre" name="nombreUsuario"autocomplete="off" required>
+                    <input class="input" type="text" placeholder="Ingrese un nombre" name="nombreUsuario"
+                        autocomplete="off" required>
                     <label class="label" for="apellido">Apellido</label>
-                    <input class="input" type="text" placeholder="Nombre el apellido" name="apellidoUsuario" autocomplete="off" required>
+                    <input class="input" type="text" placeholder="Nombre el apellido" name="apellidoUsuario"
+                        autocomplete="off" required>
                     <label class="label" for="usuario">Username (Nombre de usuario)</label>
-                    <input class="input" type="text" placeholder="Elija un nombre de usuario" name="usuario" autocomplete="off" required>
+                    <input class="input" type="text" placeholder="Elija un nombre de usuario" name="usuario"
+                        autocomplete="off" required>
                     <label class="label" for="pass">Contraseña</label>
-                    <input class="input" type="text" placeholder="Elija una contraseña" name="pass1" autocomplete="off" required>
+                    <input class="input" type="text" placeholder="Elija una contraseña" name="pass1" autocomplete="off"
+                        required>
                     <label class="label" for="pass">Confirme Contraseña</label>
-                    <input class="input" type="text" placeholder="Confirme la contraseña" name="pass2" autocomplete="off" required>
+                    <input class="input" type="text" placeholder="Confirme la contraseña" name="pass2"
+                        autocomplete="off" required>
                     <label class="label" for="pass">Vincular usuario a Jugador</label>
                     <select class="input" name="" id="">
                         <option disabled selected>-Seleccione un jugador-</option>
@@ -164,35 +176,37 @@
                 <div class="pie-cabeza-ventana-convocatoria">
                     <h2 class="titulo-convocatoria">Próximo Partido</h2>
                 </div>
-                
+
                 <?php if ($fila): ?>
-                    <form class="formulario-convocatoria-activa" id="formulario-asistencia">
+                <form class="formulario-convocatoria-activa" id="formulario-asistencia">
 
-                        <div class="campos-convocatoria">
+                    <div class="campos-convocatoria">
 
-                            <div class="info-proximo-partido visible">
-                                
-                                <p>Fecha y HORA: <?php echo $fila['FECHA'] . $fila['HORA']; ?></p>
-                                <p>Estadio: <?php echo $fila['ESTADIO']; ?> </p>
-                            </div>
+                        <div class="info-proximo-partido visible">
 
+                            <p>Fecha y HORA: <?php echo $fila['FECHA'] . $fila['HORA']; ?></p>
+                            <p>Estadio: <?php echo $fila['ESTADIO']; ?> </p>
                         </div>
 
-                        <?php
-                            $idPartidoActivo = $fila['ID_PARTIDO'];
-                            $sqlJugadoresConvocados = "Select * from VISTA_PARTIDOS_JUGADORES Where ID_PARTIDO = $idPartidoActivo AND JUEGA = 'SI';";
-                            $resultadoJugadoresConvocados = mysqli_query($conn, $sqlJugadoresConvocados);
-                            $sqlJugadoresOut = "Select * from VISTA_PARTIDOS_JUGADORES Where ID_PARTIDO = $idPartidoActivo AND JUEGA = 'NO';";
-                            $resultadoJugadoresOut = mysqli_query($conn, $sqlJugadoresOut);
-                            $cantidadJugadoresConvocados = mysqli_num_rows($resultadoJugadoresConvocados);                        
+                    </div>
+
+                    <?php
+                        $idPartidoActivo = $fila['ID_PARTIDO'];
+                        $sqlJugadoresConvocados = "Select * from VISTA_PARTIDOS_JUGADORES Where ID_PARTIDO = $idPartidoActivo AND JUEGA = 'SI';";
+                        $resultadoJugadoresConvocados = mysqli_query($conn, $sqlJugadoresConvocados);
+                        $sqlJugadoresOut = "Select * from VISTA_PARTIDOS_JUGADORES Where ID_PARTIDO = $idPartidoActivo AND JUEGA = 'NO';";
+                        $resultadoJugadoresOut = mysqli_query($conn, $sqlJugadoresOut);
+                        $cantidadJugadoresConvocados = mysqli_num_rows($resultadoJugadoresConvocados);                        
                         ?>
-                        <h2>Confirmados (<?php echo $cantidadJugadoresConvocados . "/" . $fila['LIMITE DE JUGADORES']; ?>)</h2>
-                        
-                        <div class="grilla-jugadores-convocados">
-                            <?php while ($filaResultadoJugadoresConvocados = mysqli_fetch_assoc($resultadoJugadoresConvocados)):?>
-                                <div class="nombre-pos-grilla-convocados">
-                                    <p><?php echo $filaResultadoJugadoresConvocados['NOMBRE'] . " " . $filaResultadoJugadoresConvocados['APELLIDO']; ?></p>
-                                    <?php
+                    <h2>Confirmados (<?php echo $cantidadJugadoresConvocados . "/" . $fila['LIMITE DE JUGADORES']; ?>)
+                    </h2>
+
+                    <div class="grilla-jugadores-convocados">
+                        <?php while ($filaResultadoJugadoresConvocados = mysqli_fetch_assoc($resultadoJugadoresConvocados)):?>
+                        <div class="nombre-pos-grilla-convocados">
+                            <p><?php echo $filaResultadoJugadoresConvocados['NOMBRE'] . " " . $filaResultadoJugadoresConvocados['APELLIDO']; ?>
+                            </p>
+                            <?php
                                         $clasePOS = '';
                                         switch($filaResultadoJugadoresConvocados['POS_PRINCIPAL']) {
                                             case 'POR':
@@ -212,16 +226,18 @@
                                                 break;                                            
                                         }
                                     ?>
-                                    <p class="posicion-grilla <?php echo $clasePOS ?>"><?php echo $filaResultadoJugadoresConvocados['POS_PRINCIPAL']; ?></p>
-                                </div>
-                            <?php endwhile; ?>
+                            <p class="posicion-grilla <?php echo $clasePOS ?>">
+                                <?php echo $filaResultadoJugadoresConvocados['POS_PRINCIPAL']; ?></p>
                         </div>
-                        <h2>OUT</h2>
-                        <div class="grilla-jugadores-out">
-                            <?php while ($filaResultadoJugadoresOut = mysqli_fetch_assoc($resultadoJugadoresOut)):?>
-                                <div class="nombre-pos-grilla-out">
-                                    <p><?php echo $filaResultadoJugadoresOut['NOMBRE'] . " " . $filaResultadoJugadoresOut['APELLIDO']; ?></p>
-                                    <?php
+                        <?php endwhile; ?>
+                    </div>
+                    <h2>OUT</h2>
+                    <div class="grilla-jugadores-out">
+                        <?php while ($filaResultadoJugadoresOut = mysqli_fetch_assoc($resultadoJugadoresOut)):?>
+                        <div class="nombre-pos-grilla-out">
+                            <p><?php echo $filaResultadoJugadoresOut['NOMBRE'] . " " . $filaResultadoJugadoresOut['APELLIDO']; ?>
+                            </p>
+                            <?php
                                         $clasePOS = '';
                                         switch($filaResultadoJugadoresOut['POS_PRINCIPAL']) {
                                             case 'POR':
@@ -241,27 +257,30 @@
                                                 break;                                            
                                         }
                                     ?>
-                                    <p class="posicion-grilla <?php echo $clasePOS ?>"><?php echo $filaResultadoJugadoresOut['POS_PRINCIPAL']; ?></p>
-                                </div>
-                            <?php endwhile; ?>
+                            <p class="posicion-grilla <?php echo $clasePOS ?>">
+                                <?php echo $filaResultadoJugadoresOut['POS_PRINCIPAL']; ?></p>
                         </div>
-                        
-                        <button type="button" onclick="window.location.href='sorteo-equipos.php'" class="boton">Armar equipos</button>
-                        <button type="button" class="boton">Cerrar Partido</button>
-
-                        <div class="pie-cabeza-ventana-convocatoria">
-                            <button id="confirmo-asistencia" type="submit" name="juega" value="SI" class="boton">Confirmo Asistencia</button>
-                            <button id="no-voy" type="submit" name="juega" value="NO" class="boton">No voy</button>
-                            <button id="llevo-un-amigo" class="boton" type="button">Llevo un amigo</button>                            
-                            <button id="me-bajo" class="boton" type="button">Me bajo</button>
-                        </div>
-
-                    </form>
-                <?php else: ?>
-                    <p>No hay convocatoria activa aún.</p>
-                    <div class="pie-cabeza-ventana-convocatoria">
-                        <button class="boton">Abrir convocatoria ⚽</button>
+                        <?php endwhile; ?>
                     </div>
+
+                    <button type="button" onclick="window.location.href='sorteo-equipos.php'" class="boton">Armar
+                        equipos</button>
+                    <button type="button" class="boton">Cerrar Partido</button>
+
+                    <div class="pie-cabeza-ventana-convocatoria">
+                        <button id="confirmo-asistencia" type="submit" name="juega" value="SI" class="boton">Confirmo
+                            Asistencia</button>
+                        <button id="no-voy" type="submit" name="juega" value="NO" class="boton">No voy</button>
+                        <button id="llevo-un-amigo" class="boton" type="button">Llevo un amigo</button>
+                        <button id="me-bajo" class="boton" type="button">Me bajo</button>
+                    </div>
+
+                </form>
+                <?php else: ?>
+                <p>No hay convocatoria activa aún.</p>
+                <div class="pie-cabeza-ventana-convocatoria">
+                    <button class="boton">Abrir convocatoria ⚽</button>
+                </div>
                 <?php endif; ?>
 
                 <!-- Llevo un amigo: -->
@@ -272,14 +291,16 @@
                         <input class="input" name="nombreAmigo" type="text" placeholder="Nombre o apodo de tu amigo">
                         <label class="label" for="">Posición Principal</label>
                         <select class="input" name="posicionPrincipalAmigo" id="posicionPrincipalAmigo" required>
-                                <option disabled selected>-Seleccione una opción-</option>
+                            <option disabled selected>-Seleccione una opción-</option>
                             <?php foreach($posiciones as $posicion): ?>
-                                <option value=" <?= $posicion['ID_POSICION']; ?>"> <?= $posicion['DETALLE']; ?> </option>
+                            <option value=" <?= $posicion['ID_POSICION']; ?>"> <?= $posicion['DETALLE']; ?> </option>
                             <?php endforeach; ?>
                         </select>
 
-                        <button class="boton boton-invitar-amigo" name="juega" value="SI" type="submit">Registrar amigo</button>
-                        <button class="boton cancelar-invitar-amigo" id="boton-Cancelar-Popup-Amigo" type="button">Cancelar</button>
+                        <button class="boton boton-invitar-amigo" name="juega" value="SI" type="submit">Registrar
+                            amigo</button>
+                        <button class="boton cancelar-invitar-amigo" id="boton-Cancelar-Popup-Amigo"
+                            type="button">Cancelar</button>
 
                     </form>
                 </div>
@@ -288,17 +309,20 @@
                 <div class="popUp-convocatoria ventana-convocatoria oculto" id="popup-baja">
                     <form class="invitar-amigo" id="form-baja">
                         <h2>Conrirmá: ¿Te querés dar de baja?</h2>
-                        <button class="boton boton-invitar-amigo" id="boton-confirmar-baja" type="button">Si, confirmo BAJA</button>
+                        <button class="boton boton-invitar-amigo" id="boton-confirmar-baja" type="button">Si, confirmo
+                            BAJA</button>
                         <select class="input" name="" id="" required>
-                                <option disabled selected>-Seleccione una opción-</option>
+                            <option disabled selected>-Seleccione una opción-</option>
                             <?php foreach($motivosBajaJugador as $motivoBajaJugador): ?>
-                                <option value=" <?= $motivoBajaJugador['ID_MOTIVO_BAJA_JUGADOR']; ?>"> <?= $motivoBajaJugador['DETALLE']; ?> </option>
-                                <?php endforeach; ?>
+                            <option value=" <?= $motivoBajaJugador['ID_MOTIVO_BAJA_JUGADOR']; ?>">
+                                <?= $motivoBajaJugador['DETALLE']; ?> </option>
+                            <?php endforeach; ?>
                         </select>
-                        <button class="boton cancelar-invitar-amigo" id="boton-cancelar-baja" type="button">Cancelar</button>
+                        <button class="boton cancelar-invitar-amigo" id="boton-cancelar-baja"
+                            type="button">Cancelar</button>
                     </form>
                 </div>
-                
+
                 <!-- PopUp final (notificación) -->
                 <div class="popUp-convocatoria oculto ventana-convocatoria" id="popupAsistencia">
                     <p id="mensaje-popup-asistencia"></p>
@@ -306,10 +330,41 @@
                 </div>
 
             </div> <!-- FIN Sección Convocatoria Activa -->
-            
+
+            <!-- SECCIÓN CERRAR PARTIDO -->
+            <div class="ventana-convocatoria">
+                <div class="pie-cabeza-ventana-convocatoria">
+                    <h2 class="titulo-convocatoria">Cerrar Partido</h2>
+                </div>
+
+                <form class="campos-alta-usuario" action="">
+                    <label for="">Local</label>
+                    <input type="text">
+                    <label for="">Visitante</label>
+                    <input type="text">
+
+
+                    <label for="">Clima</label>
+                    <select name="" id=""></select>
+                    <label for="">Estado del partido</label>
+                    <select name="" id=""></select>
+                    <label for="">Motivo de cancelación</label>
+                    <select name="" id=""></select>
+                    <label for="">Motivo de cancelación</label>
+                    <select name="" id=""></select>
+                    <label for="">Gol de Oro</label>
+                    <select name="" id=""></select>
+
+                    <button class="boton">Cancelar</button>
+                    <button class="boton">Cerrar partido</button>
+
+
+                </form>
+            </div>
+
         </main>
     </div> <!-- Fin de la Ventana-aplicación -->
-    
+
     <!-- BOTONERA HOME-->
     <div class="botonera-home">
         <a href="form-jugadores.php" class="boton botones-home">
@@ -325,13 +380,14 @@
             <h2>Estadísticas</h2>
         </div>
     </div> <!-- FIN Botonera Home -->
-    
+
     <footer class="footer">
         <p>© 2025 Holly Molly Studios • Desarrollado con 💾, ❤️ y mucho ☕</p>
     </footer> <!-- Fin del Footer -->
 
     <!-- Script: -->
-    <script src="../js/script.js"></script>    
-    
+    <script src="../js/script.js"></script>
+
 </body>
+
 </html>

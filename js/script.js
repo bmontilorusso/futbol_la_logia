@@ -191,5 +191,9 @@ botonConfirmarBaja.addEventListener('click', function() {
 
 // ARMAR LOS EQUIPOS:
 
+//***********************************************************************************************************************/
+
+// CERRAR PARTIDO:
+
 
 
