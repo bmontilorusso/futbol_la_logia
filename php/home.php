@@ -1,7 +1,7 @@
 <?php
-    include('validacion_sesion.php');
-    include('conexion_db.php');
-    include('funciones-desplegables.php');    
+    include('inc/validacion_sesion.php');
+    include('inc/conexion_db.php');
+    include('inc/funciones-desplegables.php');    
         $estadios = obtenerEstadios();
         $tipoPartido = obtenerTipoPartido();
         $regiones = obtenerRegion();
@@ -337,26 +337,38 @@
                     <h2 class="titulo-convocatoria">Cerrar Partido</h2>
                 </div>
 
-                <form class="campos-alta-usuario" action="">
-                    <label for="">Local</label>
-                    <input type="text">
-                    <label for="">Visitante</label>
-                    <input type="text">
+                <form class="campos-alta-usuario" action="actions/action-cerrar-partido.php" method="POST">
+                    <div class="grilla-goles">
+                        <div class="grilla-goles-marcador">
+                            <input class="input goles" name="golesLocal" id="golesLocal" type="number" min=0 required>
+                            <label for="golesLocal">Local</label>
+                        </div>
+                        <div class="grilla-goles-marcador">
+                            <input class="input goles" name="golesVisitante" id="golesVisitante" type="number" min=0
+                                required>
+                            <label for="golesVisitante">Visitante</label>
+                        </div>
+                    </div>
 
 
                     <label for="">Clima</label>
-                    <select name="" id=""></select>
+                    <select class="input" name="idClima" id="idClima"></select>
                     <label for="">Estado del partido</label>
-                    <select name="" id=""></select>
-                    <label for="">Motivo de cancelación</label>
-                    <select name="" id=""></select>
-                    <label for="">Motivo de cancelación</label>
-                    <select name="" id=""></select>
+                    <select class="input" name="idEstadoPartido" id="idEstadoPartido"></select>
+                    <label for="">Motivo de no jugarse</label>
+                    <select class="input" name="idMotivoNoJugarse" id="idMotivoNoJugarse"></select>
                     <label for="">Gol de Oro</label>
-                    <select name="" id=""></select>
+                    <select class="input" name="" id="">
+                        <option value="" disabled selected>-No hubo-</option>
+                    </select>
+                    <label for="">Habilitar votación del MVP</label>
+                    <select class="input" name="habilitarMVP" id="habilitarMVP">
+                        <option value="SI" selected>SI</option>
+                        <option value="NO">NO</option>
+                    </select>
 
-                    <button class="boton">Cancelar</button>
-                    <button class="boton">Cerrar partido</button>
+                    <button class="boton" type="button">Cancelar</button>
+                    <button class="boton" type="submit">Cerrar partido</button>
 
 
                 </form>
