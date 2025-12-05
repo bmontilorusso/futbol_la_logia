@@ -7,9 +7,10 @@
         $regiones = obtenerRegion();
         $posiciones = obtenerPosicion();
         $motivosBajaJugador = obtenerMotivoBajaJugadores();
-        $clima = obtenerClima();
-        $motioNoJugado = obtenerMotivoNoJugado();
-        $estadoPartido = obtenerEstadoPartido();
+        $climas = obtenerClima();
+        $motiosNoJugado = obtenerMotivoNoJugado();
+        $estadosPartido = obtenerEstadoPartido();
+        $jugadoresGolDeOro = obtenerJugadoresGolDeOro();
 ?>
 
 <!DOCTYPE html>
@@ -352,19 +353,40 @@
                         </div>
                     </div>
 
-
                     <label for="">Clima</label>
-                    <select class="input" name="idClima" id="idClima"></select>
+                    <select class="input" name="idClima" id="idClima">
+                        <option selected disabled>-Seleccione-</option>
+                        <?php foreach ($climas as $clima): ?>
+                        <option value=" <?= $clima['ID_CLIMA']; ?> "> <?= $clima['DETALLE']; ?> </option>
+                        <?php endforeach; ?>
+                    </select>
                     <label for="">Estado del partido</label>
-                    <select class="input" name="idEstadoPartido" id="idEstadoPartido"></select>
+                    <select class="input" name="idEstadoPartido" id="idEstadoPartido">
+                        <option selected disabled>-Seleccione-</option>
+                        <?php foreach($estadosPartido as $estadoPartido): ?>
+                        <option value=" <?= $estadoPartido['ID_ESTADO_PARTIDO']; ?> "> <?= $estadoPartido['DETALLE']; ?>
+                        </option>
+                        <?php endforeach; ?>
+                    </select>
                     <label for="">Motivo de no jugarse</label>
-                    <select class="input" name="idMotivoNoJugarse" id="idMotivoNoJugarse"></select>
+                    <select class=" input" name="idMotivoNoJugarse" id="idMotivoNoJugarse">
+                        <option selected disabled>-Seleccione-</option>
+                        <?php foreach($motiosNoJugado as $motivoNoJugado): ?>
+                        <option value=" <?= $motivoNoJugado['ID_MOTIVO_NO_JUGADO']; ?> ">
+                            <?= $motivoNoJugado['DETALLE']; ?> </option>
+                        <?php endforeach; ?>
+                    </select>
                     <label for="">Gol de Oro</label>
                     <select class="input" name="" id="">
-                        <option value="" disabled selected>-No hubo-</option>
+                        <option disabled selected>-No hubo-</option>
+                        <?php foreach($jugadoresGolDeOro as $jugadorGolDeOro): ?>
+                        <option value=" <?= $jugadoresGolDeOro['ID_JUGADOR']; ?> ">
+                            <?= $jugadorGolDeOro['NOMBRE'] . " " . $jugadorGolDeOro['APELLIDO']; ?>
+                        </option>
+                        <?php endforeach; ?>
                     </select>
                     <label for="">Habilitar votación del MVP</label>
-                    <select class="input" name="habilitarMVP" id="habilitarMVP">
+                    <select class=" input" name="habilitarMVP" id="habilitarMVP">
                         <option value="SI" selected>SI</option>
                         <option value="NO">NO</option>
                     </select>

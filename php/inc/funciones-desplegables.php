@@ -86,7 +86,7 @@ function obtenerMotivoNoJugado() {
     $sql = "Select * from MOTIVO_NO_JUGADO;";
     $resultado = mysqli_query($conn, $sql);
     $motivoNoJugadoListado = [];
-    while($filaMotivoNoJugado = mysqli_fetch_assoc($restulado)) {
+    while($filaMotivoNoJugado = mysqli_fetch_assoc($resultado)) {
         $motivoNoJugadoListado[] = $filaMotivoNoJugado;
     }
     return $motivoNoJugadoListado;
@@ -95,13 +95,31 @@ function obtenerMotivoNoJugado() {
 // Estado del partido:
 function obtenerEstadoPartido() {
     global $conn;
-    $sql = "Select * from ESTADO_PARTIDO;";
+    $sql = "Select * from ESTADO_PARTIDO Where DETALLE <> 'Pendiente';";
     $restulado = mysqli_query($conn, $sql);
     $estadoPartidoListado = [];
     while($filaEstadoPartido = mysqli_fetch_assoc($restulado)) {
         $estadoPartidoListado[] = $filaEstadoPartido;
     }
     return $estadoPartidoListado;
+}
+
+// Jugadores Gol de Oro:
+function obtenerJugadoresGolDeOro() {
+    global $conn;
+    // ID del partido activo:
+    $sqlPartidoActivo = "Select * from PARTIDOS Where ID_ESTADO_PARTIDO = 2;";
+    $resultadoPartidoActivo = mysqli_query($conn, $sqlPartidoActivo);
+    $filaResultadoPartidoActivo = mysqli_fetch_assoc($resultadoPartidoActivo);
+    $idPartidoActivo = $filaResultadoPartidoActivo['ID_PARTIDO'];
+    
+    $sql = "Select ID_JUGADOR, APELLIDO, NOMBRE from VISTA_PARTIDOS_JUGADORES Where ID_PARTIDO = $idPartidoActivo;";
+    $resultado = mysqli_query($conn, $sql);
+    $jugadoresGolDeOroListado = [];
+    while ($filaJugadoresGolDeOro = mysqli_fetch_assoc($resultado)) {
+        $jugadoresGolDeOroListado[] = $filaJugadoresGolDeOro;
+    }
+    return $jugadoresGolDeOroListado;
 }
 
 
