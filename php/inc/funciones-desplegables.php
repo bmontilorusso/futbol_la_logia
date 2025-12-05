@@ -68,5 +68,41 @@ function obtenerMotivoBajaJugadores() {
     return $motivoBajaListado;
 }
 
+// Clima:
+function obtenerClima() {
+    global $conn;
+    $sql = "Select * from CLIMA;";
+    $resultado = mysqli_query($conn, $sql);
+    $climaListado = [];
+    while($filaClima = mysqli_fetch_assoc($resultado)) {
+        $climaListado[] = $filaClima;
+    }
+    return $climaListado;
+}
+
+// Motivos de NO jugado:
+function obtenerMotivoNoJugado() {
+    global $conn;
+    $sql = "Select * from MOTIVO_NO_JUGADO;";
+    $resultado = mysqli_query($conn, $sql);
+    $motivoNoJugadoListado = [];
+    while($filaMotivoNoJugado = mysqli_fetch_assoc($restulado)) {
+        $motivoNoJugadoListado[] = $filaMotivoNoJugado;
+    }
+    return $motivoNoJugadoListado;
+}
+
+// Estado del partido:
+function obtenerEstadoPartido() {
+    global $conn;
+    $sql = "Select * from ESTADO_PARTIDO;";
+    $restulado = mysqli_query($conn, $sql);
+    $estadoPartidoListado = [];
+    while($filaEstadoPartido = mysqli_fetch_assoc($restulado)) {
+        $estadoPartidoListado[] = $filaEstadoPartido;
+    }
+    return $estadoPartidoListado;
+}
+
 
 ?>

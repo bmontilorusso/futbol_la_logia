@@ -11,10 +11,10 @@ var_dump($_POST);
 // Datos y Variables:
 $golesLocal = $_POST['golesLocal'];
 $golesVisitante = $_POST['golesVisitante'];
-$idClima = $_POST['idClima'];
+$idClima = $_POST['idClima'] ?? null;
 $idEstadoPartido = $_POST['idEstadoPartido'];
-$idMotivoNoJugarse = $_POST['idMotivoNoJugarse'];
-$idGolDeOro = $_POST['idGolDeOro'];
+$idMotivoNoJugarse = $_POST['idMotivoNoJugarse'] ?? null;
+$idGolDeOro = $_POST['idGolDeOro'] ?? null;
 $habilitarMVP = $_POST['habilitarMVP'];
 
 // Datos del partido abierto:

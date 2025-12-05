@@ -7,7 +7,9 @@
         $regiones = obtenerRegion();
         $posiciones = obtenerPosicion();
         $motivosBajaJugador = obtenerMotivoBajaJugadores();
-
+        $clima = obtenerClima();
+        $motioNoJugado = obtenerMotivoNoJugado();
+        $estadoPartido = obtenerEstadoPartido();
 ?>
 
 <!DOCTYPE html>
