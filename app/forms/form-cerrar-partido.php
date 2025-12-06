@@ -4,7 +4,8 @@
         <h2 class="titulo-convocatoria">Cerrar Partido</h2>
     </div>
 
-    <form class="campos-alta-usuario" action="actions/action-cerrar-partido.php" method="POST">
+    <form class="campos-alta-usuario" id="formulario-cerrar-partido" action="actions/action-cerrar-partido.php"
+        method="POST">
         <div class="grilla-goles">
             <div class="grilla-goles-marcador">
                 <input class="input goles" name="golesLocal" value="" id="golesLocal" type="number" min=0 max=99>

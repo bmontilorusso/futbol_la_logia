@@ -5,8 +5,6 @@ const popupAltaConvocatoria = document.getElementById("popUp-convocatoria");
 const mensajepopupAltaConvocatoria = document.getElementById("mensaje-popup-convocatoria");
 const cerrarPopUpAltaConvocatoria = document.getElementById("boton-cerrar-convocatoria");
 
-console.log("Llego al JS!");
-
 // Formulario:
 if (formularioAltaPartidos) {
 
@@ -28,7 +26,7 @@ if (formularioAltaPartidos) {
         popupAltaConvocatoria.classList.remove('oculto');
         popupAltaConvocatoria.classList.add('visible');
         formularioAltaPartidos.reset();
-        formularioAltaPartidos.querySelector("input").blur(); // Para que no se posición en el prmier input y NO arroje el required de golpe al cerrar PopUp.
+        formularioAltaPartidos.querySelector("input").blur(); // Para que no se posicione en el prmier input y NO arroje el required de golpe al cerrar PopUp.
     })
     .catch(error => {
         mensajepopupAltaConvocatoria.textContent = "Error al enviar datos";
@@ -211,7 +209,32 @@ if (botonConfirmarBaja) {
 
 //***********************************************************************************************************************/
 
-// CERRAR PARTIDO:
+// FORMULARIO PARA CERRAR PARTIDOS (Convocatorias):
+
+const formularioCerrarPartidos = document.getElementById("formulario-cerrar-partido");
+const botonCerrarPartidos = document.getElementById("boton-cerrar-partidos");
+const botonCancelarCerrarPartidos = document.getElementById("boton-cancelar-cerrar-partidos");
+
+// Formulario:
+if (formularioCerrarPartidos) {
+
+    formularioCerrarPartidos.addEventListener("submit", function() {
+
+    formularioCerrarPartidos.preventDefault();
+
+    const datosdelFormulario = new FormData(formularioCerrarPartidos);
+    
+    // Envío de datos del form, vía POST:
+    fetch("app/actions/action-cerrar-partido.php"), {
+        method: "POST",
+        body: datosdelFormulario
+    })
+    .then(respuestaServer => respuestaServer.text())
+    .then(respuestaParaNavegador => {
+        
+
+    })
 
 
-
+    })
+}
