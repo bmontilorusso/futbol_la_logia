@@ -8,8 +8,8 @@ include('../inc/conexion_db.php');
 include('../inc/data-cleaner.php');
 
 // Datos y Variables:
-$golesLocal = trim($_POST['golesLocal']);
-$golesVisitante = trim($_POST['golesVisitante']);
+$golesLocal = limpiadorDatos($_POST['golesLocal'] ?? null);
+$golesVisitante = limpiadorDatos($_POST['golesVisitante'] ?? null);
 $idClima = limpiadorDatos($_POST['idClima'] ?? null);
 $idEstadoPartido = trim($_POST['idEstadoPartido']);
 $idMotivoNoJugado = limpiadorDatos($_POST['idMotivoNoJugado'] ?? null);
@@ -20,7 +20,8 @@ $habilitarMVP = trim($_POST['habilitarMVP']);
 $idClima = isNull($idClima);
 $idMotivoNoJugado = isNull($idMotivoNoJugado);
 $idGolDeOro = isNull($idGolDeOro);
-
+$golesLocal = isNull($golesLocal);
+$golesVisitante = isNull($golesVisitante);
 
 // Datos del partido abierto:
 $sqlPartidoAbierto = "Select ID_PARTIDO from PARTIDOS Where ID_ESTADO_PARTIDO = 2;";
@@ -29,7 +30,7 @@ $filaResultadoPartidoAbierto = mysqli_fetch_assoc($resultadoPartidoAbierto);
 $idPartidoAbierto = $filaResultadoPartidoAbierto['ID_PARTIDO'];
 
 // Cambio de estado y resultado del partido:
-$sqlCambioEstadoPartido = "UPDATE PARTIDOS SET ID_ESTADO_PARTIDO = $idEstadoPartido, GOLES_LOCAL = $golesLocal, GOLES_VISITANTE = $golesVisitante, ID_CLIMA = $idClima, ID_MOTIVO_NO_JUGADO = $idMotivoNoJugado, ESTADO_CONVOCATORIA = 0 Where ID_PARTIDO = $idPartidoAbierto;";
+$sqlCambioEstadoPartido = "UPDATE PARTIDOS SET ID_ESTADO_PARTIDO = $idEstadoPartido, GOLES_LOCAL = $golesLocal, GOLES_VISITANTE = $golesVisitante, ID_CLIMA = $idClima, ID_MOTIVO_NO_JUGADO = $idMotivoNoJugado Where ID_PARTIDO = $idPartidoAbierto;";
 
 $resultadoCambioEstadoPartido = mysqli_query($conn, $sqlCambioEstadoPartido);
 

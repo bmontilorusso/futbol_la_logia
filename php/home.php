@@ -1,7 +1,7 @@
 <?php
-    include('inc/validacion_sesion.php');
-    include('inc/conexion_db.php');
-    include('inc/funciones-desplegables.php');    
+    require 'inc/validacion_sesion.php';
+    require 'inc/conexion_db.php';
+    require 'inc/funciones-desplegables.php';    
         $estadios = obtenerEstadios();
         $tipoPartido = obtenerTipoPartido();
         $regiones = obtenerRegion();
@@ -11,6 +11,7 @@
         $motiosNoJugado = obtenerMotivoNoJugado();
         $estadosPartido = obtenerEstadoPartido();
         // $jugadoresGolDeOro = obtenerJugadoresGolDeOro();
+    require 'inc/validacion-partido.php'
 ?>
 
 <!DOCTYPE html>
@@ -44,7 +45,7 @@
 
         <main class="main">
 
-            <div class="ventana-convocatoria oculto">
+            <div class="ventana-convocatoria visible">
                 <div class="pie-cabeza-ventana-convocatoria">
                     <h2 class="titulo-convocatoria">Próximo Partido</h2>
                 </div>
@@ -343,13 +344,13 @@
                 <form class="campos-alta-usuario" action="actions/action-cerrar-partido.php" method="POST">
                     <div class="grilla-goles">
                         <div class="grilla-goles-marcador">
-                            <input class="input goles" name="golesLocal" id="golesLocal" type="number" min=0 max=99
-                                required>
+                            <input class="input goles" name="golesLocal" value="" id="golesLocal" type="number" min=0
+                                max=99>
                             <label for="golesLocal">Local</label>
                         </div>
                         <div class="grilla-goles-marcador">
-                            <input class="input goles" name="golesVisitante" id="golesVisitante" type="number" min=0
-                                required>
+                            <input class="input goles" name="golesVisitante" value="" id="golesVisitante" type="number"
+                                min=0>
                             <label for="golesVisitante">Visitante</label>
                         </div>
                     </div>
@@ -362,7 +363,7 @@
                         <?php endforeach; ?>
                     </select>
                     <label for="">Estado del partido</label>
-                    <select class="input" name="idEstadoPartido" id="idEstadoPartido">
+                    <select class="input" name="idEstadoPartido" id="idEstadoPartido" required>
                         <option value="" selected disabled>-Seleccione-</option>
                         <?php foreach($estadosPartido as $estadoPartido): ?>
                         <option value="<?= $estadoPartido['ID_ESTADO_PARTIDO']; ?>"><?= $estadoPartido['DETALLE'];?>

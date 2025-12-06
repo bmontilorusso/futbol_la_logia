@@ -5,7 +5,7 @@
 // Importaciones:
 
 session_start();
-include('conexion_db.php');
+include('inc/conexion_db.php');
 
 // Para debugear:
 // var_dump($_POST); //Registro de lo que llega vía POST (lo uso en el JS para imprimirlo en consola):
@@ -40,7 +40,7 @@ if ($filaResultadoPartidoPRevio) {
 
     /* ALTA DE PARTIDO: */
     // Creación de Query:
-    $sql = "INSERT INTO PARTIDOS (ID_ESTADIO, MAX_JUGADORES, FECHA, HORA, ID_TIPO_PARTIDO, ID_ESTADO_PARTIDO, ID_ESTADO_VOTACION_MVP, ID_USUARIO_ALTA, ESTADO_CONVOCATORIA) VALUES ($estadio, $maxJugadores, '$fecha', '$hora', $tipoPartido, 2, 1, $IDusuarioAltaConvocatoria, 1);";
+    $sql = "INSERT INTO PARTIDOS (ID_ESTADIO, MAX_JUGADORES, FECHA, HORA, ID_TIPO_PARTIDO, ID_ESTADO_PARTIDO, ID_ESTADO_VOTACION_MVP, ID_USUARIO_ALTA) VALUES ($estadio, $maxJugadores, '$fecha', '$hora', $tipoPartido, 2, 1, $IDusuarioAltaConvocatoria);";
     $resultado = mysqli_query($conn, $sql);
 
     /* INSERSIÓN de JUGADOR en CONVOCATORIA: */
