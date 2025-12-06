@@ -4,7 +4,7 @@
 
 // Importaciones:
 session_start();
-include('conexion_db.php');
+include('../inc/conexion_db.php');
 
 /***********************************************************************************************************/
 

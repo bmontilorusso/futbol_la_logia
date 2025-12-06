@@ -5,7 +5,12 @@ const popupAltaConvocatoria = document.getElementById("popUp-convocatoria");
 const mensajepopupAltaConvocatoria = document.getElementById("mensaje-popup-convocatoria");
 const cerrarPopUpAltaConvocatoria = document.getElementById("boton-cerrar-convocatoria");
 
-formularioAltaPartidos.addEventListener("submit", function(evento) {
+console.log("Llego al JS!");
+
+// Formulario:
+if (formularioAltaPartidos) {
+
+    formularioAltaPartidos.addEventListener("submit", function(evento) {
     
     evento.preventDefault(); // Para evitar el pantallazo blanco (porque el evento por defecto del submit es "cambiar a la pantalla blanca")
 
@@ -32,11 +37,17 @@ formularioAltaPartidos.addEventListener("submit", function(evento) {
     });
 });
 
+}
+
 // Botón de cerrar el Popup:
-cerrarPopUpAltaConvocatoria.addEventListener("click", function(){
+if(cerrarPopUpAltaConvocatoria) {
+
+    cerrarPopUpAltaConvocatoria.addEventListener("click", function(){
     popupAltaConvocatoria.classList.remove('visible');
     popupAltaConvocatoria.classList.add('oculto');
-});
+    location.reload();
+    });
+}
 
 //***********************************************************************************************************************/
 
@@ -49,7 +60,9 @@ const cerrarPopupAsistencia = document.getElementById('boton-cerrar-asistencia')
 const botonConfirmoAsistencia = document.getElementById("confirmo-asistencia");
 const botonNoVoy = document.getElementById("no-voy");
 
-formularioAsistencia.addEventListener("submit", function(evento){
+// Formulario:
+if (formularioAsistencia) {
+    formularioAsistencia.addEventListener("submit", function(evento){
     
     // console.log(">>> SUBMIT ASISTENCIA DISPARADO");
     // console.log("Contenido del POST:", new FormData(formularioAsistencia)); // Para debugear.
@@ -64,7 +77,7 @@ formularioAsistencia.addEventListener("submit", function(evento){
     }
 
     // Envío de los datos capturados, por POST:
-    fetch("asistencia.php", {
+    fetch("app/actions/action-asistencia.php", {
         method: "POST",
         body: datosDelFormularioAsistencia
     })
@@ -88,17 +101,21 @@ formularioAsistencia.addEventListener("submit", function(evento){
         popupAsistencia.classList.remove('oculto');
         popupAsistencia.classList.add('visible');
     });
-});
+    });
+}
 
-// Botón para cerrar PopUp (Asistencia):
-cerrarPopupAsistencia.addEventListener("click", function(){
+// Botón para cerrar PopUp (Asistencia): 
+if (cerrarPopupAsistencia){
+    cerrarPopupAsistencia.addEventListener("click", function(){
     popupAsistencia.classList.remove('visible');
     popupAsistencia.classList.add('oculto');
-});
+    location.reload();
+    });
+}
 
 //***********************************************************************************************************************/
 
-// Invitar a un amigo:
+// INVITAR A UN AMIGO:
 
 const botonAbrirPopupAmigo = document.getElementById('llevo-un-amigo');
 const popupAmigo = document.getElementById('popup-amigo');
@@ -148,7 +165,7 @@ formLlevoAmigo.addEventListener("submit", function(evento) {
 
 //***********************************************************************************************************************/
 
-// Bajarme del partido:
+// BAJARME DEL PARTIDO:
 
 const botonMeBajo = document.getElementById('me-bajo');
 const formBaja = document.getElementById('form-baja');
@@ -166,18 +183,18 @@ botonCancelarBaja.addEventListener('click', function(){
     popupBaja.classList.add('oculto');
 });
 
-botonConfirmarBaja.addEventListener('click', function() {
+// Formulario (Ventana):
+if (botonConfirmarBaja) {
+    botonConfirmarBaja.addEventListener('click', function() {
 
-    fetch('me-bajo.php') // Sin enviar datos del form (Sin Method ni body)
+    fetch('app/actions/action-me-bajo.php') // Sin enviar datos del form (Sin Method ni body)
         .then(respuestaServer => respuestaServer.text())
         .then(respuestaParaNavegador => {
             popupBaja.classList.remove('visible');
             popupBaja.classList.add('oculto');
             popupAsistencia.classList.remove('oculto');
             popupAsistencia.classList.add('visible');
-            mensajePopupAsistencia.textContent = respuestaParaNavegador;
-            console.log(respuestaParaNavegador);
-
+            mensajePopupAsistencia.textContent = respuestaParaNavegador;            
         })
         .catch(error => {
             mensajePopupAsistencia.textContent = "Error al enviar datos! Pruebe nuevamente en unos segundos.";
@@ -185,7 +202,8 @@ botonConfirmarBaja.addEventListener('click', function() {
             popupAsistencia.classList.remove('oculto');
             popupAsistencia.classList.add('visible-flex');
     });
-});
+    });
+}
 
 //***********************************************************************************************************************/
 

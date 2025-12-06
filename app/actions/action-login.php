@@ -3,7 +3,7 @@
 /************** Login: ***************/
 
 // Importaciones:
-include('inc/conexion_db.php');
+include('../inc/conexion_db.php');
 
 // Declaración y almacenamiento de Variables:
 $usuario = trim($_POST['usuario']);
@@ -26,7 +26,7 @@ if (mysqli_num_rows($resultado) == 1) {
     $_SESSION['id_jugador'] = $fila['ID_JUGADOR'];
 
     // Redireccionamiento:
-    header("Location: home.php");
+    header("Location: ../../home.php");
     exit();
 
 } else {

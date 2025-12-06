@@ -24,13 +24,13 @@
         </div>
 
         <?php
-$idPartidoActivo = $fila['ID_PARTIDO'];
-$sqlJugadoresConvocados = "Select * from VISTA_PARTIDOS_JUGADORES Where ID_PARTIDO = $idPartidoActivo AND JUEGA = 'SI';";
-$resultadoJugadoresConvocados = mysqli_query($conn, $sqlJugadoresConvocados);
-$sqlJugadoresOut = "Select * from VISTA_PARTIDOS_JUGADORES Where ID_PARTIDO = $idPartidoActivo AND JUEGA = 'NO';";
-$resultadoJugadoresOut = mysqli_query($conn, $sqlJugadoresOut);
-$cantidadJugadoresConvocados = mysqli_num_rows($resultadoJugadoresConvocados);                        
-?>
+            $idPartidoActivo = $fila['ID_PARTIDO'];
+            $sqlJugadoresConvocados = "Select * from VISTA_PARTIDOS_JUGADORES Where ID_PARTIDO = $idPartidoActivo AND JUEGA = 'SI';";
+            $resultadoJugadoresConvocados = mysqli_query($conn, $sqlJugadoresConvocados);
+            $sqlJugadoresOut = "Select * from VISTA_PARTIDOS_JUGADORES Where ID_PARTIDO = $idPartidoActivo AND JUEGA = 'NO';";
+            $resultadoJugadoresOut = mysqli_query($conn, $sqlJugadoresOut);
+            $cantidadJugadoresConvocados = mysqli_num_rows($resultadoJugadoresConvocados);                        
+        ?>
         <h2>Confirmados (<?php echo $cantidadJugadoresConvocados . "/" . $fila['LIMITE DE JUGADORES']; ?>)
         </h2>
 
@@ -40,25 +40,25 @@ $cantidadJugadoresConvocados = mysqli_num_rows($resultadoJugadoresConvocados);
                 <p><?php echo $filaResultadoJugadoresConvocados['NOMBRE'] . " " . $filaResultadoJugadoresConvocados['APELLIDO']; ?>
                 </p>
                 <?php
-$clasePOS = '';
-switch($filaResultadoJugadoresConvocados['POS_PRINCIPAL']) {
-case 'POR':
-$clasePOS = "color-por";
-break;
-case 'DEF':
-$clasePOS = "color-def";
-break;
-case 'MED':
-$clasePOS = "color-med";
-break;
-case 'DEL':
-$clasePOS = "color-del";
-break;
-default:
-$clasePOS = "color-por";
-break;                                            
-}
-?>
+                    $clasePOS = '';
+                    switch($filaResultadoJugadoresConvocados['POS_PRINCIPAL']) {
+                    case 'POR':
+                    $clasePOS = "color-por";
+                    break;
+                    case 'DEF':
+                    $clasePOS = "color-def";
+                    break;
+                    case 'MED':
+                    $clasePOS = "color-med";
+                    break;
+                    case 'DEL':
+                    $clasePOS = "color-del";
+                    break;
+                    default:
+                    $clasePOS = "color-por";
+                    break;                                            
+                    }
+                ?>
                 <p class="posicion-grilla <?php echo $clasePOS ?>">
                     <?php echo $filaResultadoJugadoresConvocados['POS_PRINCIPAL']; ?></p>
             </div>
@@ -71,25 +71,25 @@ break;
                 <p><?php echo $filaResultadoJugadoresOut['NOMBRE'] . " " . $filaResultadoJugadoresOut['APELLIDO']; ?>
                 </p>
                 <?php
-$clasePOS = '';
-switch($filaResultadoJugadoresOut['POS_PRINCIPAL']) {
-case 'POR':
-$clasePOS = "color-por";
-break;
-case 'DEF':
-$clasePOS = "color-def";
-break;
-case 'MED':
-$clasePOS = "color-med";
-break;
-case 'DEL':
-$clasePOS = "color-del";
-break;
-default:
-$clasePOS = "color-por";
-break;                                            
-}
-?>
+                    $clasePOS = '';
+                    switch($filaResultadoJugadoresOut['POS_PRINCIPAL']) {
+                    case 'POR':
+                    $clasePOS = "color-por";
+                    break;
+                    case 'DEF':
+                    $clasePOS = "color-def";
+                    break;
+                    case 'MED':
+                    $clasePOS = "color-med";
+                    break;
+                    case 'DEL':
+                    $clasePOS = "color-del";
+                    break;
+                    default:
+                    $clasePOS = "color-por";
+                    break;                                            
+                    }
+                ?>
                 <p class="posicion-grilla <?php echo $clasePOS ?>">
                     <?php echo $filaResultadoJugadoresOut['POS_PRINCIPAL']; ?></p>
             </div>
