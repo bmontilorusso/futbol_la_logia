@@ -19,9 +19,13 @@ function validacionPartidoAbierto ($conn) {
 $partidoAbierto = validacionPartidoAbierto($conn);
 
 if ($partidoAbierto) {
-    $mostrarAbrirConvocatoria = true;
+    $mostrarAbrirConvocatoria = false;
     $mostrarConvocatoriaActiva = true;
     $mostrarCerrarPartido = true;
+} else {
+    $mostrarAbrirConvocatoria = true;
+    $mostrarConvocatoriaActiva = false;
+    $mostrarCerrarPartido = false;
 }
 
 

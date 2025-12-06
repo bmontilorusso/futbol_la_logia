@@ -15,7 +15,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -46,9 +46,22 @@
         <main class="main">
 
             <?php
-                if ($mostrarAbrirConvocatoria): ?>
-            <?php include 'forms/form-alta-convocatoria.php';?>
-            <?php endif; ?>
+                if ($mostrarAbrirConvocatoria):
+                    include 'forms/form-alta-convocatoria.php';
+                endif;
+            ?>
+
+            <?php
+                if($mostrarConvocatoriaActiva):
+                    include 'forms/form-convocatoria-activa.php';
+                endif; 
+            ?>
+
+            <?php
+                if($mostrarCerrarPartido):
+                    include 'forms/form-cerrar-partido.php';
+                endif;
+            ?>
 
         </main>
     </div> <!-- Fin de la Ventana-aplicación -->
