@@ -6,8 +6,6 @@ require 'conexion_db.php';
 
 // Variables para Forms:
 $mostrarAbrirConvocatoria = false;
-$mostrarAltaJugador = false;
-$mostrarAltaUsuario = false;
 $mostrarConvocatoriaActiva = false;
 $mostrarCerrarPartido = false;
 
@@ -16,6 +14,14 @@ function validacionPartidoAbierto ($conn) {
     $resultado = mysqli_query($conn, $sql);
     $detallePartido = mysqli_fetch_assoc($resultado) ?? null;
     return $detallePartido;
+}
+
+$partidoAbierto = validacionPartidoAbierto($conn);
+
+if ($partidoAbierto) {
+    $mostrarAbrirConvocatoria = true;
+    $mostrarConvocatoriaActiva = true;
+    $mostrarCerrarPartido = true;
 }
 
 
