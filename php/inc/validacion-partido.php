@@ -1,0 +1,9 @@
+<?php
+
+// VALIDACIÓN DE PARTIDO ABIERTO:
+
+
+
+
+
+?>

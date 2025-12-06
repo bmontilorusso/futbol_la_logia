@@ -373,6 +373,9 @@ h1, h2 {
 .goles {
     width: 10rem !important;
     height: 10rem !important;
+    font-size: 50px;
+    text-align: center;
+    font-weight: bold;
 }
 
 

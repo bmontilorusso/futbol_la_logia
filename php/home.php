@@ -10,7 +10,7 @@
         $climas = obtenerClima();
         $motiosNoJugado = obtenerMotivoNoJugado();
         $estadosPartido = obtenerEstadoPartido();
-        $jugadoresGolDeOro = obtenerJugadoresGolDeOro();
+        // $jugadoresGolDeOro = obtenerJugadoresGolDeOro();
 ?>
 
 <!DOCTYPE html>
@@ -343,7 +343,8 @@
                 <form class="campos-alta-usuario" action="actions/action-cerrar-partido.php" method="POST">
                     <div class="grilla-goles">
                         <div class="grilla-goles-marcador">
-                            <input class="input goles" name="golesLocal" id="golesLocal" type="number" min=0 required>
+                            <input class="input goles" name="golesLocal" id="golesLocal" type="number" min=0 max=99
+                                required>
                             <label for="golesLocal">Local</label>
                         </div>
                         <div class="grilla-goles-marcador">
@@ -355,34 +356,33 @@
 
                     <label for="">Clima</label>
                     <select class="input" name="idClima" id="idClima">
-                        <option selected disabled>-Seleccione-</option>
+                        <option value="" selected disabled>-Seleccione-</option>
                         <?php foreach ($climas as $clima): ?>
-                        <option value=" <?= $clima['ID_CLIMA']; ?> "> <?= $clima['DETALLE']; ?> </option>
+                        <option value="<?= $clima['ID_CLIMA'];?> "><?= $clima['DETALLE']; ?></option>
                         <?php endforeach; ?>
                     </select>
                     <label for="">Estado del partido</label>
                     <select class="input" name="idEstadoPartido" id="idEstadoPartido">
-                        <option selected disabled>-Seleccione-</option>
+                        <option value="" selected disabled>-Seleccione-</option>
                         <?php foreach($estadosPartido as $estadoPartido): ?>
-                        <option value=" <?= $estadoPartido['ID_ESTADO_PARTIDO']; ?> "> <?= $estadoPartido['DETALLE']; ?>
+                        <option value="<?= $estadoPartido['ID_ESTADO_PARTIDO']; ?>"><?= $estadoPartido['DETALLE'];?>
                         </option>
                         <?php endforeach; ?>
                     </select>
                     <label for="">Motivo de no jugarse</label>
-                    <select class=" input" name="idMotivoNoJugarse" id="idMotivoNoJugarse">
-                        <option selected disabled>-Seleccione-</option>
+                    <select class="input" name="idMotivoNoJugado" id="idMotivoNoJugado">
+                        <option value="" selected disabled>-Seleccione-</option>
                         <?php foreach($motiosNoJugado as $motivoNoJugado): ?>
-                        <option value=" <?= $motivoNoJugado['ID_MOTIVO_NO_JUGADO']; ?> ">
-                            <?= $motivoNoJugado['DETALLE']; ?> </option>
+                        <option value="<?= $motivoNoJugado['ID_MOTIVO_NO_JUGADO'];?>"><?= $motivoNoJugado['DETALLE']; ?>
+                        </option>
                         <?php endforeach; ?>
                     </select>
                     <label for="">Gol de Oro</label>
-                    <select class="input" name="" id="">
-                        <option disabled selected>-No hubo-</option>
+                    <select class="input" name="idGolDeOro" id="idGolDeOro">
+                        <option value="" disabled selected>-No hubo-</option>
                         <?php foreach($jugadoresGolDeOro as $jugadorGolDeOro): ?>
-                        <option value=" <?= $jugadoresGolDeOro['ID_JUGADOR']; ?> ">
-                            <?= $jugadorGolDeOro['NOMBRE'] . " " . $jugadorGolDeOro['APELLIDO']; ?>
-                        </option>
+                        <option value="<?= $jugadorGolDeOro['ID_JUGADOR'];?>">
+                            <?= $jugadorGolDeOro['NOMBRE'] . " " . $jugadorGolDeOro['APELLIDO']; ?></option>
                         <?php endforeach; ?>
                     </select>
                     <label for="">Habilitar votación del MVP</label>
