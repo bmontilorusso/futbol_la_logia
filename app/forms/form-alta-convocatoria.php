@@ -43,10 +43,4 @@
         </div>
     </form>
 
-    <div class="popUp-convocatoria oculto ventana-convocatoria" id="popUp-convocatoria">
-        <p id="mensaje-popup-convocatoria"></p>
-        <button type="button" id="boton-cerrar-convocatoria" class="boton">Cerrar</button>
-    </div>
-
-
 </div> <!-- FIN Sección Abrir Convocatorias -->

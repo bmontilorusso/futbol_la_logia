@@ -63,6 +63,13 @@
                 endif;
             ?>
 
+            <!-- PopUp NOTIFICACIÓN (Final) -->
+            <div class="popUp-convocatoria oculto ventana-convocatoria" id="popUp-notificacion">
+                <p id="mensaje-popup-notificacion"></p>
+                <button type="button" id="boton-cerrar-popup-notificacion" class="boton">Cerrar</button>
+            </div>
+
+
         </main>
     </div> <!-- Fin de la Ventana-aplicación -->
 

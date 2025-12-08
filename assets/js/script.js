@@ -1,9 +1,10 @@
-// FORMULARIO DE ALTA DE PARTIDOS(Convocatoria):
+// FORMULARIO DE ALTA DE PARTIDOS (Convocatoria):
 
 const formularioAltaPartidos = document.getElementById("formulario-convocatoria");
-const popupAltaConvocatoria = document.getElementById("popUp-convocatoria");
-const mensajepopupAltaConvocatoria = document.getElementById("mensaje-popup-convocatoria");
-const cerrarPopUpAltaConvocatoria = document.getElementById("boton-cerrar-convocatoria");
+const popupNotificacion = document.getElementById("popUp-notificacion");
+
+const mensajePopup = document.getElementById("mensaje-popup-notificacion");
+const botonCerrarPopupNotificacion = document.getElementById("boton-cerrar-popup-notificacion");
 
 // Formulario:
 if (formularioAltaPartidos) {
@@ -15,46 +16,42 @@ if (formularioAltaPartidos) {
     const datosDelFormulario = new FormData(formularioAltaPartidos);
 
     // Envío de datos del form, vía POST:
-    fetch("convocatoria.php", {
+    fetch("app/actions/action-convocatoria.php", {
         method: "POST",
         body: datosDelFormulario
     })
     .then(respuestaServer => respuestaServer.text()) // Acá guardo la respuesta del server y la convierto en texto plano.
     .then(respuestaParaNavegador => {
         // console.log("Respuesta del server capturado con var_dump: ", respuestaParaNavegador); // Para debugear.
-        mensajepopupAltaConvocatoria.textContent = respuestaParaNavegador;
-        popupAltaConvocatoria.classList.remove('oculto');
-        popupAltaConvocatoria.classList.add('visible');
+        mensajePopup.textContent = respuestaParaNavegador;
+        popupNotificacion.classList.remove('oculto');
+        popupNotificacion.classList.add('visible');
         formularioAltaPartidos.reset();
         formularioAltaPartidos.querySelector("input").blur(); // Para que no se posicione en el prmier input y NO arroje el required de golpe al cerrar PopUp.
     })
     .catch(error => {
-        mensajepopupAltaConvocatoria.textContent = "Error al enviar datos";
-        popupAltaConvocatoria.classList.remove('oculto');
-        popupAltaConvocatoria.classList.add('visible');
+        mensajePopup.textContent = "Error al enviar datos";
+        popupNotificacion.classList.remove('oculto');
+        popupNotificacion.classList.add('visible');
     });
 });
 
 }
 
 // Botón de cerrar el Popup:
-if(cerrarPopUpAltaConvocatoria) {
-
-    cerrarPopUpAltaConvocatoria.addEventListener("click", function(){
-    popupAltaConvocatoria.classList.remove('visible');
-    popupAltaConvocatoria.classList.add('oculto');
-    location.reload();
+if(botonCerrarPopupNotificacion) {
+    botonCerrarPopupNotificacion.addEventListener("click", function(){
+        popupNotificacion.classList.remove('visible');
+        popupNotificacion.classList.add('oculto');
+        location.reload();
     });
 }
 
 //***********************************************************************************************************************/
 
-// FORMULARIO DE CONFIRMACIÓN DE ASISTENCIA:
+// FORMULARIO DE CONFIRMACIÓN DE ASISTENCIA (Convocatoria Activa):
 
 const formularioAsistencia = document.getElementById('formulario-asistencia');
-const popupAsistencia = document.getElementById('popupAsistencia');
-const mensajePopupAsistencia = document.getElementById('mensaje-popup-asistencia');
-const cerrarPopupAsistencia = document.getElementById('boton-cerrar-asistencia');
 const botonConfirmoAsistencia = document.getElementById("confirmo-asistencia");
 const botonNoVoy = document.getElementById("no-voy");
 
@@ -82,9 +79,9 @@ if (formularioAsistencia) {
     .then(respuestaServer => respuestaServer.text()) // Para guardar larespuesta del Server...
     .then(respuestaParaNavegador => {
         // console.log("Respuesta del server capturado con var_dump: ", respuestaParaNavegador); // Para debugear. 
-        mensajePopupAsistencia.textContent = respuestaParaNavegador;
-        popupAsistencia.classList.remove('oculto');
-        popupAsistencia.classList.add('visible');
+        mensajePopup.textContent = respuestaParaNavegador;
+        popupNotificacion.classList.remove('oculto');
+        popupNotificacion.classList.add('visible');
         formularioAsistencia.reset();
         botonConfirmoAsistencia.classList.add('boton-disabled');
         botonConfirmoAsistencia.classList.remove('boton');
@@ -95,19 +92,10 @@ if (formularioAsistencia) {
 
     })
     .catch(error => {
-        mensajePopupAsistencia.textContent = "Error al enviar datos";
-        popupAsistencia.classList.remove('oculto');
-        popupAsistencia.classList.add('visible');
-    });
-    });
-}
-
-// Botón para cerrar PopUp (Asistencia): 
-if (cerrarPopupAsistencia){
-    cerrarPopupAsistencia.addEventListener("click", function(){
-    popupAsistencia.classList.remove('visible');
-    popupAsistencia.classList.add('oculto');
-    location.reload();
+        mensajePopup.textContent = "Error al enviar datos";
+            popupNotificacion.classList.remove('oculto');
+            popupNotificacion.classList.add('visible');
+        });
     });
 }
 
@@ -120,17 +108,23 @@ const popupAmigo = document.getElementById('popup-amigo');
 const botonCancelarPopupAmigo = document.getElementById('boton-Cancelar-Popup-Amigo');
 const formLlevoAmigo = document.getElementById('form-llevo-amigo');
 
-botonAbrirPopupAmigo.addEventListener("click", function() {
-    popupAmigo.classList.remove('oculto');
-    popupAmigo.classList.add('visible-flex');
-});
+if(botonAbrirPopupAmigo) {
+    botonAbrirPopupAmigo.addEventListener("click", function() {
+        popupAmigo.classList.remove('oculto');
+        popupAmigo.classList.add('visible-flex');
+    });
+}
 
-botonCancelarPopupAmigo.addEventListener("click", function() {
-    popupAmigo.classList.remove('visible-flex');
-    popupAmigo.classList.add('oculto');
-});
+if(botonCancelarPopupAmigo) {
+    botonCancelarPopupAmigo.addEventListener("click", function() {
+        popupAmigo.classList.remove('visible-flex');
+        popupAmigo.classList.add('oculto');
+    });
+}
 
-formLlevoAmigo.addEventListener("submit", function(evento) {
+if (formLlevoAmigo) {
+
+    formLlevoAmigo.addEventListener("submit", function(evento) {
     
     evento.preventDefault();
 
@@ -140,7 +134,7 @@ formLlevoAmigo.addEventListener("submit", function(evento) {
         datosDelFormularioLlevoUnAmigo.append(evento.submitter.name, evento.submitter.value);
     }
 
-    fetch("asistencia-amigo.php", {
+    fetch("app/actions/action-asistencia-amigo.php", {
         method: "POST",
         body: datosDelFormularioLlevoUnAmigo
     })
@@ -148,18 +142,19 @@ formLlevoAmigo.addEventListener("submit", function(evento) {
     .then(respuestaParaNavegador => {
         popupAmigo.classList.add('oculto');
         popupAmigo.classList.remove('visible-flex');        
-        popupAsistencia.classList.remove('oculto');
-        popupAsistencia.classList.add('visible-flex');
-        mensajePopupAsistencia.textContent = respuestaParaNavegador;
+        popupNotificacion.classList.remove('oculto');
+        popupNotificacion.classList.add('visible-flex');
+        mensajePopup.textContent = respuestaParaNavegador;
 
     })
     .catch(error => {
-        mensajePopupAsistencia.textContent = "Error al enviar datos";
+        mensajePopup.textContent = "Error al enviar datos";
         // console.log(error); Para debuggear.
-        popupAsistencia.classList.remove('oculto');
-        popupAsistencia.classList.add('visible-flex');
+        popupNotificacion.classList.remove('oculto');
+        popupNotificacion.classList.add('visible-flex');
     });
 });
+}
 
 //***********************************************************************************************************************/
 
@@ -171,15 +166,19 @@ const popupBaja = document.getElementById('popup-baja');
 const botonConfirmarBaja = document.getElementById('boton-confirmar-baja');
 const botonCancelarBaja = document.getElementById('boton-cancelar-baja');
 
-botonMeBajo.addEventListener('click', function(){
-    popupBaja.classList.remove('oculto');
-    popupBaja.classList.add('visible');
-});
+if (botonMeBajo) {
+    botonMeBajo.addEventListener('click', function(){
+        popupBaja.classList.remove('oculto');
+        popupBaja.classList.add('visible');
+    });
+}
 
-botonCancelarBaja.addEventListener('click', function(){
-    popupBaja.classList.remove('visible');
-    popupBaja.classList.add('oculto');
-});
+if (botonCancelarBaja) {
+    botonCancelarBaja.addEventListener('click', function(){
+        popupBaja.classList.remove('visible');
+        popupBaja.classList.add('oculto');
+    });
+}
 
 // Formulario (Ventana):
 if (botonConfirmarBaja) {
@@ -190,15 +189,15 @@ if (botonConfirmarBaja) {
         .then(respuestaParaNavegador => {
             popupBaja.classList.remove('visible');
             popupBaja.classList.add('oculto');
-            popupAsistencia.classList.remove('oculto');
-            popupAsistencia.classList.add('visible');
-            mensajePopupAsistencia.textContent = respuestaParaNavegador;            
+            popupNotificacion.classList.remove('oculto');
+            popupNotificacion.classList.add('visible');
+            mensajePopup.textContent = respuestaParaNavegador;            
         })
         .catch(error => {
-            mensajePopupAsistencia.textContent = "Error al enviar datos! Pruebe nuevamente en unos segundos.";
+            mensajePopup.textContent = "Error al enviar datos! Pruebe nuevamente en unos segundos.";
             // console.log(error); // Para debuggear.
-            popupAsistencia.classList.remove('oculto');
-            popupAsistencia.classList.add('visible-flex');
+            popupNotificacion.classList.remove('oculto');
+            popupNotificacion.classList.add('visible-flex');
     });
     });
 }
@@ -218,23 +217,29 @@ const botonCancelarCerrarPartidos = document.getElementById("boton-cancelar-cerr
 // Formulario:
 if (formularioCerrarPartidos) {
 
-    formularioCerrarPartidos.addEventListener("submit", function() {
+    formularioCerrarPartidos.addEventListener("submit", function(evento) {
 
-    formularioCerrarPartidos.preventDefault();
+    evento.preventDefault();
 
     const datosdelFormulario = new FormData(formularioCerrarPartidos);
     
     // Envío de datos del form, vía POST:
-    fetch("app/actions/action-cerrar-partido.php"), {
+    fetch("app/actions/action-cerrar-partido.php", {
         method: "POST",
         body: datosdelFormulario
     })
     .then(respuestaServer => respuestaServer.text())
     .then(respuestaParaNavegador => {
-        
-
+        popupNotificacion.classList.remove('oculto');
+        popupNotificacion.classList.add('visible');
+        mensajePopup.textContent = respuestaParaNavegador;        
+        formularioCerrarPartidos.reset();
     })
+    .catch(error => {
+        mensajePopup.textContent = "Error al enviar datos. Probá en un ratito.";
+        popupNotificacion.classList.remove('oculto');
+        popupNotificacion.classList.add('visible');
+    });
 
-
-    })
+    });
 }

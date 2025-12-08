@@ -154,10 +154,6 @@
         </form>
     </div>
 
-    <!-- PopUp final (notificación) -->
-    <div class="popUp-convocatoria oculto ventana-convocatoria" id="popupAsistencia">
-        <p id="mensaje-popup-asistencia"></p>
-        <button type="button" id="boton-cerrar-asistencia" class="boton">Cerrar</button>
-    </div>
+
 
 </div> <!-- FIN Sección Convocatoria Activa -->
