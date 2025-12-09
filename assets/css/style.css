@@ -329,7 +329,12 @@ h1, h2 {
     padding: 1rem;    
     justify-content: center;
     align-items: center;
+}
 
+.cabezal {
+    background-color: #12503C;
+    color: var(--beige);
+    border-color: var(--beige);
 }
 
 .posicion-grilla {    
