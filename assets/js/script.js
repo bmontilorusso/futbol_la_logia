@@ -1,10 +1,47 @@
+// LOGIN:
+
+const formLogin = document.getElementById("form-login");
+const botonIniciarSesion = document.getElementById("boton-iniciar-sesion");
+
+const popupNotificacion = document.getElementById("popUp-notificacion");
+const mensajePopup = document.getElementById("mensaje-popup-notificacion");
+const botonCerrarPopupNotificacion = document.getElementById("boton-cerrar-popup-notificacion");
+
+if (formLogin) {
+    formLogin.addEventListener("submit", function(evento) {
+    
+        evento.preventDefault();
+
+        const datosFormLogin = new FormData(formLogin);
+
+        // Envío de datos del Login, vía POST:
+        fetch("app/actions/action-login.php", {
+            method: "POST",
+            body: datosFormLogin // Acá puedo usar también "new FormData(formLogin)"
+        })
+        .then(respuestaServer => respuestaServer.json())
+        .then(respuestaParaNavegador => {
+
+            if (respuestaParaNavegador.status === "ok") {
+                window.location.href = respuestaParaNavegador.redirect;
+            } else {
+                popupNotificacion.classList.add('visible');
+                popupNotificacion.classList.remove('oculto');
+                mensajePopup.textContent = respuestaParaNavegador.mensaje;
+            }
+        })
+        .catch(error => {
+            popupNotificacion.classList.add('visible');
+            popupNotificacion.classList.remove('oculto');
+            mensajePopup.textContent = "Error al enviar datos. Probá en un ratito.";
+        });
+    });
+}
+
+
 // FORMULARIO DE ALTA DE PARTIDOS (Convocatoria):
 
 const formularioAltaPartidos = document.getElementById("formulario-convocatoria");
-const popupNotificacion = document.getElementById("popUp-notificacion");
-
-const mensajePopup = document.getElementById("mensaje-popup-notificacion");
-const botonCerrarPopupNotificacion = document.getElementById("boton-cerrar-popup-notificacion");
 
 // Formulario:
 if (formularioAltaPartidos) {
@@ -205,6 +242,16 @@ if (botonConfirmarBaja) {
 //***********************************************************************************************************************/
 
 // ARMAR LOS EQUIPOS:
+
+const botonFullRandom = document.getElementById("boton-full-random");
+
+if (botonFullRandom) {
+    botonFullRandom.addEventListener('click', function() {
+        location.reload();
+        console.log("Llego hasta acá!");
+    })
+}
+
 
 //***********************************************************************************************************************/
 

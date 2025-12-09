@@ -28,7 +28,7 @@
 
             <h2>Comencemos</h2>
             
-            <form class="formulario-login" action="app/actions/action-login.php" method="POST">                
+            <form class="formulario-login" id="form-login">             
 
                 <div class="campos">
                     <div class="combos-campos">
@@ -45,7 +45,13 @@
                     <button class="boton" id="boton-iniciar-sesion">Iniciar Sesión</button>
                 </div>
 
-            </form>           
+            </form>
+
+            <!-- PopUp NOTIFICACIÓN (Final) -->
+            <div class="popUp-convocatoria oculto ventana-convocatoria" id="popUp-notificacion">
+                <p id="mensaje-popup-notificacion"></p>
+                <button type="button" id="boton-cerrar-popup-notificacion" class="boton">Cerrar</button>
+            </div>  
 
         </main>
     </div> <!-- Fin de la Ventana-aplicación -->
@@ -55,7 +61,7 @@
     </footer>
 
     <!-- Script: -->
-    <script src="js/script.js"></script>
+    <script src="assets/js/script.js"></script>
     
 </body>
 </html>

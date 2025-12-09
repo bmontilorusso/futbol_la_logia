@@ -25,13 +25,25 @@ if (mysqli_num_rows($resultado) == 1) {
     $_SESSION['nombre'] = $fila['NOMBRE'];
     $_SESSION['id_jugador'] = $fila['ID_JUGADOR'];
 
-    // Redireccionamiento:
-    header("Location: ../../home.php");
-    exit();
+    // JSON para generar redireccionamiento:
+    
+    // header("Location: /home.php");
+    // exit(); // Lo que usé en un comienzo, antes de usar Fetch + JSON.
+
+    echo json_encode([
+        "status" => "ok",
+        "redirect" => "/home.php"
+    ]);
+    exit;
 
 } else {
 
-    echo "Usuario y/o contraseña incorrecta.";
+    echo json_encode([
+        "status" => "Error",
+        "mensaje" => "Usuario y/o contraseña incorrecta."
+    ]);
+
+    // echo "Usuario y/o contraseña incorrecta."; // Lo que usé en un comienzo, antes de usar Fetch + JSON.
 
 };
 
