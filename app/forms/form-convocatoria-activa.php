@@ -16,9 +16,10 @@
         <div class="campos-convocatoria">
 
             <div class="info-proximo-partido visible">
-
-                <p>Fecha y HORA: <?php echo $fila['FECHA'] . $fila['HORA']; ?></p>
-                <p>Estadio: <?php echo $fila['ESTADIO']; ?> </p>
+                <p class="info-encabezado">Fecha y HORA:</p>
+                <p><?php echo $fila['FECHA'] . $fila['HORA']; ?></p>
+                <p class="info-encabezado">Estadio:</p>
+                <p><?php echo $fila['ESTADIO']; ?></p>
             </div>
 
         </div>
