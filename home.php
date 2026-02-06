@@ -45,6 +45,26 @@
 
         <main class="main">
 
+            <!-- BOTONERA HOME-->
+            <div class="botonera-home">
+                <div>
+                    <button class="boton" type=button>Abrir Convocatoria</button>
+                    <button class="boton" type=button>Crear Torneo</button>
+                </div>
+                <a href="form-jugadores.php" class="boton botones-home">
+                    <img src="assets/img/ico/jugadores.png" alt="Jugadores">
+                    <h2>Jugadores</h2>
+                </a>
+                <div class="boton botones-home">
+                    <img src="assets/img/ico/MVP.png" alt="MVP">
+                    <h2>MVP</h2>
+                </div>
+                <div class="boton botones-home">
+                    <img src="assets/img/ico/stats.png" alt="Stats">
+                    <h2>Estadísticas</h2>
+                </div>
+            </div> <!-- FIN Botonera Home -->
+
             <?php
                 if ($mostrarAbrirConvocatoria):
                     include 'app/forms/form-alta-convocatoria.php';
@@ -73,21 +93,11 @@
         </main>
     </div> <!-- Fin de la Ventana-aplicación -->
 
-    <!-- BOTONERA HOME-->
-    <div class="botonera-home">
-        <a href="form-jugadores.php" class="boton botones-home">
-            <img src="assets/img/ico/jugadores.png" alt="Jugadores">
-            <h2>Jugadores</h2>
-        </a>
-        <div class="boton botones-home">
-            <img src="assets/img/ico/MVP.png" alt="MVP">
-            <h2>MVP</h2>
-        </div>
-        <div class="boton botones-home">
-            <img src="assets/img/ico/stats.png" alt="Stats">
-            <h2>Estadísticas</h2>
-        </div>
-    </div> <!-- FIN Botonera Home -->
+    <!-- TARJETAS HOME -->
+    <div>
+        <h2>Mi tarjeta</h2>
+        <h2>Último MVP</h2>
+    </div>
 
     <footer class="footer">
         <p>© 2025 Holly Molly Studios • Desarrollado con 💾, ❤️ y mucho ☕</p>

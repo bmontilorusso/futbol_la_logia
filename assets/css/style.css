@@ -167,7 +167,7 @@ h1, h2 {
     margin: 3rem;    
 }
 
-.vaciar {
+.reset {
     background-color: var(--alertaNegativaFondo);
     color: var(--verdeOscuro);
 }
@@ -224,6 +224,8 @@ h1, h2 {
 
 .ventana-convocatoria {
     margin: 2rem;
+    display: flex;
+    flex-direction: column;
 }
 
 .ventana-convocatoria-activa,

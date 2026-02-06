@@ -1,7 +1,7 @@
 <!-- ALTA DE CONVOCATORIA -->
 <div class="ventana-convocatoria visible">
     <div class="pie-cabeza-ventana-convocatoria">
-        <h2 class="titulo-convocatoria">Próximo Partido</h2>
+        <h2 class="titulo-convocatoria">Abrir Convocatoria</h2>
     </div>
 
     <!-- SECCIÓN ABRIR CONVOCATORIAS -->
@@ -37,7 +37,7 @@
                 <option value="NO">NO</option>
             </select>
 
-            <button type="reset" class="boton vaciar">Vaciar</button>
+            <button type="reset" class="boton reset">Reset</button>
             <button type="submit" class="boton">Confirmar</button>
 
         </div>
