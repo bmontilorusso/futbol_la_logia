@@ -47,27 +47,27 @@
 
             <!-- BOTONERA HOME-->
             <div class="botonera-home">
-                <button>
+                <button class="botones-home">
                     <img src="" alt="">
                     <span>Abrir Convocatoria</span>
                 </button>
-                <button>
+                <button class="botones-home">
                     <img src="" alt="">
                     <span>Cerrar Convocatoria</span>
                 </button>
-                <button>
+                <button class="botones-home">
                     <img src="" alt="">
                     <span>Crear Torneo</span>
                 </button>
-                <button>
+                <button class="botones-home">
                     <img src="" alt="">
                     <span>Votación MVP</span>
                 </button>
-                <a href="">
+                <a href="" class="botones-home">
                     <img src="" alt="">
                     <span>Jugadores</span>
                 </a>
-                <a href="">
+                <a href="" class="botones-home">
                     <img src="" alt="">
                     <span>Estadísticas</span>
                 </a>
