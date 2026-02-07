@@ -47,22 +47,30 @@
 
             <!-- BOTONERA HOME-->
             <div class="botonera-home">
-                <div>
-                    <button class="boton" type=button>Abrir Convocatoria</button>
-                    <button class="boton" type=button>Crear Torneo</button>
-                </div>
-                <a href="form-jugadores.php" class="boton botones-home">
-                    <img src="assets/img/ico/jugadores.png" alt="Jugadores">
-                    <h2>Jugadores</h2>
+                <button>
+                    <img src="" alt="">
+                    <span>Abrir Convocatoria</span>
+                </button>
+                <button>
+                    <img src="" alt="">
+                    <span>Cerrar Convocatoria</span>
+                </button>
+                <button>
+                    <img src="" alt="">
+                    <span>Crear Torneo</span>
+                </button>
+                <button>
+                    <img src="" alt="">
+                    <span>Votación MVP</span>
+                </button>
+                <a href="">
+                    <img src="" alt="">
+                    <span>Jugadores</span>
                 </a>
-                <div class="boton botones-home">
-                    <img src="assets/img/ico/MVP.png" alt="MVP">
-                    <h2>MVP</h2>
-                </div>
-                <div class="boton botones-home">
-                    <img src="assets/img/ico/stats.png" alt="Stats">
-                    <h2>Estadísticas</h2>
-                </div>
+                <a href="">
+                    <img src="" alt="">
+                    <span>Estadísticas</span>
+                </a>
             </div> <!-- FIN Botonera Home -->
 
             <?php
