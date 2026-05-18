@@ -428,7 +428,7 @@ h1, h2 {
 }
 
 .tarjetas {
-    background-image: url(/img/fondo_tarjetas.png);
+    background-image: url(../img/fondo_tarjetas.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;

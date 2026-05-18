@@ -12,9 +12,9 @@
     <title>La Logia Fútbol - Home</title>
     <!-- Conexiones Locales: -->
     <link rel="icon" type="img/png" href="../img/ico/favicon-32x32.png">
-    <link rel="preload" href="../css/style.css" as="style">
-    <link rel="stylesheet" href="../css/normalize.css" as="style">
-    <link rel="stylesheet" href="../css/style.css" as="style">
+    <link rel="preload" href="../assets/css/style.css" as="style">
+    <link rel="stylesheet" href="../assets/css/normalize.css" as="style">
+    <link rel="stylesheet" href="../assets/css/style.css" as="style">
     <!-- Conexiones Externas: -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,13 +32,13 @@
                 $resultadoJugadores = mysqli_query($conn, $sqlTarjetasJugador);                    
             ?>
         <div class="tarjetas">
-            <h2 class="valoracion">93</h2>
-            <h3 class="posicion">DEF</h3>
-            <img class="gato-avatar" src="../img/avatar/gato.png" alt="imagen_jugador">
-            <h2 class="gato-nombre">GATO E.</h2>
-            <h3 class="dato_1">MVP 95</h3>
-            <h3 class="dato_2">VOT 88</h3>
-            <h3 class="dato_3">ASIS 85</h3>
+            <h2 class="valoracion">91</h2>
+            <h3 class="posicion">DEL</h3>
+            <img class="gato-avatar" src="../assets/img/avatar/Flavio.png" alt="imagen_jugador">
+            <h2 class="gato-nombre">F. Severi</h2>
+            <h3 class="dato_1">MVP 91</h3>
+            <h3 class="dato_2">VOT 85</h3>
+            <h3 class="dato_3">ASIS 87</h3>
             <h3 class="dato_4">VAR 89</h3>
         </div>
         <div class="tarjetas">
